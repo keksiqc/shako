@@ -1,13 +1,11 @@
-import {
-  Button
-} from 'react-daisyui';
+import { Button } from "react-daisyui";
 import {
   SiDiscord,
   SiTwitter,
   SiGithub,
   SiTwitch,
-  SiSpotify
-} from 'react-icons/si';
+  SiSpotify,
+} from "react-icons/si";
 
 export default function LinkButton({ title }) {
   const socials = {
@@ -15,35 +13,35 @@ export default function LinkButton({ title }) {
       url: "https://keksi.me/discord",
       textColor: "hover:text-discord",
       borderColor: "hover:border-discord",
-      icon: <SiDiscord />
+      icon: <SiDiscord />,
     },
     twitter: {
       url: "https://keksi.me/twitter",
       textColor: "hover:text-twitter",
       borderColor: "hover:border-twitter",
-      icon: <SiTwitter />
+      icon: <SiTwitter />,
     },
     github: {
       url: "https://keksi.me/github",
       textColor: "hover:text-base-content",
       borderColor: "hover:border-base-content",
-      icon: <SiGithub />
+      icon: <SiGithub />,
     },
     twitch: {
       url: "https://keksi.me/twitch",
       textColor: "hover:text-twitch",
       borderColor: "hover:border-twitch",
-      icon: <SiTwitch />
+      icon: <SiTwitch />,
     },
     spotify: {
       url: "https://keksi.me/spotify",
       textColor: "hover:text-spotify",
       borderColor: "hover:border-spotify",
-      icon: <SiSpotify />
-    }
-  }
+      icon: <SiSpotify />,
+    },
+  };
 
-  const social = socials[title.toLowerCase()]
+  const social = socials[title.toLowerCase()];
 
   return (
     <>
@@ -51,9 +49,10 @@ export default function LinkButton({ title }) {
         className={`w-3/4 h-14 mb-3 text-lg hover:scale-105 hover:bg-transparent ${social.textColor} ${social.borderColor} duration-500`}
         startIcon={social.icon}
         onClick={() => window.open(social.url, "_blank")}
-        color="secondary">
-          {title}
+        color="secondary"
+      >
+        {title}
       </Button>
     </>
-  )
+  );
 }
