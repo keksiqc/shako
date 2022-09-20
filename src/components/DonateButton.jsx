@@ -3,7 +3,7 @@ import { TbCup } from "react-icons/tb";
 
 export default function DonateButton() {
   return (
-    <Tooltip className="tooltip-bottom text-secondary" message="Donate">
+    <Tooltip className="tooltip-bottom text-primary" message="Donate">
       <Button
         className="mb-1 hover:scale-110 duration-500"
         startIcon={<TbCup size="1.5em" />}

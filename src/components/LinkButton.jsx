@@ -49,7 +49,7 @@ export default function LinkButton({ title }) {
         className={`w-3/4 h-14 mb-3 text-lg hover:scale-105 hover:bg-transparent ${social.textColor} ${social.borderColor} duration-500`}
         startIcon={social.icon}
         onClick={() => window.open(social.url, "_blank")}
-        color="secondary"
+        color="primary"
       >
         {title}
       </Button>
