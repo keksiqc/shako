@@ -1,7 +1,7 @@
-import { Footer as DaisyUIFooter } from "react-daisyui";
-import { FaHeart, FaCode } from "react-icons/fa";
+import { Footer as DaisyUIFooter } from 'react-daisyui';
+import { FaHeart, FaCode } from 'react-icons/fa';
 
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from './ThemeToggle';
 
 export default function Footer() {
   return (

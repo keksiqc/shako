@@ -1,11 +1,11 @@
-import { Avatar, Tooltip } from "react-daisyui";
+import { Avatar, Tooltip } from 'react-daisyui';
 
 export default function User({ data }) {
   const statusColors = {
-    online: "ring-green-500",
-    idle: "ring-yellow-500",
-    dnd: "ring-red-500",
-    offline: "ring-gray-500",
+    online: 'ring-green-500',
+    idle: 'ring-yellow-500',
+    dnd: 'ring-red-500',
+    offline: 'ring-gray-500',
   };
 
   const avatarUrl = `https://cdn.discordapp.com/avatars/${data.discord_user.id}/${data.discord_user.avatar}.png?size=256`;
@@ -16,7 +16,7 @@ export default function User({ data }) {
     ? `Listening to ${data.spotify.song} by ${data.spotify.artist}`
     : data.activities[0]
     ? `Playing ${data.activities[0].name}`
-    : "Doing nothing";
+    : 'Doing nothing';
 
   return (
     <div className="m-5">
