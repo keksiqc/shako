@@ -7,8 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "yarn lint.prettier && yarn lint.eslint",
-    "lint.prettier": "prettier --write ."
+    "lint": "pnpm lint.prettier && pnpm lint.eslint",
+    "lint.prettier": "prettier --write .",
+    "lint.eslint": "eslint --ext .js,.jsx,.ts,.tsx,.vue ."
   },
   "dependencies": {
     "daisyui": "^2.25.0",
