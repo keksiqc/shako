@@ -15,6 +15,7 @@ module.exports = {
         discord: '#7289DA',
         twitter: '#1DA1F2',
         twitch: '#6441A4',
+        anilist: '#02A9FF',
         spotify: '#1DB954',
       },
     },

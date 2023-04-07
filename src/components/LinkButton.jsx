@@ -4,6 +4,7 @@ import {
   SiTwitter,
   SiGithub,
   SiTwitch,
+  SiAnilist,
   SiSpotify,
 } from 'react-icons/si';
 
@@ -32,6 +33,12 @@ export default function LinkButton({ title }) {
       textColor: 'hover:text-twitch',
       borderColor: 'hover:border-twitch',
       icon: <SiTwitch />,
+    },
+    anilist: {
+      url: 'https://keksi.me/anilist',
+      textColor: 'hover:text-anilist',
+      borderColor: 'hover:border-anilist',
+      icon: <SiAnilist />,
     },
     spotify: {
       url: 'https://keksi.me/spotify',

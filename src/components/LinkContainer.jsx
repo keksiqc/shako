@@ -4,7 +4,14 @@ import LinkButton from './LinkButton';
 import DonateButton from './DonateButton';
 
 export default function LinkContainer() {
-  const socials = ['Discord', 'Twitter', 'Github', 'Twitch', 'Spotify'];
+  const socials = [
+    'Discord',
+    'Twitter',
+    'Github',
+    'Twitch',
+    'AniList',
+    'Spotify',
+  ];
 
   return (
     <div className="max-w-2xl m-auto">
