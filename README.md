@@ -1,31 +1,9 @@
-# shako
+[![Shako Banner](.github/assets/banner.svg)](https://shako.me)
 
-a self hostable linktree alternative
+# Shakō
 
-## Installation
-
-1. Clone the repository
-
-```bash
-# git
-git clone https://github.com/keksiqc/shako.git
-
-# gh cli
-gh repo clone keksiqc/shako
-```
-
-2. Install dependencies
-
-```bash
-cd shako
-
-# npm
-npm install
-
-# yarn
-yarn install
-```
-
-3. Change user ID and socials
-
-4. Follow the [Vite documentation](https://vitejs.dev/guide/static-deploy.html) to deploy your site
+<p>
+    <a href="./LICENSE">
+        <img src="https://img.shields.io/github/license/keksiqc/shako.svg?style=flat&colorA=18181B&colorB=86EFAC" alt="License">
+    </a>
+</p>
