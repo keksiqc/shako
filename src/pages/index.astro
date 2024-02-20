@@ -1,8 +1,8 @@
 ---
 import '../styles/globals.css';
 import Layout from '../layouts/Layout.astro';
-import { Button } from "@/components/ui/button";
-import { UserAvatar } from "@/components/UserAvatar";
+import { Button } from '@/components/ui/button';
+import { UserAvatar } from '@/components/UserAvatar';
 import { ModeToggle } from '@/components/ModeToggle';
 import { Icon } from 'astro-icon/components';
 ---
@@ -16,7 +16,7 @@ import { Icon } from 'astro-icon/components';
 	};
 	const isDark = getThemePreference() === 'dark';
 	document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
- 
+
 	if (typeof localStorage !== 'undefined') {
 		const observer = new MutationObserver(() => {
 			const isDark = document.documentElement.classList.contains('dark');
@@ -47,26 +47,25 @@ import { Icon } from 'astro-icon/components';
 				<!-- sponsor buttons -->
 				<div class="flex gap-3 justify-center items-center">
 					<Button variant="secondary" size="icon">
-						<Icon name="simple-icons:patreon" class="h-5 w-5"/>
+						<Icon name="simple-icons:patreon" class="h-5 w-5" />
 					</Button>
 					<Button variant="secondary" size="icon">
-						<Icon name="simple-icons:buymeacoffee" class="h-5 w-5"/>
+						<Icon name="simple-icons:buymeacoffee" class="h-5 w-5" />
 					</Button>
 					<Button variant="secondary" size="icon">
-						<Icon name="simple-icons:githubsponsors" class="h-5 w-5"/>
+						<Icon name="simple-icons:githubsponsors" class="h-5 w-5" />
 					</Button>
 				</div>
 
 				<Button variant="outline" size="xl">
-					<Icon name="simple-icons:github" class="mr-2 h-5 w-5"/> GitHub
+					<Icon name="simple-icons:github" class="mr-2 h-5 w-5" /> GitHub
 				</Button>
 				<Button variant="outline" size="xl">
-					<Icon name="simple-icons:discord" class="mr-2 h-5 w-5"/> Discord
+					<Icon name="simple-icons:discord" class="mr-2 h-5 w-5" /> Discord
 				</Button>
 				<Button variant="outline" size="xl">
-					<Icon name="simple-icons:twitter" class="mr-2 h-5 w-5"/> Twitter
+					<Icon name="simple-icons:twitter" class="mr-2 h-5 w-5" /> Twitter
 				</Button>
-
 			</section>
 		</div>
 	</main>
