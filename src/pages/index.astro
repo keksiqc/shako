@@ -2,7 +2,7 @@
 import '../styles/globals.css';
 import Layout from '../layouts/Layout.astro';
 import { Button } from '@/components/ui/button';
-import { UserAvatar } from '@/components/UserAvatar';
+import { UserContainer } from '@/components/UserContainer';
 import { ModeToggle } from '@/components/ModeToggle';
 import { Icon } from 'astro-icon/components';
 ---
@@ -17,13 +17,10 @@ import { Icon } from 'astro-icon/components';
 
 		<!-- content container -->
 		<div class="m-auto max-w-md">
-			<!-- user info -->
-			<section class="flex flex-col justify-center items-center gap-5 m-5">
-				<UserAvatar client:load />
-				<p class="text-3xl font-semibold text-foreground">Keksi♡</p>
-			</section>
+			<!-- user container -->
+			<UserContainer client:load />
 
-			<!-- social links -->
+			<!-- button container -->
 			<section class="flex flex-col gap-3">
 				<!-- sponsor buttons -->
 				<div class="flex gap-3 justify-center items-center">
@@ -34,7 +31,7 @@ import { Icon } from 'astro-icon/components';
 						<Icon name="simple-icons:buymeacoffee" class="h-5 w-5" />
 					</Button>
 					<Button variant="secondary" size="icon">
-						<Icon name="simple-icons:githubsponsors" class="h-5 w-5" />
+						<Icon name="simple-icons:kofi" class="h-5 w-5" />
 					</Button>
 				</div>
 
