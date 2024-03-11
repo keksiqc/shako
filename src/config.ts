@@ -1,19 +1,19 @@
-import type { Config } from './types';
+import type { Config } from "./types"
 
 export const config: Config = {
-    discordId: '',
-    lanyardUrl: 'api.lanyard.rest',
-    iconButtons: [
-        {
-            icon: 'patreon',
-            url: 'https://patreon.com/keksiqc',
-        },
-    ],
-    buttons: [
-        {
-            name: 'Twitter',
-            icon: 'twitter',
-            url: 'https://twitter.com/keksiqc',
-        },
-    ],
-};
+  discordId: "",
+  lanyardUrl: "api.lanyard.rest",
+  iconButtons: [
+    {
+      icon: "patreon", // https://simpleicons.org/
+      url: "https://patreon.com/keksiqc",
+    },
+  ],
+  buttons: [
+    {
+      name: "Twitter", // Text to display
+      icon: "twitter", // https://simpleicons.org/
+      url: "https://twitter.com/keksiqc",
+    },
+  ],
+}

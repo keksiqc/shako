@@ -1,29 +1,29 @@
 {
-    "$schema": "https://json.schemastore.org/eslintrc",
-    "root": true,
-    "extends": [
-      "prettier",
-      "plugin:tailwindcss/recommended",
-      "plugin:astro/recommended"
-    ],
-    "plugins": ["tailwindcss", "astro"],
-    "rules": {
-      "tailwindcss/no-custom-classname": "off",
-      "tailwindcss/classnames-order": "error"
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "root": true,
+  "extends": [
+    "prettier",
+    "plugin:tailwindcss/recommended",
+    "plugin:astro/recommended"
+  ],
+  "plugins": ["tailwindcss", "astro"],
+  "rules": {
+    "tailwindcss/no-custom-classname": "off",
+    "tailwindcss/classnames-order": "error"
+  },
+  "settings": {
+    "tailwindcss": {
+      "callees": ["cn", "cva"],
+      "config": "tailwind.config.cjs"
     },
-    "settings": {
-      "tailwindcss": {
-        "callees": ["cn", "cva"],
-        "config": "tailwind.config.cjs"
-      },
-      "next": {
-        "rootDir": ["apps/*/"]
-      }
-    },
-    "overrides": [
-      {
-        "files": ["*.ts", "*.tsx"],
-        "parser": "@typescript-eslint/parser"
-      }
-    ]
-  }
+    "next": {
+      "rootDir": ["apps/*/"]
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser"
+    }
+  ]
+}

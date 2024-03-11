@@ -10,13 +10,14 @@
     "astro": "astro",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format:write": "prettier --write \"**/*.{ts,tsx,astro,mdx}\" --cache",
-    "format:check": "prettier --check \"**/*.{ts,tsx,astro,mdx}\" --cache"
+    "format:write": "prettier . --write --cache",
+    "format:check": "prettier . --check --cache"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.4",
     "@astrojs/react": "^3.0.10",
     "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/ts-plugin": "^1.5.3",
     "@iconify-json/simple-icons": "^1.1.91",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
