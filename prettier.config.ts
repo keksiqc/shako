@@ -1,4 +1,5 @@
-/** @type {import('prettier').Config} */
+import type { Config } from "prettier";
+
 module.exports = {
   endOfLine: "lf",
   semi: false,
@@ -25,4 +26,4 @@ module.exports = {
   ],
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   plugins: ["@ianvs/prettier-plugin-sort-imports"],
-}
+} satisfies Config;
