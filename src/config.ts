@@ -1,4 +1,4 @@
-import type { Config } from "./types"
+import type { Config } from "./types";
 
 export const config: Config = {
   discordId: "",
@@ -16,4 +16,4 @@ export const config: Config = {
       url: "https://twitter.com/keksiqc",
     },
   ],
-}
+};
