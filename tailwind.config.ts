@@ -1,12 +1,8 @@
-/** @type {import('tailwindcss').Config} */
+import type { Config } from "tailwindcss"
+
 module.exports = {
   darkMode: ["class"],
-  content: [
-    "./pages/**/*.{astro, ts,tsx}",
-    "./components/**/*.{astro, ts,tsx}",
-    "./app/**/*.{astro, ts,tsx}",
-    "./src/**/*.{astro, ts,tsx}",
-  ],
+  content: ["./src/**/*.{astro,ts,tsx}"],
   prefix: "",
   theme: {
     container: {
@@ -74,4 +70,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+} satisfies Config
