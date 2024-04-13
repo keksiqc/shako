@@ -10,6 +10,7 @@ interface Button {
 }
 
 export interface Config {
+  title: string
   discordId: string
   lanyardUrl: string
   iconButtons: IconButton[]

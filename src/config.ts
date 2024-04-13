@@ -1,6 +1,7 @@
 import type { Config } from "./types"
 
 export const config: Config = {
+  title: "Shako - Keksi",
   discordId: "",
   lanyardUrl: "api.lanyard.rest",
   iconButtons: [

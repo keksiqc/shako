@@ -7,10 +7,12 @@ import { UserContainer } from "@/components/UserContainer"
 
 import Layout from "../layouts/Layout.astro"
 
+import { config } from "../config"
+
 import "../styles/globals.css"
 ---
 
-<Layout title="Shako - Keksi">
+<Layout title={config.title}>
   <!-- main container -->
   <main class="items-center justify-center p-4">
     <!-- mode toggle -->
