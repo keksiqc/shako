@@ -24,7 +24,6 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
-    --grid: #cbd5e1;
   }
 
   .dark {
@@ -47,14 +46,13 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9;
-    --grid: #1e293b;
   }
 }
 
 body {
   height: 100vh;
   width: 100vw;
-  background-image: radial-gradient(var(--grid) 1px, transparent 0);
+  background-image: radial-gradient(hsl(var(--border)) 1px, transparent 0);
   background-size: 40px 40px;
 }
 
