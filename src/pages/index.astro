@@ -1,50 +1,50 @@
 ---
-import { ModeToggle } from '@/components/ModeToggle';
-import { UserContainer } from '@/components/UserContainer';
-import { Button } from '@/components/ui/button';
-import { Icon } from 'astro-icon/components';
-import Layout from '../layouts/Layout.astro';
-import '../styles/globals.css';
+import { ModeToggle } from '@/components/ModeToggle'
+import { UserContainer } from '@/components/UserContainer'
+import { Button } from '@/components/ui/button'
+import { Icon } from 'astro-icon/components'
+import Layout from '../layouts/Layout.astro'
+import '../styles/globals.css'
 ---
 
 <Layout title="Welcome to Astro.">
-	<!-- main container -->
-	<main class="items-center justify-center p-4">
-		<!-- mode toggle -->
-		<div class="absolute right-0 top-0 p-4">
-			<ModeToggle client:load />
-		</div>
+  <!-- main container -->
+  <main class="items-center justify-center p-4">
+    <!-- mode toggle -->
+    <div class="absolute right-0 top-0 p-4">
+      <ModeToggle client:load />
+    </div>
 
-		<!-- content container -->
-		<div class="m-auto max-w-md">
-			<!-- user container -->
-			<UserContainer client:load />
+    <!-- content container -->
+    <div class="m-auto max-w-md">
+      <!-- user container -->
+      <UserContainer client:load />
 
-			<!-- button container -->
-			<section class="flex flex-col gap-3">
-				<!-- sponsor buttons -->
-				<div class="flex items-center justify-center gap-3">
-					<Button variant="secondary" size="icon">
-						<Icon name="simple-icons:patreon" class="size-5" />
-					</Button>
-					<Button variant="secondary" size="icon">
-						<Icon name="simple-icons:buymeacoffee" class="size-5" />
-					</Button>
-					<Button variant="secondary" size="icon">
-						<Icon name="simple-icons:kofi" class="size-5" />
-					</Button>
-				</div>
+      <!-- button container -->
+      <section class="flex flex-col gap-3">
+        <!-- sponsor buttons -->
+        <div class="flex items-center justify-center gap-3">
+          <Button variant="secondary" size="icon">
+            <Icon name="simple-icons:patreon" class="size-5" />
+          </Button>
+          <Button variant="secondary" size="icon">
+            <Icon name="simple-icons:buymeacoffee" class="size-5" />
+          </Button>
+          <Button variant="secondary" size="icon">
+            <Icon name="simple-icons:kofi" class="size-5" />
+          </Button>
+        </div>
 
-				<Button variant="outline" size="xl">
-					<Icon name="simple-icons:github" class="mr-2 size-5" /> GitHub
-				</Button>
-				<Button variant="outline" size="xl">
-					<Icon name="simple-icons:discord" class="mr-2 size-5" /> Discord
-				</Button>
-				<Button variant="outline" size="xl">
-					<Icon name="simple-icons:twitter" class="mr-2 size-5" /> Twitter
-				</Button>
-			</section>
-		</div>
-	</main>
+        <Button variant="outline" size="xl">
+          <Icon name="simple-icons:github" class="mr-2 size-5" /> GitHub
+        </Button>
+        <Button variant="outline" size="xl">
+          <Icon name="simple-icons:discord" class="mr-2 size-5" /> Discord
+        </Button>
+        <Button variant="outline" size="xl">
+          <Icon name="simple-icons:twitter" class="mr-2 size-5" /> Twitter
+        </Button>
+      </section>
+    </div>
+  </main>
 </Layout>
