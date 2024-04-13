@@ -15,15 +15,20 @@
     "tailwindcss": {
       "callees": ["cn", "cva"],
       "config": "tailwind.config.cjs"
-    },
-    "next": {
-      "rootDir": ["apps/*/"]
     }
   },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
       "parser": "@typescript-eslint/parser"
+    },
+    {
+      "files": [".astro"],
+      "parser": "astro-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "extraFileExtensions": [".astro"]
+      }
     }
   ]
 }
