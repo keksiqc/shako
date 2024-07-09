@@ -1,0 +1,29 @@
+---
+import { ButtonContainer } from "@/components/ButtonContainer"
+import { ModeToggle } from "@/components/ModeToggle"
+import { UserContainer } from "@/components/UserContainer"
+
+import config from "../config"
+import Layout from "../layouts/Layout.astro"
+
+import "../styles/globals.css"
+---
+
+<Layout title={config.title}>
+  <!-- main container -->
+  <main class="items-center justify-center p-4">
+    <!-- mode toggle -->
+    <div class="absolute right-0 top-0 p-4">
+      <ModeToggle client:load />
+    </div>
+
+    <!-- content container -->
+    <div class="m-auto max-w-md">
+      <!-- user container -->
+      <UserContainer client:load />
+
+      <!-- button container -->
+      <ButtonContainer client:load />
+    </div>
+  </main>
+</Layout>
