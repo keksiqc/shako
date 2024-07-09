@@ -1,20 +1,50 @@
 import type { Config } from "./types"
 
-export const config: Config = {
+const config: Config = {
   title: "Shako - Keksi",
   discordId: "",
   lanyardUrl: "api.lanyard.rest",
   iconButtons: [
     {
-      icon: "patreon", // https://simpleicons.org/
-      url: "https://patreon.com/keksiqc",
+      icon: "patreon",
+      url: "https://patreon.com/keksi",
+    },
+    {
+      icon: "buymeacoffee",
+      url: "https://www.buymeacoffee.com/keksi",
+    },
+    {
+      icon: "githubsponsors",
+      url: "https://github.com/sponsors/keksiqc",
     },
   ],
   buttons: [
     {
-      name: "Twitter", // Text to display
-      icon: "twitter", // https://simpleicons.org/
-      url: "https://twitter.com/keksiqc",
+      name: "GitHub",
+      icon: "github",
+      url: "https://github.com/keksiqc",
+    },
+    {
+      name: "Discord",
+      icon: "discord",
+      url: "https://discord.com/users/1000000000000000000000000000000000000000",
+    },
+    {
+      name: "Twitter",
+      icon: "x",
+      url: "https://x.com/keksiqc",
+    },
+    {
+      name: "Steam",
+      icon: "steam",
+      url: "https://steamcommunity.com/id/keksiqc",
+    },
+    {
+      name: "AniList",
+      icon: "anilist",
+      url: "https://anilist.co/user/keksiqc",
     },
   ],
 }
+
+export default config
