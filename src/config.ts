@@ -27,7 +27,7 @@ const config: Config = {
     {
       name: "Discord",
       icon: "discord",
-      url: "https://discord.com/users/1000000000000000000000000000000000000000",
+      url: "https://discord.com/users/527147599942385674",
     },
     {
       name: "Twitter",
