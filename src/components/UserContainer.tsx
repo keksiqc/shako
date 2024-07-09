@@ -1,4 +1,3 @@
-import * as React from "react"
 import { useLanyard } from "use-lanyard"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"

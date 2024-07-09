@@ -1,11 +1,9 @@
 ---
-import { Icon } from "astro-icon/components"
-
-import { Button } from "@/components/ui/button"
+import { ButtonContainer } from "@/components/ButtonContainer"
 import { ModeToggle } from "@/components/ModeToggle"
 import { UserContainer } from "@/components/UserContainer"
 
-import { config } from "../config"
+import config from "../config"
 import Layout from "../layouts/Layout.astro"
 
 import "../styles/globals.css"
@@ -25,30 +23,7 @@ import "../styles/globals.css"
       <UserContainer client:load />
 
       <!-- button container -->
-      <section class="flex flex-col gap-3">
-        <!-- sponsor buttons -->
-        <div class="flex items-center justify-center gap-3">
-          <Button variant="secondary" size="icon">
-            <Icon name="simple-icons:patreon" class="size-5" />
-          </Button>
-          <Button variant="secondary" size="icon">
-            <Icon name="simple-icons:buymeacoffee" class="size-5" />
-          </Button>
-          <Button variant="secondary" size="icon">
-            <Icon name="simple-icons:kofi" class="size-5" />
-          </Button>
-        </div>
-
-        <Button variant="outline" size="xl">
-          <Icon name="simple-icons:github" class="mr-2 size-5" /> GitHub
-        </Button>
-        <Button variant="outline" size="xl">
-          <Icon name="simple-icons:discord" class="mr-2 size-5" /> Discord
-        </Button>
-        <Button variant="outline" size="xl">
-          <Icon name="simple-icons:twitter" class="mr-2 size-5" /> Twitter
-        </Button>
-      </section>
+      <ButtonContainer client:load />
     </div>
   </main>
 </Layout>
