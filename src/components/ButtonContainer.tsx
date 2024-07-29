@@ -10,7 +10,12 @@ export function ButtonContainer() {
       <div className="flex items-center justify-center gap-3">
         {config.iconButtons.map((button, index) => (
           <Button variant="secondary" size="icon" key={index}>
-            <Icon icon={`simple-icons:${button.icon}`} className="size-5" aria-label={button.icon} key={index} />
+            <Icon
+              icon={`simple-icons:${button.icon}`}
+              className="size-5"
+              aria-label={button.icon}
+              key={index}
+            />
           </Button>
         ))}
       </div>
