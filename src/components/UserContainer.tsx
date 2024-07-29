@@ -14,7 +14,7 @@ export function UserContainer() {
         <>
           <Avatar className="size-32">
             <AvatarImage
-              src={`https://cdn.discordapp.com/avatars/${DISCORD_ID}/${data.discord_user.avatar}.webp`}
+              src={`https://cdn.discordapp.com/avatars/${DISCORD_ID}/${data.discord_user.avatar}.webp?size=256`}
               alt="@keksiqc"
             />
             <AvatarFallback>U</AvatarFallback>
