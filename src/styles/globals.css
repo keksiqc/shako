@@ -61,6 +61,13 @@ body {
   background-size: 40px 40px;
 }
 
+html {
+  font-family: "Geist Sans", system-ui, sans-serif;
+}
+a {
+  font-family: "Geist Mono", monospace;
+}
+
 @layer base {
   * {
     @apply border-border;

@@ -1,4 +1,7 @@
 ---
+import "@fontsource/geist-sans"
+import "@fontsource/geist-mono"
+
 interface Props {
   title: string
 }
@@ -34,7 +37,6 @@ const { title } = Astro.props
   defer
   src="https://analytics.umicloud.de/script.js"
   data-website-id="f6ddfbd2-7438-46ac-84ce-bf30184eb681"></script> -->
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -47,19 +49,3 @@ const { title } = Astro.props
     <slot />
   </body>
 </html>
-<style is:global>
-  html {
-    font-family: system-ui, sans-serif;
-  }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-</style>

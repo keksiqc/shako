@@ -19,6 +19,8 @@
     "@astrojs/tailwind": "^5.1.0",
     "@astrojs/ts-plugin": "^1.9.0",
     "@astrojs/vercel": "^7.7.2",
+    "@fontsource/geist-mono": "^5.0.3",
+    "@fontsource/geist-sans": "^5.0.3",
     "@iconify-json/simple-icons": "^1.1.111",
     "@iconify/react": "^5.0.2",
     "@radix-ui/react-avatar": "^1.1.0",
