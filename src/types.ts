@@ -1,3 +1,5 @@
+import type { Snowflake } from "use-lanyard"
+
 interface IconButton {
   icon: string
   url: string
@@ -11,7 +13,7 @@ interface Button {
 
 export interface Config {
   title: string
-  discordId: string
+  discordID: Snowflake
   lanyardUrl: string
   iconButtons: IconButton[]
   buttons: Button[]

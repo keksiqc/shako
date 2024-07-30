@@ -2,7 +2,7 @@ import type { Config } from "./types"
 
 const config: Config = {
   title: "Shako - Keksi",
-  discordId: "",
+  discordID: "527147599942385674",
   lanyardUrl: "api.lanyard.rest",
   iconButtons: [
     {
