@@ -11,10 +11,16 @@ interface Button {
   url: string
 }
 
+interface User {
+  name: string
+  avatar: string
+}
+
 export interface Config {
   title: string
-  discordID: Snowflake
-  lanyardUrl: string
-  iconButtons: IconButton[]
-  buttons: Button[]
+  user?: User
+  discordID?: Snowflake
+  lanyardUrl?: string
+  iconButtons?: IconButton[]
+  buttons?: Button[]
 }
