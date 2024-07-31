@@ -8,6 +8,10 @@ Shakō is my personal linktree alternative. Everyone is welcome to use it, but p
 - React
 - Tailwind CSS
 - Shadcn/UI
+- Lanyard
+
+> [!NOTE]
+> To integrate your Discord user data with Shakō, you must join the [Lanyard Discord Server](https://discord.gg/lanyard).
 
 ## Usage
 
