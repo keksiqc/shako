@@ -1,6 +1,6 @@
 # Shakō
 
-Shakō is my personal linktree alternative. Everyone is welcome to use it, but please keep in mind that this is a personal project and not affiliated with Linktree.
+Shakō: A sleek, modern linktree alternative built with Astro and React. Easily customizable and self-hostable, with an optional hosted version available at [keksiqc/shako.me](https://github.com/keksiq/shako.me).
 
 ## Tech stack
 
