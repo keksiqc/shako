@@ -12,6 +12,7 @@ export function ButtonContainer() {
           <Button
             variant="secondary"
             size="icon"
+            onClick={() => window.open(button.url)}
             key={`${button.icon}-${index}`}
           >
             <Icon
