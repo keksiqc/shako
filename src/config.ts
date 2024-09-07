@@ -49,6 +49,11 @@ const config: Config = {
       icon: "anilist",
       url: "https://anilist.co/user/keksiqc",
     },
+    {
+      name: "Hetzner Cloud",
+      icon: "hetzner",
+      url: "https://hetzner.cloud/?ref=iccx7cMZHWlx",
+    },
   ],
 }
 
