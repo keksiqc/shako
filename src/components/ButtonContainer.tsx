@@ -1,19 +1,19 @@
-import config from "@/config"
-import { Icon } from "@iconify/react"
+import { Button } from '@/components/ui/button'
+import config from '@/config'
 
-import { Button } from "@/components/ui/button"
+import { Icon } from '@iconify/react'
 
 export function ButtonContainer() {
   return (
     <section className="flex flex-col gap-3">
       {/* icon buttons */}
       <div className="flex items-center justify-center gap-3">
-        {config.iconButtons?.map((button, index) => (
+        {config.iconButtons?.map(button => (
           <Button
             variant="secondary"
             size="icon"
             onClick={() => window.open(button.url)}
-            key={`${button.icon}-${index}`}
+            key={`${button.icon}-${button.url}`}
           >
             <Icon
               icon={`simple-icons:${button.icon}`}
@@ -25,15 +25,16 @@ export function ButtonContainer() {
       </div>
 
       {/* buttons */}
-      {config.buttons?.map((button, index) => (
+      {config.buttons?.map(button => (
         <Button
           variant="outline"
           size="xl"
           onClick={() => window.open(button.url)}
-          key={`${button.name}-${index}`}
+          key={`${button.name}-${button.url}`}
           aria-label={button.name}
         >
-          <Icon icon={`simple-icons:${button.icon}`} className="mr-2 size-5" />{" "}
+          <Icon icon={`simple-icons:${button.icon}`} className="mr-2 size-5" />
+          {' '}
           {button.name}
         </Button>
       ))}

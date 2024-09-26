@@ -1,4 +1,4 @@
-import type { Snowflake } from "use-lanyard"
+import type { Snowflake } from 'use-lanyard'
 
 interface IconButton {
   icon: string
