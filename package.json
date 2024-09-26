@@ -5,13 +5,12 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "check": "astro check",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format:write": "prettier . --write --cache",
-    "format:check": "prettier . --check --cache"
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@astrojs/check": "0.9.3",
