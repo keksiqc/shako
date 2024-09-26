@@ -13,7 +13,7 @@ const customTailwindConfig = new FlatCompat().config({
   settings: {
     tailwindcss: {
       callees: ['cn', 'cva'],
-      config: 'tailwind.config.cjs',
+      config: 'tailwind.config.ts',
     },
   },
 })
