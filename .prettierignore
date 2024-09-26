@@ -1,8 +1,0 @@
-dist/
-node_modules/
-bun.lockb
-.netlify/
-.vercel/
-.astro/
-public/_redirects
-public/_headers
