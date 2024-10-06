@@ -52,7 +52,7 @@ const config: Config = {
     {
       name: 'Trakt',
       icon: 'trakt',
-      url: 'https://trakt.tv/users/keksiqc'
+      url: 'https://trakt.tv/users/keksiqc',
     },
     {
       name: 'Hetzner Cloud',
