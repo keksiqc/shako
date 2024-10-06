@@ -50,6 +50,11 @@ const config: Config = {
       url: 'https://anilist.co/user/keksiqc',
     },
     {
+      name: 'Trakt',
+      icon: 'trakt',
+      url: 'https://trakt.tv/users/keksiqc'
+    },
+    {
       name: 'Hetzner Cloud',
       icon: 'hetzner',
       url: 'https://hetzner.cloud/?ref=iccx7cMZHWlx',
