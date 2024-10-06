@@ -10,7 +10,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "up": "taze major -I"
   },
   "dependencies": {
     "@astrojs/check": "0.9.3",
