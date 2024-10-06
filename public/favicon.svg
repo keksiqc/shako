@@ -1,5 +1,17 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="240.156" y="109.511" width="31.2889" height="402.489" rx="15.6444" fill="#86EFAC" />
+  <style>
+    @media (prefers-color-scheme: dark) {
+      rect, path {
+        fill: #f5f5f5;
+      }
+    }
+    @media (prefers-color-scheme: light) {
+      rect, path {
+        fill: #18181b;
+      }
+    }
+  </style>
+  <rect x="240.156" y="109.511" width="31.2889" height="402.489" rx="15.6444" />
   <rect
     x="149.133"
     y="172.88"
@@ -7,7 +19,6 @@
     height="142.222"
     rx="15.6444"
     transform="rotate(-45 149.133 172.88)"
-    fill="#86EFAC"
   />
   <rect
     x="340.722"
@@ -16,12 +27,10 @@
     height="142.222"
     rx="15.6444"
     transform="rotate(45 340.722 227.556)"
-    fill="#86EFAC"
   />
   <path
     fill-rule="evenodd"
     clip-rule="evenodd"
     d="M255.8 420.978C368.908 420.978 460.6 326.739 460.6 210.489C460.6 94.2391 368.908 0 255.8 0C142.692 0 51 94.2391 51 210.489C51 326.739 142.692 420.978 255.8 420.978ZM255.8 392.375C353.198 392.375 432.156 311.225 432.156 211.121C432.156 111.017 353.198 29.8667 255.8 29.8667C158.402 29.8667 79.4444 111.017 79.4444 211.121C79.4444 311.225 158.402 392.375 255.8 392.375Z"
-    fill="#86EFAC"
   />
 </svg>
