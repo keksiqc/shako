@@ -36,7 +36,7 @@ The `icon` prop corresponds to the icon name from [Simple Icons](https://simplei
 
 ## License
 
-Shakō is licensed under the MIT License - see the [LICENSE file](./LICENSE) for details.
+Shakō is licensed under the GPL-3.0 License - see the [LICENSE file](./LICENSE) for details.
 
 ## Contributing
 
