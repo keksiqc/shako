@@ -1,5 +1,5 @@
 import { p5i } from 'p5i'
-import React, { useEffect, useMemo, useRef } from 'react'
+import React, { useEffect, useMemo, useRef, useCallback } from 'react'
 
 /**
  * Dots Background Effect
@@ -24,9 +24,22 @@ interface Point {
 
 export function WaveBackground() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const pointsRef = useRef<Point[]>([])
+  const existingPointsRef = useRef(new Set<string>())
 
   // Memoize the p5i functions to avoid recreating them on each render
   const p5Functions = useMemo(() => p5i(), [])
+
+  const addPoints = useCallback((w: number, h: number, offsetY: number) => {
+    for (let x = -SPACING / 2; x < w + SPACING; x += SPACING) {
+      for (let y = -SPACING / 2; y < h + offsetY + SPACING; y += SPACING) {
+        const id = `${x}-${y}`
+        if (existingPointsRef.current.has(id)) continue
+        existingPointsRef.current.add(id)
+        pointsRef.current.push({ x, y, opacity: Math.random() * 0.5 + 0.5 })
+      }
+    }
+  }, [])
 
   useEffect(() => {
     if (!containerRef.current)
@@ -52,43 +65,24 @@ export function WaveBackground() {
     let h = window.innerHeight
     let offsetY = window.scrollY
 
-    const existingPoints = new Set<string>()
-    const points: Point[] = []
-
-    function getForceOnPoint(x: number, y: number, z: number) {
-      return (noise(x / SCALE, y / SCALE, z) - 0.5) * 2 * TWO_PI
-    }
-
-    function addPoints() {
-      for (let x = -SPACING / 2; x < w + SPACING; x += SPACING) {
-        for (let y = -SPACING / 2; y < h + offsetY + SPACING; y += SPACING) {
-          const id = `${x}-${y}`
-          if (existingPoints.has(id))
-            continue
-          existingPoints.add(id)
-          points.push({ x, y, opacity: Math.random() * 0.5 + 0.5 })
-        }
-      }
-    }
+    const getForceOnPoint = (x: number, y: number, z: number) => 
+      (noise(x / SCALE, y / SCALE, z) - 0.5) * 2 * TWO_PI
 
     function setup() {
       createCanvas(w, h)
       background('#ffffff')
       stroke('#ccc')
       noFill()
-
-      noiseSeed(+new Date())
-
-      addPoints()
+      noiseSeed(Date.now())
+      addPoints(w, h, offsetY)
     }
 
     function draw() {
-      // Update offsetY inside draw to reflect current scroll position
       offsetY = window.scrollY
       background('#ffffff')
-      const t = +new Date() / 10000
+      const t = Date.now() / 10000
 
-      for (const p of points) {
+      for (const p of pointsRef.current) {
         const { x, y } = p
         const rad = getForceOnPoint(x, y, t)
         const length = (noise(x / SCALE, y / SCALE, t * 2) + 0.5) * LENGTH
@@ -99,26 +93,20 @@ export function WaveBackground() {
       }
     }
 
-    function restart() {
-      if (containerRef.current)
-        mount(containerRef.current, { setup, draw })
-    }
-
-    restart()
+    mount(containerRef.current, { setup, draw })
 
     const handleResize = () => {
       w = window.innerWidth
       h = window.innerHeight
       resizeCanvas(w, h)
-      addPoints()
+      addPoints(w, h, offsetY)
     }
 
-    window.addEventListener('resize', handleResize)
-
-    // Add scroll event listener to update offsetY
     const handleScroll = () => {
       offsetY = window.scrollY
     }
+
+    window.addEventListener('resize', handleResize)
     window.addEventListener('scroll', handleScroll)
 
     return () => {
@@ -126,7 +114,7 @@ export function WaveBackground() {
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [p5Functions])
+  }, [p5Functions, addPoints])
 
   return (
     <div
