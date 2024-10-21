@@ -51,7 +51,6 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.13",
     "eslint-plugin-tailwindcss": "^3.17.5",
-    "taze": "^0.17.2",
-    "typescript-eslint": "^8.9.0"
+    "taze": "^0.17.2"
   }
 }
