@@ -1,5 +1,5 @@
 import { p5i } from 'p5i'
-import React, { useEffect, useMemo, useRef, useCallback } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 
 /**
  * Dots Background Effect
@@ -34,7 +34,8 @@ export function WaveBackground() {
     for (let x = -SPACING / 2; x < w + SPACING; x += SPACING) {
       for (let y = -SPACING / 2; y < h + offsetY + SPACING; y += SPACING) {
         const id = `${x}-${y}`
-        if (existingPointsRef.current.has(id)) continue
+        if (existingPointsRef.current.has(id))
+          continue
         existingPointsRef.current.add(id)
         pointsRef.current.push({ x, y, opacity: Math.random() * 0.5 + 0.5 })
       }
@@ -65,7 +66,7 @@ export function WaveBackground() {
     let h = window.innerHeight
     let offsetY = window.scrollY
 
-    const getForceOnPoint = (x: number, y: number, z: number) => 
+    const getForceOnPoint = (x: number, y: number, z: number) =>
       (noise(x / SCALE, y / SCALE, z) - 0.5) * 2 * TWO_PI
 
     function setup() {
