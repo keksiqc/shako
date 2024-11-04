@@ -12,6 +12,7 @@ export function UserContainer({ config }: { config: Config }) {
     if (config?.discordID) {
       const { data } = useLanyard(config.discordID) // eslint-disable-line react-hooks/rules-of-hooks
       userName = data?.discord_user.global_name
+
       avatarUrl = `https://cdn.discordapp.com/avatars/${config.discordID}/${data?.discord_user.avatar}.webp?size=256`
     }
   }
