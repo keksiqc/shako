@@ -1,9 +1,8 @@
 import { Button } from '@/components/ui/button'
-import config from '@/config'
-
+import type { Config } from '@/types'
 import { Icon } from '@iconify/react'
 
-export function ButtonContainer() {
+export function ButtonContainer({ config }: { config: Config }) {
   return (
     <section className="flex flex-col gap-3">
       {/* icon buttons */}
