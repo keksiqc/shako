@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button'
 import type { Config } from '@/types'
+import { Button } from '@/components/ui/button'
 import { Icon } from '@iconify/react'
 
 export function ButtonContainer({ config }: { config: Config }) {

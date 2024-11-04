@@ -1,6 +1,6 @@
+import type { Config } from '@/types'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Skeleton } from '@/components/ui/skeleton'
-import type { Config } from '@/types'
 
 import { useLanyard } from 'use-lanyard'
 
