@@ -28,7 +28,7 @@ npm run dev
 
 ### Edit the configuration
 
-Edit the `src/config.ts` file to add your links.
+Edit the `shako.config.ts` file to add your links.
 The `icon` prop corresponds to the icon name from [Simple Icons](https://simpleicons.org/). Ensure the icon name matches exactly with the one listed on the Simple Icons website for proper rendering.
 
 > [!NOTE]
