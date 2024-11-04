@@ -1,15 +1,15 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Skeleton } from '@/components/ui/skeleton'
+import type { Config } from '@/types'
 
-import config from '@/config'
 import { useLanyard } from 'use-lanyard'
 
-export function UserContainer() {
-  let userName: string | null | undefined = config.user?.name
-  let avatarUrl: string | null | undefined = config.user?.avatar
+export function UserContainer({ config }: { config: Config }) {
+  let userName: string | null | undefined = config?.user?.name
+  let avatarUrl: string | null | undefined = config?.user?.avatar
 
   if (!userName || !avatarUrl) {
-    if (config.discordID) {
+    if (config?.discordID) {
       const { data } = useLanyard(config.discordID) // eslint-disable-line react-hooks/rules-of-hooks
       userName = data?.discord_user.global_name
       avatarUrl = `https://cdn.discordapp.com/avatars/${config.discordID}/${data?.discord_user.avatar}.webp?size=256`
