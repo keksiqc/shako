@@ -8,7 +8,7 @@ export const configSchema = z.object({
     avatar: z.string(),
   }).optional(),
   discordID: z.custom<Snowflake>().optional(),
-  lanyardUrl: z.string().optional(),
+  lanyardUrl: z.string().url().optional(),
   iconButtons: z.array(
     z.object({
       icon: z.string(),
