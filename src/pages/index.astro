@@ -4,11 +4,11 @@ import { Footer } from '@/components/Footer'
 import { ModeToggle } from '@/components/ModeToggle'
 import { UserContainer } from '@/components/UserContainer'
 import { getConfig } from '@/lib/config'
-
-const config = await getConfig()
 import Layout from '../layouts/Layout.astro'
 
 import '../styles/globals.css'
+
+const config = await getConfig() // eslint-disable-line keksiqc/no-top-level-await
 ---
 
 <Layout title={config.title}>
