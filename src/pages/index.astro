@@ -3,8 +3,9 @@ import { ButtonContainer } from '@/components/ButtonContainer'
 import { Footer } from '@/components/Footer'
 import { ModeToggle } from '@/components/ModeToggle'
 import { UserContainer } from '@/components/UserContainer'
+import { getConfig } from '@/lib/config'
 
-import config from '../config'
+const config = await getConfig()
 import Layout from '../layouts/Layout.astro'
 
 import '../styles/globals.css'
@@ -21,10 +22,10 @@ import '../styles/globals.css'
     <!-- content container -->
     <div class="m-auto max-w-md">
       <!-- user container -->
-      <UserContainer client:load />
+      <UserContainer client:load config={config} />
 
       <!-- button container -->
-      <ButtonContainer client:load />
+      <ButtonContainer client:load config={config} />
     </div>
 
     <!-- footer -->
