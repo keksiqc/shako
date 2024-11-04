@@ -1,26 +1,27 @@
 import type { Snowflake } from 'use-lanyard'
+import { z } from 'zod'
 
-interface IconButton {
-  icon: string
-  url: string
-}
+export const configSchema = z.object({
+  title: z.string(),
+  user: z.object({
+    name: z.string(),
+    avatar: z.string(),
+  }).optional(),
+  discordID: z.custom<Snowflake>().optional(),
+  lanyardUrl: z.string().optional(),
+  iconButtons: z.array(
+    z.object({
+      icon: z.string(),
+      url: z.string().url(),
+    }),
+  ).optional(),
+  buttons: z.array(
+    z.object({
+      name: z.string(),
+      icon: z.string(),
+      url: z.string().url(),
+    }),
+  ).optional(),
+})
 
-interface Button {
-  name: string
-  icon: string
-  url: string
-}
-
-interface User {
-  name: string
-  avatar: string
-}
-
-export interface Config {
-  title: string
-  user?: User
-  discordID?: Snowflake
-  lanyardUrl?: string
-  iconButtons?: IconButton[]
-  buttons?: Button[]
-}
+export type Config = z.infer<typeof configSchema>
