@@ -40,6 +40,11 @@ const config: Config = {
       url: 'https://x.com/keksiqc',
     },
     {
+      name: 'Bluesky',
+      icon: 'bluesky',
+      url: 'https://bsky.app/profile/keksi.dev',
+    },
+    {
       name: 'Steam',
       icon: 'steam',
       url: 'https://steamcommunity.com/id/keksiqc',
