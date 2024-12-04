@@ -1,8 +1,10 @@
 ---
 import { ButtonContainer } from '@/components/ButtonContainer'
+import { DotBackground } from '@/components/DotBackground'
 import { Footer } from '@/components/Footer'
 import { ModeToggle } from '@/components/ModeToggle'
 import { UserContainer } from '@/components/UserContainer'
+import { WaveBackground } from '@/components/WaveBackground'
 import { getConfig } from '@/lib/config'
 import Layout from '../layouts/Layout.astro'
 
@@ -12,6 +14,14 @@ const config = await getConfig() // eslint-disable-line keksiqc/no-top-level-awa
 ---
 
 <Layout title={config.title}>
+  {config.animatedBackground
+? (
+    <WaveBackground client:only="react" />
+  )
+: (
+    <DotBackground client:only="react" />
+  )}
+
   <!-- main container -->
   <main class="items-center justify-center p-4">
     <!-- mode toggle -->

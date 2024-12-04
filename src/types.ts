@@ -9,6 +9,7 @@ export const configSchema = z.object({
   }).optional(),
   discordID: z.custom<Snowflake>().optional(),
   lanyardUrl: z.string().url().optional(),
+  animatedBackground: z.boolean().optional().default(false),
   iconButtons: z.array(
     z.object({
       icon: z.string(),

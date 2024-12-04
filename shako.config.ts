@@ -9,6 +9,7 @@ const config: Config = {
   // },
   discordID: '527147599942385674', // Discord user ID for Lanyard integration (can be omitted if 'user' is defined)
   lanyardUrl: 'https://api.lanyard.rest/', // Custom Lanyard API URL (optional, for self-hosted instances) (WIP)
+  animatedBackground: false, // Whether to use the animated background (default: false)
   iconButtons: [
     {
       icon: 'patreon',
