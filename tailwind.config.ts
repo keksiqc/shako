@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss'
 import svgToDataUri from 'mini-svg-data-uri'
+// @ts-expect-error tailwindcss/lib/util/flattenColorPalette is not typed
 import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette'
 import animate from 'tailwindcss-animate'
 
