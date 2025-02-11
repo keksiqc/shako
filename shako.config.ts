@@ -8,7 +8,7 @@ const config: Config = {
   //   avatar: "https://cdn.discordapp.com/avatars/527147599942385674/32a37325c4d3098a37e8f078707de99a.webp?size=256",
   // },
   discordID: '527147599942385674', // Discord user ID for Lanyard integration (can be omitted if 'user' is defined)
-  lanyardUrl: 'https://api.lanyard.rest/', // Custom Lanyard API URL (optional, for self-hosted instances) (WIP)
+  lanyardUrl: 'api.lanyard.rest/', // Custom Lanyard API URL (optional, for self-hosted instances) (WIP)
   animatedBackground: false, // Whether to use the animated background (default: false)
   iconButtons: [
     {
@@ -59,11 +59,6 @@ const config: Config = {
       name: 'Trakt',
       icon: 'trakt',
       url: 'https://trakt.tv/users/keksiqc',
-    },
-    {
-      name: 'Hetzner Cloud',
-      icon: 'hetzner',
-      url: 'https://hetzner.cloud/?ref=iccx7cMZHWlx',
     },
   ],
 }
