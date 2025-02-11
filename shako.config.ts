@@ -1,4 +1,4 @@
-import type { Config } from '@/types'
+import type { Config } from '@/types';
 
 const config: Config = {
   title: 'Shako - Keksio',
@@ -11,6 +11,8 @@ const config: Config = {
   discordID: '527147599942385674', // Discord user ID for Lanyard integration (can be omitted if 'user' is defined)
   lanyardUrl: 'api.lanyard.rest/', // Custom Lanyard API URL (optional, for self-hosted instances) (WIP)
   animatedBackground: false, // Whether to use the animated background (default: false)
+  footer: true, // Whether to show the footer (default: true)
+  // footer: 'Made with Heart', // Custom footer text (optional)
   iconButtons: [
     {
       icon: 'patreon',
@@ -62,6 +64,6 @@ const config: Config = {
       url: 'https://trakt.tv/users/keksiqc',
     },
   ],
-}
+};
 
-export default config
+export default config;

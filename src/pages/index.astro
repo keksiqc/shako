@@ -7,11 +7,12 @@ import { UserContainer } from '@/components/UserContainer'
 import { WaveBackground } from '@/components/WaveBackground'
 import { getConfig, ConfigError } from '@/lib/config'
 import Layout from '../layouts/Layout.astro'
+import type { Config } from '@/types'
 
 import '../styles/globals.css'
 
 // Load configuration
-let config;
+let config: Config;
 let error;
 
 try {
@@ -21,6 +22,8 @@ try {
   config = {
     title: 'Error - Shako',
     animatedBackground: false,
+    lanyardUrl: '',
+    footer: true
   }
 }
 ---
@@ -47,7 +50,7 @@ try {
         </div>
       </div>
 
-      <Footer />
+      <Footer footerConfig={config.footer || true} />
     </main>
   ) : (
     <div class="flex flex-col items-center justify-center min-h-screen p-4 text-center">
