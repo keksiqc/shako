@@ -5,40 +5,57 @@ import { Footer } from '@/components/Footer'
 import { ModeToggle } from '@/components/ModeToggle'
 import { UserContainer } from '@/components/UserContainer'
 import { WaveBackground } from '@/components/WaveBackground'
-import { getConfig } from '@/lib/config'
+import { getConfig, ConfigError } from '@/lib/config'
 import Layout from '../layouts/Layout.astro'
 
 import '../styles/globals.css'
 
-const config = await getConfig() // eslint-disable-line keksiqc/no-top-level-await
+// Load configuration
+let config;
+let error;
+
+try {
+  config = await getConfig()
+} catch (e) {
+  error = e instanceof ConfigError ? e.message : 'Failed to load configuration'
+  config = {
+    title: 'Error - Shako',
+    animatedBackground: false,
+  }
+}
 ---
 
 <Layout title={config.title}>
-  {config.animatedBackground
-? (
-    <WaveBackground client:only="react" />
-  )
-: (
+  {config.animatedBackground ? 
+    <WaveBackground client:only="react" /> : 
     <DotBackground client:only="react" />
+  }
+
+  {!error ? (
+    <main class="items-center justify-center p-4">
+      <div class="absolute right-0 top-0 p-4">
+        <ModeToggle client:load />
+      </div>
+
+      <div class="m-auto max-w-md">
+        <div class="mb-6">
+          <UserContainer client:load config={config} />
+        </div>
+
+        <div class="mb-6">
+          <ButtonContainer client:load config={config} />
+        </div>
+      </div>
+
+      <Footer />
+    </main>
+  ) : (
+    <div class="flex flex-col items-center justify-center min-h-screen p-4 text-center">
+      <h1 class="text-4xl font-bold text-destructive mb-4">Configuration Error</h1>
+      <p class="text-muted-foreground mb-8 max-w-md">{error}</p>
+      <p class="text-sm text-muted-foreground">
+        Please check your configuration file and try again.
+      </p>
+    </div>
   )}
-
-  <!-- main container -->
-  <main class="items-center justify-center p-4">
-    <!-- mode toggle -->
-    <div class="absolute right-0 top-0 p-4">
-      <ModeToggle client:load />
-    </div>
-
-    <!-- content container -->
-    <div class="m-auto max-w-md">
-      <!-- user container -->
-      <UserContainer client:load config={config} />
-
-      <!-- button container -->
-      <ButtonContainer client:load config={config} />
-    </div>
-
-    <!-- footer -->
-    <Footer />
-  </main>
 </Layout>
