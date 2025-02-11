@@ -9,11 +9,6 @@ const DEFAULT_CONFIG: Partial<Config> = {
   animatedBackground: false,
 }
 
-// Set Lanyard API URL globally
-if (typeof window !== 'undefined') {
-  window.LANYARD_API_URL = 'https://api.lanyard.rest/v1/users'
-}
-
 export class ConfigError extends Error {
   constructor(message: string, public cause?: unknown) {
     super(message)
