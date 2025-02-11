@@ -12,6 +12,7 @@ function UserContainerBase({ config }: { config: Config }) {
   // Use config values if available
   let userName: string | undefined = config?.user?.name
   let avatarUrl: string | undefined = config?.user?.avatar
+  let description: string | undefined = config?.user?.description // Added description
 
   // Only fetch Discord data if we have a Discord ID and lanyard URL
   const { data, error } = useLanyard(config?.discordID as Snowflake, { api: { hostname: config?.lanyardUrl || "api.lanyard.rest/", secure: true }})
@@ -45,6 +46,7 @@ function UserContainerBase({ config }: { config: Config }) {
       <section className="m-5 flex flex-col items-center justify-center gap-5">
         <Skeleton className="size-32 rounded-full" />
         <Skeleton className="h-8 w-32" />
+        {description && <Skeleton className="h-4 w-48" />}
       </section>
     )
   }
@@ -61,6 +63,7 @@ function UserContainerBase({ config }: { config: Config }) {
       <h2 className="text-3xl font-semibold text-foreground">
         {userName ?? 'Anonymous User'}
       </h2>
+      {description && <p className="text-sm text-muted-foreground">{description}</p>}
     </section>
   )
 }

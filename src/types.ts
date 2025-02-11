@@ -4,8 +4,9 @@ import { z } from 'zod'
 export const configSchema = z.object({
   title: z.string().default("Shako"),
   user: z.object({
-    name: z.string(),
-    avatar: z.string(),
+    name: z.string().optional(),
+    avatar: z.string().optional(),
+    description: z.string().optional(),
   }).optional(),
   discordID: z.custom<Snowflake>().optional(),
   lanyardUrl: z.string().optional().default("api.lanyard.rest/"),
