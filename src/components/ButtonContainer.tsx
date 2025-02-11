@@ -1,20 +1,21 @@
-import { memo, Suspense, lazy } from 'react'
 import type { Config } from '@/types'
 import { Button } from '@/components/ui/button'
+import { lazy, memo, Suspense } from 'react'
 
 // Lazy load the Icon component
 const Icon = lazy(() => import('@iconify/react').then(mod => ({ default: mod.Icon })))
 
-const handleButtonClick = (url: string) => {
+function handleButtonClick(url: string) {
   try {
     window.open(url, '_blank', 'noopener,noreferrer')
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Failed to open URL:', error)
   }
 }
 
 function IconFallback() {
-  return <div className="size-5 animate-pulse bg-muted rounded-sm" />
+  return <div className="size-5 animate-pulse rounded-sm bg-muted" />
 }
 
 function ButtonContainerBase({ config }: { config: Config }) {
@@ -55,8 +56,8 @@ function ButtonContainerBase({ config }: { config: Config }) {
               aria-label={`Visit ${button.name}`}
             >
               <Suspense fallback={<IconFallback />}>
-                <Icon 
-                  icon={`simple-icons:${button.icon}`} 
+                <Icon
+                  icon={`simple-icons:${button.icon}`}
                   className="mr-2 size-5"
                   aria-hidden="true"
                 />

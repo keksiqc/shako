@@ -1,5 +1,5 @@
-import type { Snowflake } from 'use-lanyard';
-import { z } from 'zod';
+import type { Snowflake } from 'use-lanyard'
+import { z } from 'zod'
 
 export const configSchema = z.object({
   title: z.string().default('Shako'),
@@ -19,7 +19,7 @@ export const configSchema = z.object({
       z.object({
         icon: z.string(),
         url: z.string().url(),
-      })
+      }),
     )
     .optional(),
   buttons: z
@@ -28,9 +28,9 @@ export const configSchema = z.object({
         name: z.string(),
         icon: z.string(),
         url: z.string().url(),
-      })
+      }),
     )
     .optional(),
-});
+})
 
-export type Config = z.infer<typeof configSchema>;
+export type Config = z.infer<typeof configSchema>

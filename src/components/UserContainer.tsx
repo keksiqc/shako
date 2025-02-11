@@ -1,23 +1,24 @@
-import { memo } from 'react'
 import type { Config } from '@/types'
 import type { Snowflake } from 'use-lanyard'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Skeleton } from '@/components/ui/skeleton'
+import { memo } from 'react'
 import { useLanyard } from 'use-lanyard'
 
-const getDiscordAvatarUrl = (discordId: Snowflake, avatarHash: string) => 
-  `https://cdn.discordapp.com/avatars/${discordId}/${avatarHash}.webp?size=256`
+function getDiscordAvatarUrl(discordId: Snowflake, avatarHash: string) {
+  return `https://cdn.discordapp.com/avatars/${discordId}/${avatarHash}.webp?size=256`
+}
 
 function UserContainerBase({ config }: { config: Config }) {
   // Use config values if available
   let userName: string | undefined = config?.user?.name
   let avatarUrl: string | undefined = config?.user?.avatar
-  let description: string | undefined = config?.user?.description // Added description
+  const description: string | undefined = config?.user?.description // Added description
 
   // Only fetch Discord data if we have a Discord ID and lanyard URL
-  const { data, error } = useLanyard(config?.discordID as Snowflake, { api: { hostname: config?.lanyardUrl || "api.lanyard.rest/", secure: true }})
+  const { data, error } = useLanyard(config?.discordID as Snowflake, { api: { hostname: config?.lanyardUrl || 'api.lanyard.rest/', secure: true } })
   const isLoading = !data && !error && config?.discordID
-  
+
   // Only try to use Discord data if we don't have direct config values
   if (!userName || !avatarUrl) {
     if (config?.discordID && data?.discord_user) {

@@ -1,4 +1,4 @@
-import type { Config } from '@/types';
+import type { Config } from '@/types'
 
 const config: Config = {
   title: 'Shako - Keksio',
@@ -64,6 +64,6 @@ const config: Config = {
       url: 'https://trakt.tv/users/keksiqc',
     },
   ],
-};
+}
 
-export default config;
+export default config

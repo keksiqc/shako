@@ -1,15 +1,15 @@
-import keksiqc from '@keksiqc/eslint-config'
+import antfu from '@antfu/eslint-config'
+import tailwind from 'eslint-plugin-tailwindcss'
 
-export default keksiqc({
-  formatters: true,
+export default antfu({
+  stylistic: true,
   react: true,
   astro: true,
-  tailwind: true,
 }, {
   settings: {
-    tailwind: {
+    tailwindcss: {
       callees: ['cn', 'cva'],
       config: 'tailwind.config.ts',
     },
   },
-})
+}, tailwind.configs['flat/recommended'])
