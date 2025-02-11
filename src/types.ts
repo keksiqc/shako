@@ -1,6 +1,13 @@
 import type { Snowflake } from 'use-lanyard'
 import { z } from 'zod'
 
+// Extend Window interface to include Lanyard API URL
+declare global {
+  interface Window {
+    LANYARD_API_URL?: string
+  }
+}
+
 export const configSchema = z.object({
   title: z.string(),
   user: z.object({
