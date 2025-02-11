@@ -14,7 +14,7 @@ function UserContainerBase({ config }: { config: Config }) {
   let avatarUrl: string | undefined = config?.user?.avatar
 
   // Only fetch Discord data if we have a Discord ID and lanyard URL
-  const { data, error } = useLanyard(config?.discordID as Snowflake)
+  const { data, error } = useLanyard(config?.discordID as Snowflake, { api: { hostname: config?.lanyardUrl || "api.lanyard.rest/", secure: true }})
   const isLoading = !data && !error && config?.discordID
   
   // Only try to use Discord data if we don't have direct config values
