@@ -51,13 +51,6 @@
   }
 }
 
-/* body {
-  height: 100vh;
-  width: 100vw;
-  background-image: radial-gradient(hsl(var(--background-pattern)) 1px, transparent 0);
-  background-size: 40px 40px;
-} */
-
 html {
   font-family: 'Geist Sans', system-ui, sans-serif;
 }
