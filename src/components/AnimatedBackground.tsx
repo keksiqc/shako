@@ -1,5 +1,5 @@
 import { p5i } from 'p5i'
-import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
 
 /**
  * Dots Background Effect

@@ -5,7 +5,7 @@ import { z } from 'zod'
 
 const DEFAULT_CONFIG: Partial<Config> = {
   lanyardUrl: 'https://api.lanyard.rest/v1/users',
-  animatedBackground: false,
+  background: 'none',
 }
 
 export class ConfigError extends Error {
