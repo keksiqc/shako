@@ -9,8 +9,8 @@ const config: Config = {
     // description: "Software Engineer",
   },
   discordID: '527147599942385674', // Discord user ID for Lanyard integration (can be omitted if 'user' is defined)
-  lanyardUrl: 'api.lanyard.rest/', // Custom Lanyard API URL (optional, for self-hosted instances) (WIP)
-  animatedBackground: false, // Whether to use the animated background (default: false)
+  lanyardUrl: 'api.lanyard.rest/', // Custom Lanyard API URL (optional, for self-hosted instances)
+  background: 'dot', // Background style (default: 'none') [dot, grid, dashed-grid, animated, none]
   footer: true, // Whether to show the footer (default: true)
   // footer: 'Made with Heart', // Custom footer text (optional)
   iconButtons: [

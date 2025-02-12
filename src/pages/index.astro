@@ -1,11 +1,12 @@
 ---
 import type { Config } from '@/types'
+import { AnimatedBackground } from '@/components/AnimatedBackground'
 import { ButtonContainer } from '@/components/ButtonContainer'
-import { DotBackground } from '@/components/DotBackground'
 import { Footer } from '@/components/Footer'
 import { ModeToggle } from '@/components/ModeToggle'
+import { DotPattern } from '@/components/ui/dot-pattern'
+import { GridPattern } from '@/components/ui/grid-pattern'
 import { UserContainer } from '@/components/UserContainer'
-import { WaveBackground } from '@/components/WaveBackground'
 import { ConfigError, getConfig } from '@/lib/config'
 import Layout from '../layouts/Layout.astro'
 
@@ -22,7 +23,7 @@ try {
   error = e instanceof ConfigError ? e.message : 'Failed to load configuration'
   config = {
     title: 'Error - Shako',
-    animatedBackground: false,
+    background: 'none',
     lanyardUrl: '',
     footer: true,
   }
@@ -30,35 +31,52 @@ try {
 ---
 
 <Layout title={config.title}>
-  {config.animatedBackground ? <WaveBackground client:only="react" /> : <DotBackground client:only="react" />}
-
-  {
-    !error
+  {!error
 ? (
-      <main class="items-center justify-center p-4">
-        <div class="absolute right-0 top-0 p-4">
-          <ModeToggle client:load />
-        </div>
-
-        <div class="m-auto max-w-md">
-          <div class="mb-6">
-            <UserContainer client:load config={config} />
-          </div>
-
-          <div class="mb-6">
-            <ButtonContainer client:load config={config} />
-          </div>
-        </div>
-
-        <Footer footerConfig={config.footer || true} />
-      </main>
-    )
-: (
-      <div class="flex min-h-screen flex-col items-center justify-center p-4 text-center">
-        <h1 class="mb-4 text-4xl font-bold text-destructive">Configuration Error</h1>
-        <p class="mb-8 max-w-md text-muted-foreground">{error}</p>
-        <p class="text-sm text-muted-foreground">Please check your configuration file and try again.</p>
+    <main class="items-center justify-center p-4">
+      {config.background && config.background !== 'none' && (
+        <>
+          {config.background === 'animated'
+? (
+            <AnimatedBackground client:only="react" />
+          )
+: config.background === 'dot'
+? (
+            <DotPattern client:only="react" />
+          )
+: config.background === 'grid'
+? (
+            <GridPattern client:only="react" />
+          )
+: config.background === 'dashed-grid'
+? (
+            <GridPattern client:only="react" strokeDasharray="4 2" />
+          )
+: null}
+        </>
+      )}
+      <div class="absolute right-0 top-0 p-4">
+        <ModeToggle client:load />
       </div>
-    )
-  }
+
+      <div class="m-auto max-w-md">
+        <div class="mb-6">
+          <UserContainer client:load config={config} />
+        </div>
+
+        <div class="mb-6">
+          <ButtonContainer client:load config={config} />
+        </div>
+      </div>
+
+      <Footer footerConfig={config.footer || true} />
+    </main>
+  )
+: (
+    <div class="flex min-h-screen flex-col items-center justify-center p-4 text-center">
+      <h1 class="mb-4 text-4xl font-bold text-destructive">Configuration Error</h1>
+      <p class="mb-8 max-w-md text-muted-foreground">{error}</p>
+      <p class="text-sm text-muted-foreground">Please check your configuration file and try again.</p>
+    </div>
+  )}
 </Layout>

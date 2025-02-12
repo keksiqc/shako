@@ -12,7 +12,16 @@ export const configSchema = z.object({
     .optional(),
   discordID: z.custom<Snowflake>().optional(),
   lanyardUrl: z.string().optional().default('api.lanyard.rest/'),
-  animatedBackground: z.boolean().optional().default(false),
+  background: z
+    .union([
+      z.literal('dot'),
+      z.literal('grid'),
+      z.literal('dashed-grid'),
+      z.literal('animated'),
+      z.literal('none'),
+    ])
+    .optional()
+    .default('none'),
   footer: z.union([z.boolean(), z.string()]).optional().default(true),
   iconButtons: z
     .array(
