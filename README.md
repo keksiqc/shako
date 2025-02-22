@@ -1,3 +1,5 @@
+![Shakō](https://raw.githubusercontent.com/keksiqc/shako/main/.github/banner.png)
+
 # Shakō
 
 Shakō: A sleek, modern linktree alternative built with Astro and React. It's designed to be easily customizable, self-hostable, and provides a modern look and feel for showcasing your links. An optional hosted version is available at [keksiqc/shako.me](https://github.com/keksiq/shako.me).
