@@ -1,4 +1,4 @@
-![Shakō](https://raw.githubusercontent.com/keksiqc/shako/main/.github/banner.png)
+![Shakō](https://raw.githubusercontent.com/keksiqc/shako/main/.github/assets/banner.png)
 
 # Shakō
 
