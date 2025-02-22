@@ -1,16 +1,23 @@
 ---
 import type { Config } from '@/types'
-import { AnimatedBackground } from '@/components/AnimatedBackground'
+import { BackgroundFactory } from '@/components/BackgroundFactory'
 import { ButtonContainer } from '@/components/ButtonContainer'
+import { ErrorPage } from '@/components/ErrorPage'
 import { Footer } from '@/components/Footer'
 import { ModeToggle } from '@/components/ModeToggle'
-import { DotPattern } from '@/components/ui/dot-pattern'
-import { GridPattern } from '@/components/ui/grid-pattern'
 import { UserContainer } from '@/components/UserContainer'
 import { ConfigError, getConfig } from '@/lib/config'
 import Layout from '../layouts/Layout.astro'
 
 import '../styles/globals.css'
+
+// Constants
+const DEFAULT_ERROR_CONFIG: Config = {
+  title: 'Error - Shako',
+  background: 'none',
+  lanyardUrl: '',
+  footer: true,
+}
 
 // Load configuration
 let config: Config
@@ -21,62 +28,37 @@ try {
 }
  catch (e) {
   error = e instanceof ConfigError ? e.message : 'Failed to load configuration'
-  config = {
-    title: 'Error - Shako',
-    background: 'none',
-    lanyardUrl: '',
-    footer: true,
-  }
+  config = DEFAULT_ERROR_CONFIG
 }
 ---
 
 <Layout title={config.title}>
-  {!error
-? (
-    <main class="items-center justify-center p-4">
-      {config.background && config.background !== 'none' && (
-        <>
-          {config.background === 'animated'
-? (
-            <AnimatedBackground client:only="react" />
-          )
-: config.background === 'dot'
-? (
-            <DotPattern client:only="react" />
-          )
-: config.background === 'grid'
-? (
-            <GridPattern client:only="react" />
-          )
-: config.background === 'dashed-grid'
-? (
-            <GridPattern client:only="react" strokeDasharray="4 2" />
-          )
-: null}
-        </>
-      )}
-      <div class="absolute right-0 top-0 p-4">
-        <ModeToggle client:load />
-      </div>
-
-      <div class="m-auto max-w-md">
-        <div class="mb-6">
-          <UserContainer client:load config={config} />
+  {
+  error 
+    ? <ErrorPage client:load error={error} />
+    : (
+      <main class="items-center justify-center p-4">
+        <BackgroundFactory
+          client:only="react"
+          type={config.background}
+        />
+        
+        <div class="absolute right-0 top-0 p-4">
+          <ModeToggle client:only="react" />
         </div>
 
-        <div class="mb-6">
-          <ButtonContainer client:load config={config} />
-        </div>
-      </div>
+        <div class="m-auto max-w-md">
+          <div class="mb-6">
+            <UserContainer client:load config={config} />
+          </div>
 
-      <Footer footerConfig={config.footer || true} />
-    </main>
-  )
-: (
-    <div class="flex min-h-screen flex-col items-center justify-center p-4 text-center">
-      <h1 class="mb-4 text-4xl font-bold text-destructive">Configuration Error</h1>
-      <p class="mb-8 max-w-md text-muted-foreground">{error}</p>
-      <p class="text-sm text-muted-foreground">Please check your configuration file and try again.</p>
-    </div>
-  )}
+          <div class="mb-6">
+            <ButtonContainer client:load config={config} />
+          </div>
+        </div>
+
+        <Footer footerConfig={config.footer || true} />
+      </main>
+    )
+}
 </Layout>

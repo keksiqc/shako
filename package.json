@@ -33,7 +33,6 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.475.0",
-    "mini-svg-data-uri": "^1.4.4",
     "p5i": "^0.6.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -1,24 +1,18 @@
 import type { Config } from '@/types'
 import { Button } from '@/components/ui/button'
-import { lazy, memo, Suspense } from 'react'
-
-// Lazy load the Icon component
-const Icon = lazy(() => import('@iconify/react').then(mod => ({ default: mod.Icon })))
-
-function handleButtonClick(url: string) {
-  try {
-    window.open(url, '_blank', 'noopener,noreferrer')
-  }
-  catch (error) {
-    console.error('Failed to open URL:', error)
-  }
-}
-
-function IconFallback() {
-  return <div className="size-5 animate-pulse rounded-sm bg-muted" />
-}
+import { SocialIcon } from '@/components/ui/social-icon'
+import { memo } from 'react'
 
 function ButtonContainerBase({ config }: { config: Config }) {
+  const handleButtonClick = (url: string) => {
+    try {
+      window.open(url, '_blank', 'noopener,noreferrer')
+    }
+    catch (error) {
+      console.error('Failed to open URL:', error)
+    }
+  }
+
   return (
     <section className="flex flex-col gap-3" role="navigation" aria-label="Social Links">
       {/* icon buttons */}
@@ -32,13 +26,7 @@ function ButtonContainerBase({ config }: { config: Config }) {
               key={`${button.icon}-${button.url}`}
               aria-label={`Visit ${button.icon}`}
             >
-              <Suspense fallback={<IconFallback />}>
-                <Icon
-                  icon={`simple-icons:${button.icon}`}
-                  className="size-5"
-                  aria-hidden="true"
-                />
-              </Suspense>
+              <SocialIcon icon={button.icon} />
             </Button>
           ))}
         </div>
@@ -55,13 +43,7 @@ function ButtonContainerBase({ config }: { config: Config }) {
               key={`${button.name}-${button.url}`}
               aria-label={`Visit ${button.name}`}
             >
-              <Suspense fallback={<IconFallback />}>
-                <Icon
-                  icon={`simple-icons:${button.icon}`}
-                  className="mr-2 size-5"
-                  aria-hidden="true"
-                />
-              </Suspense>
+              <SocialIcon icon={button.icon} className="mr-2" />
               {button.name}
             </Button>
           ))}

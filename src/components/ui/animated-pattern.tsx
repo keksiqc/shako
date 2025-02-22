@@ -22,7 +22,7 @@ interface Point {
   opacity: number
 }
 
-export function AnimatedBackground() {
+export default function AnimatedBackground() {
   const containerRef = useRef<HTMLDivElement>(null)
   const pointsRef = useRef<Point[]>([])
   const existingPointsRef = useRef(new Set<string>())
