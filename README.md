@@ -45,7 +45,7 @@ You can configure user data in two ways:
 
 1. **Using Lanyard** (Discord integration):
 ```typescript
-{
+const config: Config = {
   discordID: '527147599942385674', // Your Discord user ID
   lanyardUrl: 'api.lanyard.rest/', // Optional: Custom Lanyard API URL
 }
@@ -53,7 +53,7 @@ You can configure user data in two ways:
 
 2. **Custom User Data**:
 ```typescript
-{
+const config: Config = {
   user: {
     name: "Your Name",
     avatar: "https://example.com/avatar.png",
@@ -132,9 +132,9 @@ footer: false
 const config: Config = {
   title: 'My Linktree',
   user: {
-    name: "John Doe",
-    avatar: "https://example.com/avatar.png",
-    description: "Software Developer"
+    name: 'John Doe',
+    avatar: 'https://example.com/avatar.png',
+    description: 'Software Developer'
   },
   background: 'animated',
   footer: 'Made with ❤️',
