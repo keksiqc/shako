@@ -57,9 +57,9 @@ const config: Config = {
 ```typescript
 const config: Config = {
   user: {
-    name: "Your Name",
-    avatar: "https://example.com/avatar.png",
-    description: "Your Description"
+    name: 'Your Name',
+    avatar: 'https://example.com/avatar.png',
+    description: 'Your Description'
   }
 }
 ```
