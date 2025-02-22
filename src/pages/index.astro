@@ -34,7 +34,7 @@ try {
 
 <Layout title={config.title}>
   {
-  error 
+  error
     ? <ErrorPage client:load error={error} />
     : (
       <main class="items-center justify-center p-4">
@@ -42,7 +42,7 @@ try {
           client:only="react"
           type={config.background}
         />
-        
+
         <div class="absolute right-0 top-0 p-4">
           <ModeToggle client:only="react" />
         </div>

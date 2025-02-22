@@ -26,7 +26,8 @@ function getDiscordAvatarUrl(discordId: Snowflake, avatarHash: string) {
 function getCachedData(): CachedDiscordData | null {
   try {
     const cached = localStorage.getItem(CACHE_KEY)
-    if (!cached) return null
+    if (!cached)
+      return null
 
     const data = JSON.parse(cached) as CachedDiscordData
     if (Date.now() > data.expiresAt) {
@@ -35,7 +36,8 @@ function getCachedData(): CachedDiscordData | null {
     }
 
     return data
-  } catch {
+  }
+  catch {
     return null
   }
 }
@@ -47,7 +49,8 @@ function cacheData(data: Omit<CachedDiscordData, 'expiresAt'>) {
       expiresAt: Date.now() + CACHE_DURATION,
     }
     localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData))
-  } catch {
+  }
+  catch {
     // Ignore cache errors
   }
 }
@@ -67,8 +70,8 @@ export function useDiscordUser(config: Config): DiscordUser {
   const { data, error } = useLanyard(config?.discordID as Snowflake, {
     api: {
       hostname: config?.lanyardUrl || 'api.lanyard.rest/',
-      secure: true
-    }
+      secure: true,
+    },
   })
 
   // Skip using Discord data if we shouldn't fetch
@@ -104,7 +107,7 @@ export function useDiscordUser(config: Config): DiscordUser {
       userName,
       avatarUrl,
       isLoading: shouldFetch && !discordData && !discordError,
-      error: discordError ? new Error('Failed to load user data') : null
+      error: discordError ? new Error('Failed to load user data') : null,
     }
-  }, [config, discordData, discordError, cachedData])
+  }, [config, discordData, discordError, cachedData, shouldFetch])
 }

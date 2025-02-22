@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type Theme = 'theme-light' | 'dark' | 'system'
 
@@ -27,7 +27,7 @@ export function useTheme() {
   // Handle theme changes
   useEffect(() => {
     localStorage.setItem('theme', theme)
-    
+
     const isDark = theme === 'dark' || (theme === 'system' && isSystemDark)
     document.documentElement.classList.toggle('dark', isDark)
   }, [theme, isSystemDark])
@@ -35,6 +35,6 @@ export function useTheme() {
   return {
     theme,
     setTheme,
-    isSystemDark
+    isSystemDark,
   }
 }
