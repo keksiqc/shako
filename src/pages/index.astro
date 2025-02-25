@@ -21,7 +21,7 @@ const DEFAULT_ERROR_CONFIG: Config = {
 
 // Load configuration
 let config: Config
-let error
+let error: string | undefined
 
 try {
   config = await getConfig()
@@ -40,7 +40,11 @@ try {
       <main class="items-center justify-center p-4">
         <BackgroundFactory
           client:only="react"
-          type={config.background}
+          background={config.background}
+          backgroundImage={config.backgroundImage}
+          backgroundColor={config.backgroundColor}
+          backgroundGradient={config.backgroundGradient}
+          customCSS={config.customCSS}
         />
 
         <div class="absolute right-0 top-0 p-4">

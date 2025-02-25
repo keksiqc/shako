@@ -19,9 +19,23 @@ export const configSchema = z.object({
       z.literal('dashed-grid'),
       z.literal('animated'),
       z.literal('none'),
+      z.literal('image'),
+      z.literal('color'),
+      z.literal('gradient'),
+      z.literal('custom'),
     ])
     .optional()
     .default('none'),
+  backgroundImage: z.string().url().optional(),
+  backgroundColor: z.string().optional(),
+  backgroundGradient: z
+    .object({
+      type: z.union([z.literal('linear'), z.literal('radial')]),
+      colors: z.array(z.string()),
+      angle: z.number().min(0).max(360).optional(),
+    })
+    .optional(),
+  customCSS: z.record(z.string(), z.string()).optional(),
   footer: z.union([z.boolean(), z.string()]).optional().default(true),
   iconButtons: z
     .array(

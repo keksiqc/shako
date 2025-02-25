@@ -105,13 +105,71 @@ The `icon` property in both button types uses icons from [Simple Icons](https://
 
 ### Background Styles
 
-The `background` option supports five different styles:
+The `background` option supports multiple styles:
 
+#### Built-in Patterns
 - `'dot'`: Subtle dot pattern
 - `'grid'`: Regular grid pattern
 - `'dashed-grid'`: Dashed grid pattern
 - `'animated'`: Animated gradient pattern
 - `'none'`: No background pattern (default)
+
+#### Custom Backgrounds
+
+1. **Image Background**:
+```typescript
+const config: Config = {
+  background: 'image',
+  backgroundImage: 'https://example.com/background.jpg'
+}
+```
+
+2. **Solid Color**:
+```typescript
+const config: Config = {
+  background: 'color',
+  backgroundColor: '#ff0000' // Any valid CSS color
+}
+```
+
+3. **Gradient Background**:
+```typescript
+const config: Config = {
+  background: 'gradient',
+  backgroundGradient: {
+    type: 'linear' | 'radial',
+    colors: array[string],         // Array of colors
+    angle: number                  // Optional. For linear gradients (0-360 degrees)
+  }
+}
+```
+
+Example gradient:
+```typescript
+const config: Config = {
+  background: 'gradient',
+  backgroundGradient: {
+    type: 'linear',
+    colors: ['#FF0080', '#7928CA'],
+    angle: 45
+  }
+}
+```
+
+4. **Custom CSS**:
+Use any valid CSS properties for complete control over the background:
+```typescript
+const config: Config = {
+  background: 'custom',
+  customCSS: {
+    'background-image': 'url("your-image.jpg")',
+    'background-size': 'cover',
+    'background-attachment': 'fixed',
+    'opacity': '0.8'
+    // Any valid CSS properties
+  }
+}
+```
 
 ### Footer Configuration
 
