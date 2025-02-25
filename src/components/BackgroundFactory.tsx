@@ -7,19 +7,17 @@ const DotPattern = lazy(() => import('@/components/ui/dot-pattern'))
 const GridPattern = lazy(() => import('@/components/ui/grid-pattern'))
 const CustomBackground = lazy(() => import('@/components/ui/custom-background'))
 
-interface BackgroundFactoryProps extends Pick<Config, 
-  'background' | 
-  'backgroundImage' | 
-  'backgroundColor' | 
-  'backgroundGradient' | 
-  'customCSS'
-> {}
+interface BackgroundFactoryProps extends Pick<Config, 'background' |
+  'backgroundImage' |
+  'backgroundColor' |
+  'backgroundGradient' |
+  'customCSS'> {}
 
 function LoadingBackground() {
   return <div className="absolute inset-0 bg-background/50 backdrop-blur-sm" />
 }
 
-export function BackgroundFactory({ 
+export function BackgroundFactory({
   background,
   backgroundImage,
   backgroundColor,

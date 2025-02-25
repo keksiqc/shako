@@ -138,8 +138,8 @@ const config: Config = {
   background: 'gradient',
   backgroundGradient: {
     type: 'linear' | 'radial',
-    colors: array[string],         // Array of colors
-    angle: number                  // Optional. For linear gradients (0-360 degrees)
+    colors: array[string], // Array of colors
+    angle: number // Optional. For linear gradients (0-360 degrees)
   }
 }
 ```

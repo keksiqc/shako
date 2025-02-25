@@ -18,7 +18,7 @@ export default function CustomBackground({ customCSS, preset }: CustomBackground
   if (customCSS) {
     return (
       <div
-        className="fixed inset-0 h-full min-h-screen w-full -z-20"
+        className="fixed inset-0 -z-20 size-full min-h-screen"
         style={customCSS as CSSProperties}
       />
     )
@@ -43,9 +43,9 @@ export default function CustomBackground({ customCSS, preset }: CustomBackground
       case 'gradient':
         if (preset.gradient) {
           const { type, colors, angle } = preset.gradient
-          const gradientType = type === 'linear' ? 
-            `linear-gradient(${angle || 0}deg, ${colors.join(', ')})` : 
-            `radial-gradient(circle, ${colors.join(', ')})`
+          const gradientType = type === 'linear'
+            ? `linear-gradient(${angle || 0}deg, ${colors.join(', ')})`
+            : `radial-gradient(circle, ${colors.join(', ')})`
           style = {
             backgroundImage: gradientType,
           }
@@ -55,7 +55,7 @@ export default function CustomBackground({ customCSS, preset }: CustomBackground
 
     return (
       <div
-        className="fixed inset-0 h-full min-h-screen w-full -z-20"
+        className="fixed inset-0 -z-20 size-full min-h-screen"
         style={style}
       />
     )
