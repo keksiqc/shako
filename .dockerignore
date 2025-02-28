@@ -65,6 +65,7 @@ components.json
 !astro.config.ts
 !tailwind.config.ts
 !tsconfig.json
+!shako.config.ts
 
 # Cache
 .cache/

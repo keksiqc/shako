@@ -16,6 +16,7 @@ RUN bun install --frozen-lockfile --production
 # Copy only necessary source files
 COPY src/ ./src/
 COPY public/ ./public/
+COPY shako.config.ts ./
 COPY astro.config.ts ./
 COPY tailwind.config.ts ./
 COPY tsconfig.json ./
