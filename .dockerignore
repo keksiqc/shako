@@ -1,0 +1,44 @@
+# Dependencies
+node_modules
+bun.lockb
+
+# Environment files
+.env
+.env.*
+
+# Development
+.git
+.gitignore
+.vscode
+*.log
+npm-debug.log*
+
+# Build output
+dist
+.astro
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage
+test
+__tests__
+*.test.*
+*.spec.*
+
+# Editor files
+*.swp
+*.swo
+.idea
+*.sublime-*
+*.code-workspace
+
+# Project specific
+README.md
+Dockerfile
+.dockerignore
+components.json
+*.config.js
+*.config.ts
