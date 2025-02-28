@@ -52,7 +52,6 @@ README.md
 CHANGELOG.md
 LICENSE
 *.md
-docker/
 Dockerfile
 .dockerignore
 .eslintrc*

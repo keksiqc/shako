@@ -31,7 +31,7 @@ RUN addgroup -S shako && \
     adduser -S -G shako -h /home/shako shako
 
 # Copy Caddy configuration
-COPY docker/Caddy.conf /etc/caddy/Caddy.conf
+COPY ./docker/Caddy.conf /etc/caddy/Caddy.conf
 
 # Copy built assets from builder
 COPY --from=builder /app/dist /usr/share/caddy/html
