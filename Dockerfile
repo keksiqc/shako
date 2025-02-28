@@ -1,5 +1,5 @@
 # Build stage
-FROM oven/bun:alpine as builder
+FROM oven/bun:alpine AS builder
 
 # Add build arguments
 ARG NODE_ENV=production
@@ -36,12 +36,13 @@ COPY ./docker/Caddy.conf /etc/caddy/Caddy.conf
 # Copy built assets from builder
 COPY --from=builder /app/dist /usr/share/caddy/html
 
-# Set permissions for Caddy
-RUN chown -R shako:shako /usr/share/caddy && \
+# Install required packages and set permissions for Caddy
+RUN apk add --no-cache libcap && \
+    chown -R shako:shako /usr/share/caddy && \
     chown -R shako:shako /etc/caddy && \
     chmod -R 755 /usr/share/caddy && \
     chmod -R 755 /etc/caddy && \
-    setcap 'cap_net_bind_service=+ep' /usr/sbin/caddy
+    setcap 'cap_net_bind_service=+ep' /usr/bin/caddy
 
 # Switch to non-root user
 USER shako
