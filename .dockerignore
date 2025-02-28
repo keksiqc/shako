@@ -1,6 +1,5 @@
 # Dependencies
 node_modules
-bun.lockb
 
 # Environment files
 .env
