@@ -1,7 +1,7 @@
 import type { Config } from '@/types'
 
 const config: Config = {
-  title: 'Shako - Keksio',
+  title: 'Shako - Keksi',
   // Optional: Override Lanyard user data with custom values if you don't want to use Lanyard
   user: {
     // name: "Keksi",
