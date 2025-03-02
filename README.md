@@ -113,6 +113,8 @@ The `background` option supports multiple styles:
 - `'grid'`: Regular grid pattern
 - `'dashed-grid'`: Dashed grid pattern
 - `'animated'`: Animated gradient pattern
+- `'flickering-grid'`: Grid pattern with squares that randomly change opacity for a dynamic effect
+- `'animated-grid'`: Grid pattern with squares that animate in and out at random positions
 - `'none'`: No background pattern (default)
 
 #### Custom Backgrounds
