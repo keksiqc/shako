@@ -5,6 +5,8 @@ import { lazy, Suspense } from 'react'
 const AnimatedBackground = lazy(() => import('@/components/ui/animated-pattern'))
 const DotPattern = lazy(() => import('@/components/ui/dot-pattern'))
 const GridPattern = lazy(() => import('@/components/ui/grid-pattern'))
+const FlickeringGridPattern = lazy(() => import('@/components/ui/flickering-grid-pattern'))
+const AnimatedGridPattern = lazy(() => import('@/components/ui/animated-grid-pattern'))
 const CustomBackground = lazy(() => import('@/components/ui/custom-background'))
 
 interface BackgroundFactoryProps extends Pick<Config, 'background' |
@@ -40,6 +42,10 @@ export function BackgroundFactory({
             return <GridPattern />
           case 'dashed-grid':
             return <GridPattern strokeDasharray="4 2" />
+          case 'flickering-grid':
+            return <FlickeringGridPattern />
+          case 'animated-grid':
+            return <AnimatedGridPattern />
           case 'image':
             return <CustomBackground preset={{ type: 'image', image: backgroundImage }} />
           case 'color':

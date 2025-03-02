@@ -19,6 +19,8 @@ export const configSchema = z.object({
       z.literal('grid'),
       z.literal('dashed-grid'),
       z.literal('animated'),
+      z.literal('flickering-grid'),
+      z.literal('animated-grid'),
       z.literal('none'),
       z.literal('image'),
       z.literal('color'),
