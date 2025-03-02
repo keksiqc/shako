@@ -39,7 +39,7 @@ All configuration is done through the `shako.config.ts` file. Here's a comprehen
 |--------|------|---------|-------------|
 | `title` | `string` | `'Shako'` | The title of your page |
 | `borderRadius` | `number` | `0.5` | Global border radius in rem units |
-| `background` | `'dot' \| 'grid' \| 'dashed-grid' \| 'animated' \| 'none'` | `'none'` | Background pattern style |
+| `background` | `'dot' \| 'grid' \| 'dashed-grid' \| 'flickering-grid' \| 'animated-grid' \| 'animated' \| 'none'` | `'none'` | Background pattern style |
 | `footer` | `boolean \| string` | `true` | Show default footer or set custom text |
 
 ### User Data Configuration
