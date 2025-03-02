@@ -12,6 +12,7 @@ export const configSchema = z.object({
     .optional(),
   discordID: z.custom<Snowflake>().optional(),
   lanyardUrl: z.string().optional().default('api.lanyard.rest/'),
+  borderRadius: z.number().min(0).optional().default(0.5),
   background: z
     .union([
       z.literal('dot'),
