@@ -14,8 +14,9 @@ import '../styles/globals.css'
 // Constants
 const DEFAULT_ERROR_CONFIG: Config = {
   title: 'Error - Shako',
-  background: 'none',
   lanyardUrl: '',
+  borderRadius: 0.5,
+  background: 'none',
   footer: true,
 }
 
@@ -31,6 +32,10 @@ try {
   config = DEFAULT_ERROR_CONFIG
 }
 ---
+
+<script is:inline define:vars={{ borderRadius: config.borderRadius }}>
+  document.documentElement.style.setProperty('--radius', `${borderRadius}rem`);
+</script>
 
 <Layout title={config.title}>
   {
