@@ -38,6 +38,7 @@ All configuration is done through the `shako.config.ts` file. Here's a comprehen
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `title` | `string` | `'Shako'` | The title of your page |
+| `borderRadius` | `number` | `0.5` | Global border radius in rem units |
 | `background` | `'dot' \| 'grid' \| 'dashed-grid' \| 'animated' \| 'none'` | `'none'` | Background pattern style |
 | `footer` | `boolean \| string` | `true` | Show default footer or set custom text |
 
@@ -196,6 +197,7 @@ const config: Config = {
     avatar: 'https://example.com/avatar.png',
     description: 'Software Developer'
   },
+  borderRadius: 0.75,
   background: 'animated',
   footer: 'Made with ❤️',
   iconButtons: [
