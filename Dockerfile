@@ -11,7 +11,7 @@ WORKDIR /app
 COPY package.json bun.lockb ./
 
 # Install dependencies with specific flags for production
-RUN bun install --frozen-lockfile --production
+RUN bun install --frozen-lockfile
 
 # Copy only necessary source files
 COPY src/ ./src/
