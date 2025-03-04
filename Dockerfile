@@ -32,7 +32,7 @@ RUN addgroup -S shako && \
     adduser -S -G shako -h /home/shako shako
 
 # Copy Caddy configuration
-COPY ./docker/Caddy.conf /etc/caddy/Caddy.conf
+COPY ./docker/Caddyfile /etc/caddy/Caddyfile
 
 # Copy built assets from builder
 COPY --from=builder /app/dist /usr/share/caddy/html
@@ -56,4 +56,4 @@ HEALTHCHECK --interval=30s --timeout=3s \
 EXPOSE 80
 
 # Start Caddy
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddy.conf"]
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
