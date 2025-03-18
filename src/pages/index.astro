@@ -2,7 +2,7 @@
 import type { Config } from '@/types'
 import { BackgroundFactory } from '@/components/BackgroundFactory'
 import { ButtonContainer } from '@/components/ButtonContainer'
-import { ErrorPage } from '@/components/ErrorPage'
+import ErrorPage from '@/components/ErrorPage.astro'
 import { Footer } from '@/components/Footer'
 import { ModeToggle } from '@/components/ModeToggle'
 import { UserContainer } from '@/components/UserContainer'
@@ -40,16 +40,12 @@ try {
 <Layout title={config.title}>
   {
   error
-    ? <ErrorPage client:load error={error} />
+    ? <ErrorPage error={error} />
     : (
       <main class="items-center justify-center p-4">
         <BackgroundFactory
           client:only="react"
           background={config.background}
-          backgroundImage={config.backgroundImage}
-          backgroundColor={config.backgroundColor}
-          backgroundGradient={config.backgroundGradient}
-          customCSS={config.customCSS}
         />
 
         <div class="absolute right-0 top-0 p-4">
