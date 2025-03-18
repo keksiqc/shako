@@ -67,5 +67,4 @@ const config: Config = {
   ],
 } as const
 
-
 export default config

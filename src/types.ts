@@ -1,6 +1,5 @@
 import type { Snowflake } from 'use-lanyard'
 import { z } from 'zod'
-import { ConfigError } from './lib/config'
 
 export const configSchema = z.object({
   title: z.string().default('Shako'),
