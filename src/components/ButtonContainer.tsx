@@ -4,17 +4,8 @@ import { SocialIcon } from '@/components/ui/social-icon'
 import { memo } from 'react'
 
 function ButtonContainerBase({ config }: { config: Config }) {
-  const handleButtonClick = (url: string) => {
-    try {
-      window.open(url, '_blank', 'noopener,noreferrer')
-    }
-    catch (error) {
-      console.error('Failed to open URL:', error)
-    }
-  }
-
   return (
-    <section className="flex flex-col gap-3" role="navigation" aria-label="Social Links">
+    <nav className="flex flex-col gap-3" aria-label="Social Links">
       {/* icon buttons */}
       {config.iconButtons && config.iconButtons.length > 0 && (
         <div className="flex items-center justify-center gap-3">
@@ -22,11 +13,13 @@ function ButtonContainerBase({ config }: { config: Config }) {
             <Button
               variant="secondary"
               size="icon"
-              onClick={() => handleButtonClick(button.url)}
               key={`${button.icon}-${button.url}`}
               aria-label={`Visit ${button.icon}`}
+              asChild
             >
-              <SocialIcon icon={button.icon} />
+              <a href={button.url} target="_blank" rel="noopener noreferrer">
+                <SocialIcon icon={button.icon} />
+              </a>
             </Button>
           ))}
         </div>
@@ -39,17 +32,19 @@ function ButtonContainerBase({ config }: { config: Config }) {
             <Button
               variant="outline"
               size="xl"
-              onClick={() => handleButtonClick(button.url)}
               key={`${button.name}-${button.url}`}
               aria-label={`Visit ${button.name}`}
+              asChild
             >
-              <SocialIcon icon={button.icon} className="mr-2" />
-              {button.name}
+              <a href={button.url} target="_blank" rel="noopener noreferrer">
+                <SocialIcon icon={button.icon} className="mr-2" />
+                {button.name}
+              </a>
             </Button>
           ))}
         </div>
       )}
-    </section>
+    </nav>
   )
 }
 
