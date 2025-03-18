@@ -77,11 +77,13 @@ Shakō supports two types of buttons:
 iconButtons: [
   {
     icon: 'patreon',
-    url: 'https://patreon.com/username'
+    url: 'https://patreon.com/username',
+    variant: 'secondary' // optional, defaults to 'secondary'
   },
   {
     icon: 'buymeacoffee',
     url: 'https://buymeacoffee.com/username'
+    // variant not specified, will use default 'secondary'
   }
 ]
 ```
@@ -92,15 +94,25 @@ buttons: [
   {
     name: 'GitHub',
     icon: 'github',
-    url: 'https://github.com/username'
+    url: 'https://github.com/username',
+    variant: 'outline' // optional, defaults to 'outline'
   },
   {
     name: 'Twitter',
     icon: 'x',
     url: 'https://x.com/username'
+    // variant not specified, will use default 'outline'
   }
 ]
 ```
+
+Available button variants:
+- `'default'`: Filled button with primary color
+- `'destructive'`: Filled button with destructive color
+- `'outline'` (default): Outlined button with hover effect
+- `'secondary'`: Filled button with secondary color
+- `'ghost'`: Text-only button with hover effect
+- `'link'`: Underlined text button
 
 The `icon` property in both button types uses icons from [Simple Icons](https://simpleicons.org/). Make sure to use the exact icon name as listed on their website.
 
@@ -210,19 +222,22 @@ const config: Config = {
   iconButtons: [
     {
       icon: 'githubsponsors',
-      url: 'https://github.com/sponsors/username'
+      url: 'https://github.com/sponsors/username',
+      variant: 'secondary'
     }
   ],
   buttons: [
     {
       name: 'Portfolio',
       icon: 'github',
-      url: 'https://github.com/username'
+      url: 'https://github.com/username',
+      variant: 'default'
     },
     {
       name: 'Twitter',
       icon: 'x',
       url: 'https://x.com/username'
+      // variant will default to 'outline'
     }
   ]
 }

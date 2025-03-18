@@ -1,0 +1,27 @@
+---
+interface Props {
+  error: string
+}
+
+const { error } = Astro.props;
+---
+
+<main class="grid min-h-screen place-items-center p-6 font-mono">
+  <div class="w-full max-w-[800px] rounded-lg border border-muted bg-card/50 p-6 backdrop-blur-sm">
+    <div class="space-y-4">
+      <div class="space-y-2">
+        <p class="text-sm text-muted-foreground">Error</p>
+        <h1 class="text-xl font-medium text-destructive">Configuration Error</h1>
+      </div>
+
+      <div class="h-px bg-border" />
+
+      <div class="space-y-4">
+        <p class="text-sm/relaxed font-medium text-foreground">{error}</p>
+        <p class="text-xs text-muted-foreground">
+          Please check your configuration and try again.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
