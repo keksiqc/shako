@@ -31,7 +31,7 @@ function ButtonContainerBase({ config }: { config: Config }) {
           {config.buttons.map(button => (
             <Button
               variant={button.variant ?? 'outline'}
-              size="xl"
+              size={button.size ?? 'xl'}
               key={`${button.name}-${button.url}`}
               aria-label={`Visit ${button.name}`}
               asChild
