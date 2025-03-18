@@ -62,6 +62,12 @@ export const configSchema = z.object({
         name: z.string(),
         icon: z.string(),
         url: z.string().url(),
+        size: z.union([
+          z.literal('default'),
+          z.literal('sm'),
+          z.literal('lg'),
+          z.literal('xl'),
+        ]).optional(),
         variant: z.union([
           z.literal('default'),
           z.literal('destructive'),
