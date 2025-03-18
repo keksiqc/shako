@@ -9,54 +9,67 @@ const FlickeringGridPattern = lazy(() => import('@/components/ui/flickering-grid
 const AnimatedGridPattern = lazy(() => import('@/components/ui/animated-grid-pattern'))
 const CustomBackground = lazy(() => import('@/components/ui/custom-background'))
 
-interface BackgroundFactoryProps extends Pick<Config, 'background'> {}
+type BackgroundType = Config['background']
+type CustomBackgroundType = Extract<BackgroundType, { type: string }>
+type SimpleBackgroundType = Extract<BackgroundType, string>
+
+const customBackgroundMap = {
+  image: (bg: CustomBackgroundType) => (
+    <CustomBackground preset={{ type: 'image', image: bg.image }} />
+  ),
+  color: (bg: CustomBackgroundType) => (
+    <CustomBackground preset={{ type: 'color', color: bg.color }} />
+  ),
+  gradient: (bg: CustomBackgroundType) => (
+    <CustomBackground preset={{ type: 'gradient', gradient: bg.gradient }} />
+  ),
+  custom: (bg: CustomBackgroundType) => (
+    <CustomBackground customCSS={bg.customCSS} />
+  ),
+}
+
+const simpleBackgroundMap = {
+  'animated': () => <AnimatedBackground />,
+  'dot': () => <DotPattern />,
+  'grid': () => <GridPattern />,
+  'dashed-grid': () => <GridPattern strokeDasharray="4 2" />,
+  'flickering-grid': () => <FlickeringGridPattern />,
+  'animated-grid': () => <AnimatedGridPattern />,
+}
 
 function LoadingBackground() {
   return <div className="absolute inset-0 bg-background/50 backdrop-blur-sm" />
 }
 
+function renderCustomBackground(background: CustomBackgroundType) {
+  const renderer = customBackgroundMap[background.type]
+  return renderer ? renderer(background) : null
+}
+
+function renderSimpleBackground(background: SimpleBackgroundType) {
+  if (background in simpleBackgroundMap) {
+    const renderer = simpleBackgroundMap[background as keyof typeof simpleBackgroundMap]
+    return renderer ? renderer() : null
+  }
+  return null
+}
+
 export function BackgroundFactory({
   background,
-}: BackgroundFactoryProps) {
+}: {
+  background: BackgroundType
+}) {
   if (!background || background === 'none') {
     return null
   }
 
+  const content = typeof background === 'object'
+    ? renderCustomBackground(background)
+    : renderSimpleBackground(background)
+
   return (
     <Suspense fallback={<LoadingBackground />}>
-      {(() => {
-        if (typeof background === 'object') {
-          switch (background.type) {
-            case 'image':
-              return <CustomBackground preset={{ type: 'image', image: background.image }} />
-            case 'color':
-              return <CustomBackground preset={{ type: 'color', color: background.color }} />
-            case 'gradient':
-              return <CustomBackground preset={{ type: 'gradient', gradient: background.gradient }} />
-            case 'custom':
-              return <CustomBackground customCSS={background.customCSS} />
-            default:
-              return null
-          }
-        }
-
-        switch (background) {
-          case 'animated':
-            return <AnimatedBackground />
-          case 'dot':
-            return <DotPattern />
-          case 'grid':
-            return <GridPattern />
-          case 'dashed-grid':
-            return <GridPattern strokeDasharray="4 2" />
-          case 'flickering-grid':
-            return <FlickeringGridPattern />
-          case 'animated-grid':
-            return <AnimatedGridPattern />
-          default:
-            return null
-        }
-      })()}
+      {content}
     </Suspense>
   )
 }
