@@ -95,16 +95,24 @@ buttons: [
     name: 'GitHub',
     icon: 'github',
     url: 'https://github.com/username',
+    size: 'xl', // optional, defaults to 'xl'
     variant: 'outline' // optional, defaults to 'outline'
   },
   {
     name: 'Twitter',
     icon: 'x',
     url: 'https://x.com/username'
+    // size not specified, will use default 'xl'
     // variant not specified, will use default 'outline'
   }
 ]
 ```
+
+Available button sizes:
+- `'default'`: Default (Medium) button size
+- `'sm'`: Small button
+- `'lg'`: Large button
+- `'xl'` (default): Extra-large button
 
 Available button variants:
 - `'default'`: Filled button with primary color
