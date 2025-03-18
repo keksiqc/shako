@@ -1,7 +1,8 @@
 'use client'
 
+import type React from 'react'
 import { cn } from '@/lib/utils'
-import React, {
+import {
   useCallback,
   useEffect,
   useRef,
@@ -166,7 +167,7 @@ const FlickeringGridPattern: React.FC<FlickeringGridPatternProps> = ({
   return (
     <div
       ref={containerRef}
-      className={cn('fixed inset-0 z-[-1] size-full border border-neutral-400/15', className)}
+      className={cn('fixed inset-0 z-[-1] size-full border border-background', className)}
       {...props}
     >
       <canvas
