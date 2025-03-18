@@ -1,5 +1,6 @@
 import type { Snowflake } from 'use-lanyard'
 import { z } from 'zod'
+import { ConfigError } from './lib/config'
 
 export const configSchema = z.object({
   title: z.string().default('Shako'),
@@ -44,6 +45,14 @@ export const configSchema = z.object({
       z.object({
         icon: z.string(),
         url: z.string().url(),
+        variant: z.union([
+          z.literal('default'),
+          z.literal('destructive'),
+          z.literal('outline'),
+          z.literal('secondary'),
+          z.literal('ghost'),
+          z.literal('link'),
+        ]).optional(),
       }),
     )
     .optional(),
@@ -53,6 +62,14 @@ export const configSchema = z.object({
         name: z.string(),
         icon: z.string(),
         url: z.string().url(),
+        variant: z.union([
+          z.literal('default'),
+          z.literal('destructive'),
+          z.literal('outline'),
+          z.literal('secondary'),
+          z.literal('ghost'),
+          z.literal('link'),
+        ]).optional(),
       }),
     )
     .optional(),

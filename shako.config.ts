@@ -65,6 +65,7 @@ const config: Config = {
       url: 'https://trakt.tv/users/keksiqc',
     },
   ],
-}
+} as const
+
 
 export default config

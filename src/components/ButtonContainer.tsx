@@ -11,7 +11,7 @@ function ButtonContainerBase({ config }: { config: Config }) {
         <div className="flex items-center justify-center gap-3">
           {config.iconButtons.map(button => (
             <Button
-              variant="secondary"
+              variant={button.variant ?? 'secondary'}
               size="icon"
               key={`${button.icon}-${button.url}`}
               aria-label={`Visit ${button.icon}`}
@@ -30,7 +30,7 @@ function ButtonContainerBase({ config }: { config: Config }) {
         <div className="flex flex-col gap-3">
           {config.buttons.map(button => (
             <Button
-              variant="outline"
+              variant={button.variant ?? 'outline'}
               size="xl"
               key={`${button.name}-${button.url}`}
               aria-label={`Visit ${button.name}`}
