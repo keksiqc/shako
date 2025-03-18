@@ -39,7 +39,7 @@ All configuration is done through the `shako.config.ts` file. Here's a comprehen
 |--------|------|---------|-------------|
 | `title` | `string` | `'Shako'` | The title of your page |
 | `borderRadius` | `number` | `0.5` | Global border radius in rem units |
-| `background` | `'dot' \| 'grid' \| 'dashed-grid' \| 'flickering-grid' \| 'animated-grid' \| 'animated' \| 'none'` | `'none'` | Background pattern style |
+| `background` | `'dot' \| 'grid' \| 'dashed-grid' \| 'flickering-grid' \| 'animated-grid' \| 'animated' \| 'none' \| BackgroundConfig` | `'none'` | Background pattern or custom background configuration |
 | `footer` | `boolean \| string` | `true` | Show default footer or set custom text |
 
 ### User Data Configuration
@@ -106,7 +106,7 @@ The `icon` property in both button types uses icons from [Simple Icons](https://
 
 ### Background Styles
 
-The `background` option supports multiple styles:
+The `background` option supports both built-in patterns and custom background configurations:
 
 #### Built-in Patterns
 - `'dot'`: Subtle dot pattern
@@ -119,42 +119,38 @@ The `background` option supports multiple styles:
 
 #### Custom Backgrounds
 
+For more advanced background configurations, you can pass an object with a `type` property:
+
 1. **Image Background**:
 ```typescript
 const config: Config = {
-  background: 'image',
-  backgroundImage: 'https://example.com/background.jpg'
+  background: {
+    type: 'image',
+    image: 'https://example.com/background.jpg'
+  }
 }
 ```
 
 2. **Solid Color**:
 ```typescript
 const config: Config = {
-  background: 'color',
-  backgroundColor: '#ff0000' // Any valid CSS color
+  background: {
+    type: 'color',
+    color: '#ff0000' // Any valid CSS color
+  }
 }
 ```
 
 3. **Gradient Background**:
 ```typescript
 const config: Config = {
-  background: 'gradient',
-  backgroundGradient: {
-    type: 'linear' | 'radial',
-    colors: array[string], // Array of colors
-    angle: number // Optional. For linear gradients (0-360 degrees)
-  }
-}
-```
-
-Example gradient:
-```typescript
-const config: Config = {
-  background: 'gradient',
-  backgroundGradient: {
-    type: 'linear',
-    colors: ['#FF0080', '#7928CA'],
-    angle: 45
+  background: {
+    type: 'gradient',
+    gradient: {
+      type: 'linear', // or 'radial'
+      colors: ['#FF0080', '#7928CA'],
+      angle: 45 // Optional. For linear gradients (0-360 degrees)
+    }
   }
 }
 ```
@@ -163,13 +159,15 @@ const config: Config = {
 Use any valid CSS properties for complete control over the background:
 ```typescript
 const config: Config = {
-  background: 'custom',
-  customCSS: {
-    'background-image': 'url("your-image.jpg")',
-    'background-size': 'cover',
-    'background-attachment': 'fixed',
-    'opacity': '0.8'
-    // Any valid CSS properties
+  background: {
+    type: 'custom',
+    customCSS: {
+      'background-image': 'url("your-image.jpg")',
+      'background-size': 'cover',
+      'background-attachment': 'fixed',
+      'opacity': '0.8'
+      // Any valid CSS properties
+    }
   }
 }
 ```
@@ -200,7 +198,14 @@ const config: Config = {
     description: 'Software Developer'
   },
   borderRadius: 0.75,
-  background: 'animated',
+  background: {
+    type: 'gradient',
+    gradient: {
+      type: 'linear',
+      colors: ['#FF0080', '#7928CA'],
+      angle: 45
+    }
+  },
   footer: 'Made with ❤️',
   iconButtons: [
     {
