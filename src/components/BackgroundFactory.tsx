@@ -9,11 +9,7 @@ const FlickeringGridPattern = lazy(() => import('@/components/ui/flickering-grid
 const AnimatedGridPattern = lazy(() => import('@/components/ui/animated-grid-pattern'))
 const CustomBackground = lazy(() => import('@/components/ui/custom-background'))
 
-interface BackgroundFactoryProps extends Pick<Config, 'background' |
-  'backgroundImage' |
-  'backgroundColor' |
-  'backgroundGradient' |
-  'customCSS'> {}
+interface BackgroundFactoryProps extends Pick<Config, 'background'> {}
 
 function LoadingBackground() {
   return <div className="absolute inset-0 bg-background/50 backdrop-blur-sm" />
@@ -21,10 +17,6 @@ function LoadingBackground() {
 
 export function BackgroundFactory({
   background,
-  backgroundImage,
-  backgroundColor,
-  backgroundGradient,
-  customCSS,
 }: BackgroundFactoryProps) {
   if (!background || background === 'none') {
     return null
@@ -33,6 +25,21 @@ export function BackgroundFactory({
   return (
     <Suspense fallback={<LoadingBackground />}>
       {(() => {
+        if (typeof background === 'object') {
+          switch (background.type) {
+            case 'image':
+              return <CustomBackground preset={{ type: 'image', image: background.image }} />
+            case 'color':
+              return <CustomBackground preset={{ type: 'color', color: background.color }} />
+            case 'gradient':
+              return <CustomBackground preset={{ type: 'gradient', gradient: background.gradient }} />
+            case 'custom':
+              return <CustomBackground customCSS={background.customCSS} />
+            default:
+              return null
+          }
+        }
+
         switch (background) {
           case 'animated':
             return <AnimatedBackground />
@@ -46,14 +53,6 @@ export function BackgroundFactory({
             return <FlickeringGridPattern />
           case 'animated-grid':
             return <AnimatedGridPattern />
-          case 'image':
-            return <CustomBackground preset={{ type: 'image', image: backgroundImage }} />
-          case 'color':
-            return <CustomBackground preset={{ type: 'color', color: backgroundColor }} />
-          case 'gradient':
-            return <CustomBackground preset={{ type: 'gradient', gradient: backgroundGradient }} />
-          case 'custom':
-            return <CustomBackground customCSS={customCSS} />
           default:
             return null
         }
