@@ -6,6 +6,8 @@ Shakō: A sleek, modern linktree alternative built with Astro and React. It's de
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fkeksiqc%2Fshako&project-name=shako&repository-name=shako)
 
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/keksiqc/shako)
+
 Key features:
 
 - **Customizable:** Easily change the appearance and functionality to match your personal brand.
