@@ -2,7 +2,7 @@
   "name": "shako",
   "type": "module",
   "version": "0.2.1",
-  "packageManager": "bun@1.2.9",
+  "packageManager": "bun@1.2.10",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -15,19 +15,19 @@
     "up": "taze major -I"
   },
   "dependencies": {
-    "@astrojs/react": "^4.2.3",
+    "@astrojs/react": "^4.2.4",
     "@astrojs/tailwind": "^6.0.2",
     "@fontsource/geist-mono": "^5.2.5",
     "@fontsource/geist-sans": "^5.2.5",
-    "@iconify-json/simple-icons": "^1.2.31",
+    "@iconify-json/simple-icons": "^1.2.32",
     "@iconify/react": "^5.2.1",
     "@radix-ui/react-avatar": "^1.1.4",
     "@radix-ui/react-slot": "^1.2.0",
-    "astro": "^5.6.1",
+    "astro": "^5.7.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.487.0",
-    "motion": "^12.6.3",
+    "lucide-react": "^0.488.0",
+    "motion": "^12.7.3",
     "p5i": "^0.6.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -40,10 +40,10 @@
     "@antfu/eslint-config": "^4.12.0",
     "@astrojs/check": "^0.9.4",
     "@astrojs/ts-plugin": "^1.10.4",
-    "@eslint-react/eslint-plugin": "^1.43.0",
+    "@eslint-react/eslint-plugin": "^1.48.3",
     "@playform/compress": "^0.1.9",
-    "@types/bun": "^1.2.9",
-    "@types/react": "^19.1.0",
+    "@types/bun": "^1.2.10",
+    "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "astro-eslint-parser": "^1.2.2",
     "c12": "^3.0.3",
@@ -57,6 +57,6 @@
     "prettier-plugin-astro": "^0.14.1",
     "taze": "^19.0.4",
     "typescript": "^5.8.3",
-    "zod": "^3.24.2"
+    "zod": "^3.24.3"
   }
 }
