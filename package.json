@@ -3,14 +3,8 @@
   "version": "3.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "lint": "eslint apps/server apps/static",
-    "lint:fix": "eslint --fix apps/server apps/static",
-    "lint:server": "eslint apps/server",
-    "lint:static": "eslint apps/static"
-  },
   "keywords": [],
   "author": "",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "packageManager": "pnpm@10.8.1"
 }
