@@ -8,7 +8,7 @@ ENV NODE_ENV=${NODE_ENV}
 WORKDIR /app
 
 # Copy package files first
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 
 # Install dependencies with specific flags for production
 RUN bun install --frozen-lockfile
