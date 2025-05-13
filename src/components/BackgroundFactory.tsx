@@ -38,7 +38,7 @@ const simpleBackgroundMap = {
 }
 
 function LoadingBackground() {
-  return <div className="absolute inset-0 bg-background/50 backdrop-blur-sm" />
+  return <div className="absolute inset-0 bg-background/50 backdrop-blur-xs" />
 }
 
 function renderCustomBackground(background: CustomBackgroundType) {
