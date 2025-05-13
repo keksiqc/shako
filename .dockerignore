@@ -63,7 +63,6 @@ components.json
 .*rc*
 *.config.js
 !astro.config.ts
-!tailwind.config.ts
 !tsconfig.json
 !shako.config.ts
 
