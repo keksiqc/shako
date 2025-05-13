@@ -1,15 +1,15 @@
 import antfu from '@antfu/eslint-config'
-import tailwind from 'eslint-plugin-tailwindcss'
+import tailwind from '@hyoban/eslint-plugin-tailwindcss'
 
 export default antfu({
   stylistic: true,
   react: true,
   astro: true,
-}, {
+}, ...tailwind.configs['flat/recommended'], {
   settings: {
     tailwindcss: {
       callees: ['cn', 'cva'],
-      config: 'tailwind.config.ts',
+      config: 'src/styles/globals.css',
     },
   },
-}, tailwind.configs['flat/recommended'])
+})
