@@ -1,7 +1,7 @@
 import type { Config } from '@/types'
-import { configSchema } from '@/types'
 import { loadConfig } from 'c12'
 import { z } from 'zod'
+import { configSchema } from '@/types'
 
 const DEFAULT_CONFIG: Partial<Config> = {
   lanyardUrl: 'https://api.lanyard.rest/v1/users',

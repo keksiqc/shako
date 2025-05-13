@@ -1,7 +1,7 @@
 import type { Config } from '@/types'
+import { memo } from 'react'
 import { Button } from '@/components/ui/button'
 import { SocialIcon } from '@/components/ui/social-icon'
-import { memo } from 'react'
 
 function ButtonContainerBase({ config }: { config: Config }) {
   return (

@@ -1,5 +1,5 @@
-import { cn } from '@/lib/utils'
 import { lazy, Suspense } from 'react'
+import { cn } from '@/lib/utils'
 
 // Lazy load the Icon component
 const Icon = lazy(() => import('@iconify/react').then(mod => ({ default: mod.Icon })))

@@ -1,8 +1,8 @@
 import type { Config } from '@/types'
+import { memo } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useDiscordUser } from '@/hooks/useDiscordUser'
-import { memo } from 'react'
 
 function UserContainerBase({ config }: { config: Config }) {
   const { userName, avatarUrl, isLoading, error } = useDiscordUser(config)

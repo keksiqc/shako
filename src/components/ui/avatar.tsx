@@ -1,7 +1,7 @@
-import { cn } from '@/lib/utils'
 import * as AvatarPrimitive from '@radix-ui/react-avatar'
-
 import * as React from 'react'
+
+import { cn } from '@/lib/utils'
 
 function Avatar({ ref, className, ...props }: React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root> & { ref?: React.RefObject<React.ComponentRef<typeof AvatarPrimitive.Root> | null> }) {
   return (
