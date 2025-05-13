@@ -20,7 +20,7 @@
     "@fontsource/geist-mono": "^5.2.5",
     "@fontsource/geist-sans": "^5.2.5",
     "@iconify-json/simple-icons": "^1.2.33",
-    "@iconify/react": "^5.2.1",
+    "@iconify/react": "^6.0.0",
     "@radix-ui/react-avatar": "^1.1.7",
     "@radix-ui/react-slot": "^1.2.0",
     "astro": "^5.7.5",
