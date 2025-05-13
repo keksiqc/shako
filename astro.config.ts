@@ -1,6 +1,6 @@
 import react from '@astrojs/react'
-import tailwindcss from '@tailwindcss/vite'
 import playformCompress from '@playform/compress'
+import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
 
 // https://astro.build/config

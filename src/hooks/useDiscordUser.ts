@@ -1,5 +1,5 @@
-import type { Config } from '@/types'
 import type { Snowflake } from 'use-lanyard'
+import type { Config } from '@/types'
 import { useEffect, useMemo, useState } from 'react'
 import { useLanyard } from 'use-lanyard'
 

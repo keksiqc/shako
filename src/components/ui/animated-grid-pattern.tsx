@@ -3,9 +3,8 @@
 import type {
   ComponentPropsWithoutRef,
 } from 'react'
-import { cn } from '@/lib/utils'
-
 import { motion } from 'motion/react'
+
 import {
   useCallback,
   useEffect,
@@ -13,6 +12,7 @@ import {
   useRef,
   useState,
 } from 'react'
+import { cn } from '@/lib/utils'
 
 interface Square {
   id: string
