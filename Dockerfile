@@ -24,7 +24,7 @@ COPY tsconfig.json ./
 RUN bun run build
 
 # Production stage
-FROM caddy:2-alpine
+FROM caddy:2.10.0-alpine
 
 # Create non-root user
 RUN addgroup -S shako && \
