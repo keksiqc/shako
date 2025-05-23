@@ -1,4 +1,4 @@
-import type { Snowflake } from 'use-lanyard'
+import type { Types } from '@prequist/lanyard';
 import { z } from 'zod'
 
 export const configSchema = z.object({
@@ -10,7 +10,7 @@ export const configSchema = z.object({
       description: z.string().optional(),
     })
     .optional(),
-  discordID: z.custom<Snowflake>().optional(),
+  discordID: z.custom<Types.Snowflake>().optional(),
   lanyardUrl: z.string().optional().default('api.lanyard.rest/'),
   borderRadius: z.number().min(0).optional().default(0.5),
   background: z

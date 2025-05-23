@@ -1,4 +1,4 @@
-import type { Snowflake } from 'use-lanyard'
+import type { Types } from '@prequist/lanyard'
 import type { Config } from '@/types'
 import { useEffect, useMemo, useState } from 'react'
 import { useLanyard } from 'use-lanyard'
@@ -19,7 +19,7 @@ interface CachedDiscordData {
 const CACHE_KEY = 'discord_user_data'
 const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
 
-function getDiscordAvatarUrl(discordId: Snowflake, avatarHash: string) {
+function getDiscordAvatarUrl(discordId: Types.Snowflake, avatarHash: string) {
   return `https://cdn.discordapp.com/avatars/${discordId}/${avatarHash}.webp?size=256`
 }
 
@@ -67,7 +67,7 @@ export function useDiscordUser(config: Config): DiscordUser {
   }, [])
 
   const shouldFetch = !!(config?.discordID && !cachedData)
-  const { data, error } = useLanyard(config?.discordID as Snowflake, {
+  const { data, error } = useLanyard(config?.discordID as Types.Snowflake, {
     api: {
       hostname: config?.lanyardUrl || 'api.lanyard.rest/',
       secure: true,
