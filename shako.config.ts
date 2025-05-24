@@ -57,7 +57,7 @@ const config: Config = {
     {
       name: 'AniList',
       icon: 'anilist',
-      url: 'https://anilist.co/user/keksiqc',
+      url: 'https://anilist.co/user/keksi',
     },
     {
       name: 'Trakt',
