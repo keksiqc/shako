@@ -21,7 +21,7 @@ if (!config) {
 
 ---
 
-<script is:inline define:vars={{ borderRadius: config?.page.borderRadius }}>
+<script is:inline define:vars={{ borderRadius: config?.page.borderRadius || 0.5 }}>
   document.documentElement.style.setProperty('--radius', `${borderRadius}rem`)
 </script>
 
