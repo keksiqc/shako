@@ -35,222 +35,150 @@ bun run dev
 
 All configuration is done through the `shako.config.ts` file. Here's a comprehensive guide to all available options:
 
-### Basic Configuration
+### Page Configuration
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `title` | `string` | `'Shako'` | The title of your page |
-| `borderRadius` | `number` | `0.5` | Global border radius in rem units |
-| `background` | `'dot' \| 'grid' \| 'dashed-grid' \| 'flickering-grid' \| 'animated-grid' \| 'animated' \| 'none' \| BackgroundConfig` | `'none'` | Background pattern or custom background configuration |
-| `footer` | `boolean \| string` | `true` | Show default footer or set custom text |
-
-### User Data Configuration
-
-You can configure user data in two ways:
-
-1. **Using Lanyard** (Discord integration):
 ```typescript
-const config: Config = {
-  discordID: '527147599942385674', // Your Discord user ID
-  lanyardUrl: 'api.lanyard.rest/', // Optional: Custom Lanyard API URL
+page: {
+  title: string,           // Page title shown in browser tab
+  footer: boolean | string, // Show footer (true/false) or custom footer text
+  borderRadius: number,     // Border radius for UI elements (0-1, where 1 = full radius)
+  background?: string | object // Background style (see Background Options below)
 }
 ```
 
-2. **Custom User Data**:
+#### Background Options
+
+You can use predefined backgrounds or create custom ones:
+
+**Predefined backgrounds:**
+- `'dot'` - Dot pattern
+- `'grid'` - Grid pattern  
+- `'dashed-grid'` - Dashed grid pattern
+- `'animated'` - Animated background
+- `'flickering-grid'` - Flickering grid effect
+- `'animated-grid'` - Animated grid pattern
+- `'none'` - No background pattern
+
+**Custom backgrounds:**
 ```typescript
-const config: Config = {
-  user: {
-    name: 'Your Name',
-    avatar: 'https://example.com/avatar.png',
-    description: 'Your Description'
+background: {
+  type: 'image' | 'color' | 'gradient' | 'custom',
+  value: string | GradientConfig | Record<string, string>
+}
+```
+
+**Gradient example:**
+```typescript
+background: {
+  type: 'gradient',
+  value: {
+    type: 'linear' | 'radial',
+    colors: ['#ff0000', '#00ff00', '#0000ff'],
+    direction: 45 // degrees for linear gradients
   }
 }
 ```
 
-> [!NOTE]
-> To use Lanyard integration, you must join the [Lanyard Discord Server](https://discord.gg/lanyard). Alternatively, you can specify your own Lanyard server in the `lanyardUrl` option.
+### User Configuration
 
-### Button Configuration
-
-Shakō supports two types of buttons:
-
-1. **Icon Buttons** (Small circular buttons, typically for donation/support links):
 ```typescript
-iconButtons: [
+user: {
+  name?: string,        // Display name (overrides Discord username if set)
+  avatar?: string,      // Avatar URL (overrides Discord avatar if set)  
+  bio?: string,         // Bio text (overrides Discord status if set)
+  discordId: string     // Required: Your Discord user ID for Lanyard integration
+}
+```
+
+**Note:** If `name` or `avatar` are not specified, Shakō will automatically fetch this information from Discord via Lanyard.
+
+### API Configuration
+
+```typescript
+api: {
+  lanyardUrl: string    // Lanyard API endpoint (default: 'https://api.lanyard.rest/')
+}
+```
+
+### Links Configuration
+
+#### Social Links
+Small icon buttons displayed at the top of the page:
+
+```typescript
+social?: [
   {
-    icon: 'patreon',
-    url: 'https://patreon.com/username',
-    variant: 'secondary' // optional, defaults to 'secondary'
-  },
-  {
-    icon: 'buymeacoffee',
-    url: 'https://buymeacoffee.com/username'
-    // variant not specified, will use default 'secondary'
+    icon: string,                    // Icon name (see supported icons below)
+    url: string,                     // Link URL
+    style?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'
   }
 ]
 ```
 
-2. **Regular Buttons** (Full-width buttons with icon and text):
+#### Primary Links  
+Large featured buttons for main links:
+
 ```typescript
-buttons: [
+primary?: [
   {
-    name: 'GitHub',
-    icon: 'github',
-    url: 'https://github.com/username',
-    size: 'xl', // optional, defaults to 'xl'
-    variant: 'outline' // optional, defaults to 'outline'
-  },
-  {
-    name: 'Twitter',
-    icon: 'x',
-    url: 'https://x.com/username'
-    // size not specified, will use default 'xl'
-    // variant not specified, will use default 'outline'
+    label: string,                   // Button text
+    icon: string,                    // Icon name
+    url: string,                     // Link URL  
+    style?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link',
+    size?: 'default' | 'sm' | 'lg' | 'xl'
   }
 ]
 ```
 
-Available button sizes:
-- `'default'`: Default (Medium) button size
-- `'sm'`: Small button
-- `'lg'`: Large button
-- `'xl'` (default): Extra-large button
+### Supported Icons
 
-Available button variants:
-- `'default'`: Filled button with primary color
-- `'destructive'`: Filled button with destructive color
-- `'outline'` (default): Outlined button with hover effect
-- `'secondary'`: Filled button with secondary color
-- `'ghost'`: Text-only button with hover effect
-- `'link'`: Underlined text button
+See [Simple Icons](https://simpleicons.org/) for a list of supported icons.
 
-The `icon` property in both button types uses icons from [Simple Icons](https://simpleicons.org/). Make sure to use the exact icon name as listed on their website.
+### Example Configuration
 
-### Background Styles
-
-The `background` option supports both built-in patterns and custom background configurations:
-
-#### Built-in Patterns
-- `'dot'`: Subtle dot pattern
-- `'grid'`: Regular grid pattern
-- `'dashed-grid'`: Dashed grid pattern
-- `'animated'`: Animated gradient pattern
-- `'flickering-grid'`: Grid pattern with squares that randomly change opacity for a dynamic effect
-- `'animated-grid'`: Grid pattern with squares that animate in and out at random positions
-- `'none'`: No background pattern (default)
-
-#### Custom Backgrounds
-
-For more advanced background configurations, you can pass an object with a `type` property:
-
-1. **Image Background**:
 ```typescript
+import type { Config } from '@/types'
+
 const config: Config = {
-  background: {
-    type: 'image',
-    image: 'https://example.com/background.jpg'
-  }
-}
-```
-
-2. **Solid Color**:
-```typescript
-const config: Config = {
-  background: {
-    type: 'color',
-    color: '#ff0000' // Any valid CSS color
-  }
-}
-```
-
-3. **Gradient Background**:
-```typescript
-const config: Config = {
-  background: {
-    type: 'gradient',
-    gradient: {
-      type: 'linear', // or 'radial'
-      colors: ['#FF0080', '#7928CA'],
-      angle: 45 // Optional. For linear gradients (0-360 degrees)
-    }
-  }
-}
-```
-
-4. **Custom CSS**:
-Use any valid CSS properties for complete control over the background:
-```typescript
-const config: Config = {
-  background: {
-    type: 'custom',
-    customCSS: {
-      'background-image': 'url("your-image.jpg")',
-      'background-size': 'cover',
-      'background-attachment': 'fixed',
-      'opacity': '0.8'
-      // Any valid CSS properties
-    }
-  }
-}
-```
-
-### Footer Configuration
-
-The footer can be configured in two ways:
-
-```typescript
-// Show default footer
-footer: true
-
-// Custom footer text
-footer: 'Made with ❤️ by Your Name'
-
-// Hide footer
-footer: false
-```
-
-### Complete Example Configuration
-
-```typescript
-const config: Config = {
-  title: 'My Linktree',
+  page: {
+    title: 'My Links - John Doe',
+    footer: true,
+    borderRadius: 0.5,
+    background: 'flickering-grid',
+  },
   user: {
-    name: 'John Doe',
-    avatar: 'https://example.com/avatar.png',
-    description: 'Software Developer'
+    discordId: '123456789012345678',
+    // name: 'John Doe',          // Optional: Override Discord username
+    // avatar: 'https://...',     // Optional: Override Discord avatar
+    // bio: 'Software Engineer',  // Optional
   },
-  borderRadius: 0.75,
-  background: {
-    type: 'gradient',
-    gradient: {
-      type: 'linear',
-      colors: ['#FF0080', '#7928CA'],
-      angle: 45
-    }
+  api: {
+    lanyardUrl: 'https://api.lanyard.rest/',
   },
-  footer: 'Made with ❤️',
-  iconButtons: [
-    {
-      icon: 'githubsponsors',
-      url: 'https://github.com/sponsors/username',
-      variant: 'secondary'
-    }
-  ],
-  buttons: [
-    {
-      name: 'Portfolio',
-      icon: 'github',
-      url: 'https://github.com/username',
-      variant: 'default'
-    },
-    {
-      name: 'Twitter',
-      icon: 'x',
-      url: 'https://x.com/username'
-      // variant will default to 'outline'
-    }
-  ]
+  links: {
+    social: [
+      { icon: 'github', url: 'https://github.com/johndoe' },
+      { icon: 'x', url: 'https://x.com/johndoe' },
+    ],
+    primary: [
+      {
+        label: 'My Portfolio',
+        icon: 'globe',
+        url: 'https://johndoe.dev',
+        style: 'default',
+        size: 'xl'
+      },
+      {
+        label: 'Contact Me',
+        icon: 'mail', 
+        url: 'mailto:john@example.com',
+        style: 'outline'
+      }
+    ],
+  },
 }
+
+export default config
 ```
 
 ## Deployment
