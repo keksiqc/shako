@@ -1,5 +1,5 @@
 ---
-import { BackgroundFactory } from '@/components/BackgroundFactory'
+import Background from '@/components/Background.astro'
 import { ButtonContainer } from '@/components/ButtonContainer'
 import ErrorPage from '@/components/ErrorPage.astro'
 import { Footer } from '@/components/Footer'
@@ -31,8 +31,7 @@ if (!config) {
     ? <ErrorPage error={error} />
     : (
       <main class="items-center justify-center p-4">
-        <BackgroundFactory
-          client:only="react"
+        <Background
           background={config?.page.background}
         />
 
