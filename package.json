@@ -3,6 +3,9 @@
   "type": "module",
   "version": "0.6.0",
   "packageManager": "bun@1.2.14",
+  "engines": {
+    "node": ">=22.16.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
