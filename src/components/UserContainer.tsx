@@ -36,8 +36,7 @@ function UserContainerBase({ config }: { config: ParsedConfig | null }) {
           <AvatarFallback>!</AvatarFallback>
         </Avatar>
         <p className="text-sm text-destructive">
-          Failed to load user data:
-          {error.message}
+          {`Failed to load user data: ${error.message}`}
         </p>
       </section>
     )
