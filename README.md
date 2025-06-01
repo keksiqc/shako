@@ -41,8 +41,17 @@ All configuration is done through the `shako.config.ts` file. Here's a comprehen
 page: {
   title: string,           // Page title shown in browser tab
   footer: boolean | string, // Show footer (true/false) or custom footer text
-  borderRadius: number,     // Border radius for UI elements (0-1, where 1 = full radius)
+  borderRadius?: number,     // Border radius for UI elements (0-1, where 1 = full radius)
   background?: string | object // Background style (see Background Options below)
+  redirects?: Record<string, string> // Redirects for custom domains
+}
+```
+
+#### Redirects
+You can redirect paths to other URLs.
+```typescript
+redirects: {
+  '/discord': 'https://discord.gg/keksi',
 }
 ```
 

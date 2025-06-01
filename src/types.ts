@@ -5,7 +5,7 @@ export const configSchema = v.object({
   page: v.object({
     title: v.optional(v.string(), 'Shako'),
     footer: v.optional(v.union([v.boolean(), v.string()]), true),
-    borderRadius: v.optional(v.number(), 0.5),
+    borderRadius: v.optional(v.number(), 0.625),
     background: v.optional(v.union([
       v.picklist(['dot', 'grid', 'dashed-grid', 'flickering-grid', 'animated-grid', 'none']),
       v.object({
@@ -17,6 +17,7 @@ export const configSchema = v.object({
         }), v.record(v.string(), v.string())]),
       }),
     ]), 'none'),
+    redirects: v.optional(v.record(v.string(), v.string()), {}),
   }),
   user: v.object({
     name: v.optional(v.string()),

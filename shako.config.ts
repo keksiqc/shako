@@ -6,6 +6,9 @@ const config: Config = {
     footer: true,
     borderRadius: 0.5,
     background: 'flickering-grid',
+    // redirects: {
+    //   'discord': 'https://discord.gg/keksi',
+    // },
   },
   user: {
     //* Setting name and avatar will override the Lanyard user data
