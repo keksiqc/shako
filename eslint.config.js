@@ -11,6 +11,7 @@ export default antfu({
   stylistic: true,
   react: true,
   astro: true,
+  ignores: ['README.md'],
 }, {
   settings: {
     tailwindcss: {

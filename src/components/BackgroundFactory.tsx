@@ -9,22 +9,22 @@ const FlickeringGridPattern = lazy(() => import('@/components/ui/flickering-grid
 const AnimatedGridPattern = lazy(() => import('@/components/ui/animated-grid-pattern'))
 const CustomBackground = lazy(() => import('@/components/ui/custom-background'))
 
-type BackgroundType = Config['background']
+type BackgroundType = Config['page']['background']
 type CustomBackgroundType = Extract<BackgroundType, { type: string }>
 type SimpleBackgroundType = Extract<BackgroundType, string>
 
 const customBackgroundMap = {
   image: (bg: CustomBackgroundType) => (
-    <CustomBackground preset={{ type: 'image', image: bg.image }} />
+    <CustomBackground preset={{ type: 'image', image: bg.value as string }} />
   ),
   color: (bg: CustomBackgroundType) => (
-    <CustomBackground preset={{ type: 'color', color: bg.color }} />
+    <CustomBackground preset={{ type: 'color', color: bg.value as string }} />
   ),
   gradient: (bg: CustomBackgroundType) => (
-    <CustomBackground preset={{ type: 'gradient', gradient: bg.gradient }} />
+    <CustomBackground preset={{ type: 'gradient', gradient: bg.value as { type: 'linear' | 'radial', colors: string[], direction: number } }} />
   ),
   custom: (bg: CustomBackgroundType) => (
-    <CustomBackground customCSS={bg.customCSS} />
+    <CustomBackground customCSS={bg.value as Record<string, string>} />
   ),
 }
 
