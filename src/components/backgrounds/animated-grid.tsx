@@ -32,7 +32,7 @@ export interface AnimatedGridPatternProps
   repeatDelay?: number
 }
 
-export default function AnimatedGridPattern({
+export function AnimatedGrid({
   width = 40,
   height = 40,
   x = -1,
@@ -112,7 +112,7 @@ export default function AnimatedGridPattern({
       ref={containerRef}
       aria-hidden="true"
       className={cn(
-        'pointer-events-none fixed inset-0 z-[-1] size-full border border-neutral-400/15 fill-neutral-400/15 stroke-neutral-400/15',
+        'pointer-events-none fixed inset-0 z-[-1] size-full border fill-neutral-400/15 stroke-neutral-400/15',
         className,
       )}
       {...props}
