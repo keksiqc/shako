@@ -12,7 +12,10 @@ export default antfu({
   react: true,
   astro: true,
   ignores: ['README.md'],
-}, {
+}, tailwind.configs['flat/recommended'], {
+  rules: {
+    'tailwindcss/no-custom-classname': 'off',
+  },
   settings: {
     tailwindcss: {
       callees: ['cn', 'cva'],
@@ -20,4 +23,4 @@ export default antfu({
       config: path.resolve(__dirname, 'src/styles/global.css'),
     },
   },
-}, tailwind.configs['flat/recommended'])
+})
