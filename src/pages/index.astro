@@ -8,16 +8,10 @@ import { UserContainer } from '@/components/UserContainer'
 import { getConfig } from '@/lib/config'
 import Layout from '../layouts/Layout.astro'
 
-import '../styles/globals.css'
+import '../styles/global.css'
 
 // Load configuration
-let error: string | undefined
-
 const config = await getConfig()
-
-if (!config) {
-  error = 'Failed to load configuration'
-}
 
 ---
 
@@ -27,8 +21,8 @@ if (!config) {
 
 <Layout title={config?.page.title || 'Shako - Error'}>
   {
-  error
-    ? <ErrorPage error={error} />
+  !config
+    ? <ErrorPage error={'Failed to load configuration'} />
     : (
       <main class="items-center justify-center p-4">
         <Background
