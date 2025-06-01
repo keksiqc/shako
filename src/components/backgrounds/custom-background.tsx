@@ -14,7 +14,7 @@ interface CustomBackgroundProps {
   }
 }
 
-export default function CustomBackground({ customCSS, preset }: CustomBackgroundProps) {
+export function CustomBackground({ customCSS, preset }: CustomBackgroundProps) {
   if (customCSS) {
     return (
       <div

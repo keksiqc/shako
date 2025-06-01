@@ -1,0 +1,66 @@
+---
+import type { Config } from '@/types'
+import { AnimatedGrid } from '@/components/backgrounds/animated-grid'
+import { CustomBackground } from '@/components/backgrounds/custom-background'
+import { DotPattern } from '@/components/backgrounds/dot-pattern'
+import { FlickeringGrid } from '@/components/backgrounds/flickering-grid'
+import { GridPattern } from '@/components/backgrounds/grid-pattern'
+
+export interface Props {
+  background?: Config['page']['background']
+}
+
+const { background } = Astro.props
+
+// Early return for no background
+if (!background || background === 'none') {
+  return null
+}
+
+// Helper functions for custom backgrounds
+function getImageProps(value: string) {
+  return { preset: { type: 'image' as const, image: value } }
+}
+
+function getColorProps(value: string) {
+  return { preset: { type: 'color' as const, color: value } }
+}
+
+function getGradientProps(value: { type: 'linear' | 'radial', colors: string[], direction: number }) {
+  return {
+    preset: {
+      type: 'gradient' as const,
+      gradient: {
+        type: value.type,
+        colors: value.colors,
+        angle: value.direction,
+      },
+    },
+  }
+}
+
+function getCustomProps(value: Record<string, string>) {
+  return { customCSS: value }
+}
+---
+
+{/* Simple backgrounds */}
+{background === 'dot' && <DotPattern client:load />}
+{background === 'grid' && <GridPattern client:load />}
+{background === 'dashed-grid' && <GridPattern client:load strokeDasharray="4 2" />}
+{background === 'flickering-grid' && <FlickeringGrid client:load color="#6B7280" />}
+{background === 'animated-grid' && <AnimatedGrid client:load />}
+
+{/* Custom backgrounds */}
+{typeof background === 'object' && background.type === 'image' && (
+  <CustomBackground client:load {...getImageProps(background.value as string)} />
+)}
+{typeof background === 'object' && background.type === 'color' && (
+  <CustomBackground client:load {...getColorProps(background.value as string)} />
+)}
+{typeof background === 'object' && background.type === 'gradient' && (
+  <CustomBackground client:load {...getGradientProps(background.value as { type: 'linear' | 'radial', colors: string[], direction: number })} />
+)}
+{typeof background === 'object' && background.type === 'custom' && (
+  <CustomBackground client:load {...getCustomProps(background.value as Record<string, string>)} />
+)}

@@ -54,7 +54,6 @@ You can use predefined backgrounds or create custom ones:
 - `'dot'` - Dot pattern
 - `'grid'` - Grid pattern
 - `'dashed-grid'` - Dashed grid pattern
-- `'animated'` - Animated background
 - `'flickering-grid'` - Flickering grid effect
 - `'animated-grid'` - Animated grid pattern
 - `'none'` - No background pattern

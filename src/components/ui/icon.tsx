@@ -2,9 +2,9 @@ import { lazy, Suspense } from 'react'
 import { cn } from '@/lib/utils'
 
 // Lazy load the Icon component
-const Icon = lazy(() => import('@iconify/react').then(mod => ({ default: mod.Icon })))
+const IconComponent = lazy(() => import('@iconify/react').then(mod => ({ default: mod.Icon })))
 
-interface SocialIconProps extends React.HTMLAttributes<HTMLDivElement> {
+interface IconProps extends React.HTMLAttributes<HTMLDivElement> {
   icon: string
   size?: 'sm' | 'md' | 'lg'
   fallbackClassName?: string
@@ -20,11 +20,11 @@ function IconFallback({ className }: { className?: string }) {
   return <div className={cn('animate-pulse rounded-sm bg-muted', className)} />
 }
 
-export function SocialIcon({ icon, size = 'md', className, fallbackClassName, ...props }: SocialIconProps) {
+export function Icon({ icon, size = 'md', className, fallbackClassName, ...props }: IconProps) {
   return (
     <div className={cn(sizeClasses[size], className)} {...props}>
       <Suspense fallback={<IconFallback className={fallbackClassName} />}>
-        <Icon
+        <IconComponent
           icon={`simple-icons:${icon}`}
           className="size-full"
           aria-hidden="true"

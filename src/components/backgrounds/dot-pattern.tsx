@@ -1,32 +1,36 @@
 import { useId } from 'react'
 import { cn } from '@/lib/utils'
 
-interface GridPatternProps extends React.SVGProps<SVGSVGElement> {
+interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
   width?: number
   height?: number
   x?: number
   y?: number
-  strokeDasharray?: string
+  cx?: number
+  cy?: number
+  cr?: number
   className?: string
   [key: string]: unknown
 }
 
-export default function GridPattern({
-  width = 40,
-  height = 40,
-  x = -1,
-  y = -1,
-  strokeDasharray,
+export function DotPattern({
+  width = 16,
+  height = 16,
+  x = 0,
+  y = 0,
+  cx = 1,
+  cy = 1,
+  cr = 1,
   className,
   ...props
-}: GridPatternProps) {
+}: DotPatternProps) {
   const id = useId()
 
   return (
     <svg
       aria-hidden="true"
       className={cn(
-        'pointer-events-none fixed inset-0 z-[-1] size-full stroke-neutral-400/20',
+        'pointer-events-none fixed inset-0 z-[-1] size-full fill-neutral-400/25',
         className,
       )}
       {...props}
@@ -41,11 +45,7 @@ export default function GridPattern({
           x={x}
           y={y}
         >
-          <path
-            d={`M${height} 0L0 0 0 ${width}`}
-            fill="none"
-            strokeDasharray={strokeDasharray}
-          />
+          <circle id="pattern-circle" cx={cx} cy={cy} r={cr} />
         </pattern>
       </defs>
       <rect width="100%" height="100%" strokeWidth={0} fill={`url(#${id})`} />

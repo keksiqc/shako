@@ -1,38 +1,58 @@
 'use client'
 
-import type React from 'react'
-import {
+import React, {
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react'
 import { cn } from '@/lib/utils'
 
-interface FlickeringGridPatternProps extends React.HTMLAttributes<HTMLDivElement> {
+interface FlickeringGridProps extends React.HTMLAttributes<HTMLDivElement> {
   squareSize?: number
   gridGap?: number
   flickerChance?: number
+  color?: string
   width?: number
   height?: number
   className?: string
   maxOpacity?: number
 }
 
-const FlickeringGridPattern: React.FC<FlickeringGridPatternProps> = ({
+export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   squareSize = 4,
   gridGap = 6,
   flickerChance = 0.3,
+  color = 'rgb(0, 0, 0)',
   width,
   height,
   className,
-  maxOpacity = 0.15,
+  maxOpacity = 0.3,
   ...props
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [isInView, setIsInView] = useState(false)
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 })
+
+  const memoizedColor = useMemo(() => {
+    const toRGBA = (color: string) => {
+      if (typeof window === 'undefined') {
+        return `rgba(0, 0, 0,`
+      }
+      const canvas = document.createElement('canvas')
+      canvas.width = canvas.height = 1
+      const ctx = canvas.getContext('2d')
+      if (!ctx)
+        return 'rgba(255, 0, 0,'
+      ctx.fillStyle = color
+      ctx.fillRect(0, 0, 1, 1)
+      const [r, g, b] = Array.from(ctx.getImageData(0, 0, 1, 1).data)
+      return `rgba(${r}, ${g}, ${b},`
+    }
+    return toRGBA(color)
+  }, [color])
 
   const setupCanvas = useCallback(
     (canvas: HTMLCanvasElement, width: number, height: number) => {
@@ -82,7 +102,7 @@ const FlickeringGridPattern: React.FC<FlickeringGridPatternProps> = ({
       for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
           const opacity = squares[i * rows + j]
-          ctx.fillStyle = `rgba(209, 213, 219, ${opacity})`
+          ctx.fillStyle = `${memoizedColor}${opacity})`
           ctx.fillRect(
             i * (squareSize + gridGap) * dpr,
             j * (squareSize + gridGap) * dpr,
@@ -92,7 +112,7 @@ const FlickeringGridPattern: React.FC<FlickeringGridPatternProps> = ({
         }
       }
     },
-    [squareSize, gridGap],
+    [memoizedColor, squareSize, gridGap],
   )
 
   useEffect(() => {
@@ -167,7 +187,7 @@ const FlickeringGridPattern: React.FC<FlickeringGridPatternProps> = ({
   return (
     <div
       ref={containerRef}
-      className={cn('fixed inset-0 z-[-1] size-full border border-background', className)}
+      className={cn(`fixed inset-0 z-[-1] size-full h-full w-full border border-background ${className}`)}
       {...props}
     >
       <canvas
@@ -181,5 +201,3 @@ const FlickeringGridPattern: React.FC<FlickeringGridPatternProps> = ({
     </div>
   )
 }
-
-export default FlickeringGridPattern
