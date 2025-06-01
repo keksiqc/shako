@@ -23,8 +23,8 @@ export const configSchema = v.object({
     avatar: v.optional(v.pipe(v.string(), v.url())),
     bio: v.optional(v.string()),
     discordId: v.custom<Types.Snowflake>((value) => {
-      const snowflakeRegex = /^[0-9]{17,19}$/;
-      return typeof value === 'string' && snowflakeRegex.test(value);
+      const snowflakeRegex = /^\d{17,19}$/
+      return typeof value === 'string' && snowflakeRegex.test(value)
     }),
   }),
   api: v.optional(v.object({
