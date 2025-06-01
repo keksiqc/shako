@@ -15,6 +15,7 @@ export default antfu({
 }, tailwind.configs['flat/recommended'], {
   rules: {
     'tailwindcss/no-custom-classname': 'off',
+    'react-hooks-extra/no-direct-set-state-in-use-effect': 'off',
   },
   settings: {
     tailwindcss: {
