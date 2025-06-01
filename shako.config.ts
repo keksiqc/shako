@@ -5,7 +5,7 @@ const config: Config = {
     title: 'Shako - Keksi',
     footer: true,
     borderRadius: 0.5,
-    background: 'flickering-grid',
+    background: 'dot',
   },
   user: {
     //* Setting name and avatar will override the Lanyard user data

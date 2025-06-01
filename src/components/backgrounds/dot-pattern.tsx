@@ -13,7 +13,7 @@ interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
   [key: string]: unknown
 }
 
-export default function DotPattern({
+export function DotPattern({
   width = 16,
   height = 16,
   x = 0,
@@ -30,7 +30,7 @@ export default function DotPattern({
     <svg
       aria-hidden="true"
       className={cn(
-        'pointer-events-none fixed inset-0 z-[-1] size-full fill-neutral-400/20',
+        'pointer-events-none fixed inset-0 z-[-1] size-full fill-neutral-400/25',
         className,
       )}
       {...props}
