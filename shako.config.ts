@@ -64,7 +64,7 @@ const config: Config = {
       {
         label: 'AniList',
         icon: 'anilist',
-        url: 'https://anilist.co/user/keksiqc',
+        url: 'https://anilist.co/user/keksi',
       },
       {
         label: 'Trakt',
