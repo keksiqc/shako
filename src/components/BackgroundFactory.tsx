@@ -21,7 +21,7 @@ const customBackgroundMap = {
     <CustomBackground preset={{ type: 'color', color: bg.value as string }} />
   ),
   gradient: (bg: CustomBackgroundType) => (
-    <CustomBackground preset={{ type: 'gradient', gradient: bg.value as { type: 'linear' | 'radial'; colors: string[]; direction: number; } }} />
+    <CustomBackground preset={{ type: 'gradient', gradient: bg.value as { type: 'linear' | 'radial', colors: string[], direction: number } }} />
   ),
   custom: (bg: CustomBackgroundType) => (
     <CustomBackground customCSS={bg.value as Record<string, string>} />

@@ -52,7 +52,7 @@ You can use predefined backgrounds or create custom ones:
 
 **Predefined backgrounds:**
 - `'dot'` - Dot pattern
-- `'grid'` - Grid pattern  
+- `'grid'` - Grid pattern
 - `'dashed-grid'` - Dashed grid pattern
 - `'animated'` - Animated background
 - `'flickering-grid'` - Flickering grid effect
@@ -84,7 +84,7 @@ background: {
 ```typescript
 user: {
   name?: string,        // Display name (overrides Discord username if set)
-  avatar?: string,      // Avatar URL (overrides Discord avatar if set)  
+  avatar?: string,      // Avatar URL (overrides Discord avatar if set)
   bio?: string,         // Bio text (overrides Discord status if set)
   discordId: string     // Required: Your Discord user ID for Lanyard integration
 }
@@ -96,7 +96,7 @@ user: {
 
 ```typescript
 api: {
-  lanyardUrl: string    // Lanyard API endpoint (default: 'https://api.lanyard.rest/')
+  lanyardUrl: string // Lanyard API endpoint (default: 'https://api.lanyard.rest/')
 }
 ```
 
@@ -115,7 +115,7 @@ social?: [
 ]
 ```
 
-#### Primary Links  
+#### Primary Links
 Large featured buttons for main links:
 
 ```typescript
@@ -123,7 +123,7 @@ primary?: [
   {
     label: string,                   // Button text
     icon: string,                    // Icon name
-    url: string,                     // Link URL  
+    url: string,                     // Link URL
     style?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link',
     size?: 'default' | 'sm' | 'lg' | 'xl'
   }
@@ -170,7 +170,7 @@ const config: Config = {
       },
       {
         label: 'Contact Me',
-        icon: 'mail', 
+        icon: 'mail',
         url: 'mailto:john@example.com',
         style: 'outline'
       }
