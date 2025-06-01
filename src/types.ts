@@ -7,7 +7,7 @@ export const configSchema = v.object({
     footer: v.optional(v.union([v.boolean(), v.string()]), true),
     borderRadius: v.optional(v.number(), 0.5),
     background: v.optional(v.union([
-      v.picklist(['dot', 'grid', 'dashed-grid', 'animated', 'flickering-grid', 'animated-grid', 'none']),
+      v.picklist(['dot', 'grid', 'dashed-grid', 'flickering-grid', 'animated-grid', 'none']),
       v.object({
         type: v.picklist(['image', 'color', 'gradient', 'custom']),
         value: v.union([v.string(), v.object({
