@@ -30,18 +30,18 @@ export const configSchema = v.object({
     lanyardUrl: v.pipe(v.string(), v.url()),
   }),
   links: v.object({
-    social: v.array(v.object({
+    social: v.optional(v.array(v.object({
       icon: v.string(),
       url: v.pipe(v.string(), v.url()),
       style: v.optional(v.picklist(['default', 'destructive', 'outline', 'secondary', 'ghost', 'link']), 'secondary'),
-    })),
-    primary: v.array(v.object({
+    })), []),
+    primary: v.optional(v.array(v.object({
       label: v.string(),
       icon: v.string(),
       url: v.pipe(v.string(), v.url()),
       style: v.optional(v.picklist(['default', 'destructive', 'outline', 'secondary', 'ghost', 'link']), 'outline'),
       size: v.optional(v.picklist(['default', 'sm', 'lg', 'xl']), 'xl'),
-    })),
+    })), []),
   }),
 })
 
