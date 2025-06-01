@@ -1,52 +1,26 @@
-import type { Config } from '@/types'
+import type { ParsedConfig } from '@/types'
 import { loadConfig } from 'c12'
-import { z } from 'zod'
+import * as v from 'valibot'
 import { configSchema } from '@/types'
 
-const DEFAULT_CONFIG: Partial<Config> = {
-  lanyardUrl: 'https://api.lanyard.rest/v1/users',
-  background: 'none',
-}
 
-export class ConfigError extends Error {
-  constructor(message: string, public cause?: unknown) {
-    super(message)
-    this.name = 'ConfigError'
+export async function getConfig(): Promise<ParsedConfig | null> {
+  const config = await loadConfig({
+    name: 'shako',
+  })
+
+  if (!config) {
+    console.error('No configuration found')
+    return null
   }
-}
 
-export async function getConfig(): Promise<Config> {
-  try {
-    // Load config file
-    const { config: rawConfig } = await loadConfig({
-      name: 'shako',
-      defaults: DEFAULT_CONFIG,
-    })
+  const result = v.safeParse(configSchema, config.config)
 
-    if (!rawConfig) {
-      throw new ConfigError('No configuration found')
-    }
-
-    try {
-      // Parse and validate config
-      const parsedConfig = configSchema.parse(rawConfig)
-      return parsedConfig
-    }
-    catch (error) {
-      if (error instanceof z.ZodError) {
-        // Format validation errors nicely
-        const issues = error.issues
-          .map(issue => `${issue.path.join('.')}: ${issue.message}`)
-          .join('\n')
-        throw new ConfigError(`Invalid configuration:\n${issues}`)
-      }
-      throw new ConfigError('Failed to validate configuration', error)
-    }
+  if (result.success) {
+    return result.output
   }
-  catch (error) {
-    if (error instanceof ConfigError) {
-      throw error
-    }
-    throw new ConfigError('Failed to load configuration', error)
+  else {
+    console.error(v.summarize(result.issues))
+    return null
   }
 }

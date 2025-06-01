@@ -1,43 +1,31 @@
 ---
-import type { Config } from '@/types'
 import { BackgroundFactory } from '@/components/BackgroundFactory'
 import { ButtonContainer } from '@/components/ButtonContainer'
 import ErrorPage from '@/components/ErrorPage.astro'
 import { Footer } from '@/components/Footer'
 import { ModeToggle } from '@/components/ModeToggle'
 import { UserContainer } from '@/components/UserContainer'
-import { ConfigError, getConfig } from '@/lib/config'
+import { getConfig } from '@/lib/config'
 import Layout from '../layouts/Layout.astro'
 
 import '../styles/globals.css'
 
-// Constants
-const DEFAULT_ERROR_CONFIG: Config = {
-  title: 'Error - Shako',
-  lanyardUrl: '',
-  borderRadius: 0.5,
-  background: 'none',
-  footer: true,
-}
-
 // Load configuration
-let config: Config
 let error: string | undefined
 
-try {
-  config = await getConfig()
+const config = await getConfig()
+
+if (!config) {
+  error = 'Failed to load configuration'
 }
- catch (e) {
-  error = e instanceof ConfigError ? e.message : 'Failed to load configuration'
-  config = DEFAULT_ERROR_CONFIG
-}
+
 ---
 
-<script is:inline define:vars={{ borderRadius: config.borderRadius }}>
+<script is:inline define:vars={{ borderRadius: config?.page.borderRadius }}>
   document.documentElement.style.setProperty('--radius', `${borderRadius}rem`)
 </script>
 
-<Layout title={config.title}>
+<Layout title={config?.page.title || 'Shako - Error'}>
   {
   error
     ? <ErrorPage error={error} />
@@ -45,7 +33,7 @@ try {
       <main class="items-center justify-center p-4">
         <BackgroundFactory
           client:only="react"
-          background={config.background}
+          background={config?.page.background}
         />
 
         <div class="absolute top-0 right-0 p-4">
@@ -62,7 +50,7 @@ try {
           </div>
         </div>
 
-        <Footer footerConfig={config.footer || true} />
+        <Footer footerConfig={config?.page.footer || true} />
       </main>
     )
 }
