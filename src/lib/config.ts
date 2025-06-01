@@ -3,7 +3,6 @@ import { loadConfig } from 'c12'
 import * as v from 'valibot'
 import { configSchema } from '@/types'
 
-
 export async function getConfig(): Promise<ParsedConfig | null> {
   const config = await loadConfig({
     name: 'shako',

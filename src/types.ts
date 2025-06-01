@@ -1,24 +1,22 @@
 import type { Types } from '@prequist/lanyard'
 import * as v from 'valibot'
 
-
 export const configSchema = v.object({
   page: v.object({
     title: v.string(),
     footer: v.union([v.boolean(), v.string()]),
     borderRadius: v.number(),
     background: v.optional(v.union([
-      v.picklist(['dot', 'grid', 'dashed-grid', 'animated', 'flickering-grid', 'animated-grid', 'none']), 
+      v.picklist(['dot', 'grid', 'dashed-grid', 'animated', 'flickering-grid', 'animated-grid', 'none']),
       v.object({
-      type: v.picklist(['image', 'color', 'gradient', 'custom']),
-      value: v.union([v.string(), v.object({
-        type: v.picklist(['linear', 'radial']),
-        colors: v.array(v.string()),
-        direction: v.number(),
+        type: v.picklist(['image', 'color', 'gradient', 'custom']),
+        value: v.union([v.string(), v.object({
+          type: v.picklist(['linear', 'radial']),
+          colors: v.array(v.string()),
+          direction: v.number(),
+        }), v.record(v.string(), v.string())]),
       }),
-      v.record(v.string(), v.string()),
-    ]),
-    })]), 'none')
+    ]), 'none'),
   }),
   user: v.object({
     name: v.optional(v.string()),
