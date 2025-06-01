@@ -1,10 +1,10 @@
 ---
 import type { Config } from '@/types'
-import AnimatedGridPattern from '@/components/patterns/animated-grid'
-import DotPattern from '@/components/patterns/dot'
-import { FlickeringGrid } from '@/components/patterns/flickering-grid'
-import GridPattern from '@/components/patterns/grid'
-import CustomBackground from '@/components/ui/custom-background'
+import AnimatedGridPattern from '@/components/backgrounds/animated-grid'
+import CustomBackground from '@/components/backgrounds/custom'
+import DotPattern from '@/components/backgrounds/dot'
+import { FlickeringGrid } from '@/components/backgrounds/flickering-grid'
+import { GridPattern } from '@/components/backgrounds/grid-pattern'
 
 export interface Props {
   background?: Config['page']['background']
@@ -48,7 +48,7 @@ function getCustomProps(value: Record<string, string>) {
 {background === 'dot' && <DotPattern client:load />}
 {background === 'grid' && <GridPattern client:load />}
 {background === 'dashed-grid' && <GridPattern client:load strokeDasharray="4 2" />}
-{background === 'flickering-grid' && <FlickeringGrid client:load color="#6B7280"/>}
+{background === 'flickering-grid' && <FlickeringGrid client:load color="#6B7280" />}
 {background === 'animated-grid' && <AnimatedGridPattern client:load />}
 
 {/* Custom backgrounds */}
