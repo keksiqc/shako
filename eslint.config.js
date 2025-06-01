@@ -16,8 +16,8 @@ export default antfu({
   settings: {
     tailwindcss: {
       callees: ['cn', 'cva'],
-      // Construct an absolute path to your globals.css
-      config: path.resolve(__dirname, 'src/styles/globals.css'),
+      // Construct an absolute path to your global.css
+      config: path.resolve(__dirname, 'src/styles/global.css'),
     },
   },
 }, tailwind.configs['flat/recommended'])
