@@ -3,9 +3,9 @@ import * as v from 'valibot'
 
 export const configSchema = v.object({
   page: v.object({
-    title: v.string(),
-    footer: v.union([v.boolean(), v.string()]),
-    borderRadius: v.number(),
+    title: v.optional(v.string(), 'Shako'),
+    footer: v.optional(v.union([v.boolean(), v.string()]), true),
+    borderRadius: v.optional(v.number(), 0.5),
     background: v.optional(v.union([
       v.picklist(['dot', 'grid', 'dashed-grid', 'animated', 'flickering-grid', 'animated-grid', 'none']),
       v.object({
@@ -24,9 +24,9 @@ export const configSchema = v.object({
     bio: v.optional(v.string()),
     discordId: v.custom<Types.Snowflake>(() => true),
   }),
-  api: v.object({
-    lanyardUrl: v.pipe(v.string(), v.url()),
-  }),
+  api: v.optional(v.object({
+    lanyardUrl: v.optional(v.pipe(v.string(), v.url()), 'https://api.lanyard.rest/'),
+  }), {}),
   links: v.object({
     social: v.optional(v.array(v.object({
       icon: v.string(),
