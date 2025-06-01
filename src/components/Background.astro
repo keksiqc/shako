@@ -14,7 +14,7 @@ const { background } = Astro.props
 
 // Early return for no background
 if (!background || background === 'none') {
-  // Render nothing - early exit
+  return null
 }
 
 // Helper functions for custom backgrounds
