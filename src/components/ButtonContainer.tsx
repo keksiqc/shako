@@ -7,7 +7,7 @@ export function ButtonContainer({ config }: { config: ParsedConfig }) {
     <nav className="flex flex-col gap-3" aria-label="Social Links">
       {/* icon buttons */}
       {config.links.social && config.links.social.length > 0 && (
-        <div className="flex items-center justify-center gap-3">
+        <div className="m-auto flex items-center justify-center gap-3 bg-background">
           {config.links.social.map(button => (
             <Button
               variant={button.style ?? 'secondary'}
@@ -26,7 +26,7 @@ export function ButtonContainer({ config }: { config: ParsedConfig }) {
 
       {/* regular buttons */}
       {config.links.primary && config.links.primary.length > 0 && (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 bg-background">
           {config.links.primary.map(button => (
             <Button
               variant={button.style ?? 'outline'}
