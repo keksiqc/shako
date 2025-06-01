@@ -22,7 +22,7 @@ const config = await getConfig()
 <Layout title={config?.page.title || 'Shako - Error'}>
   {
   !config
-    ? <ErrorPage error={'Failed to load configuration'} />
+    ? <ErrorPage error="Failed to load configuration" />
     : (
       <main class="items-center justify-center p-4">
         <Background
