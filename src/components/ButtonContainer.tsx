@@ -1,6 +1,6 @@
 import type { ParsedConfig } from '@/types'
 import { Button } from '@/components/ui/button'
-import { SocialIcon } from '@/components/ui/social-icon'
+import { Icon } from '@/components/ui/icon'
 
 export function ButtonContainer({ config }: { config: ParsedConfig }) {
   return (
@@ -17,7 +17,7 @@ export function ButtonContainer({ config }: { config: ParsedConfig }) {
               asChild
             >
               <a href={button.url} target="_blank" rel="noopener noreferrer">
-                <SocialIcon icon={button.icon} />
+                <Icon icon={button.icon} />
               </a>
             </Button>
           ))}
@@ -36,7 +36,7 @@ export function ButtonContainer({ config }: { config: ParsedConfig }) {
               asChild
             >
               <a href={button.url} target="_blank" rel="noopener noreferrer">
-                <SocialIcon icon={button.icon} className="mr-2" />
+                <Icon icon={button.icon} className="mr-2" />
                 {button.label}
               </a>
             </Button>
