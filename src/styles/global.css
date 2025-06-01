@@ -117,3 +117,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  html {
+    font-family: 'Geist Sans', system-ui, sans-serif;
+  }
+  a {
+    font-family: 'Geist Mono', monospace;
+  }
+}
