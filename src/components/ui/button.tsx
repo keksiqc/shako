@@ -1,6 +1,6 @@
 import type { VariantProps } from 'class-variance-authority'
-import { Slot as SlotPrimitive } from 'radix-ui'
 import { cva } from 'class-variance-authority'
+import { Slot as SlotPrimitive } from 'radix-ui'
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
