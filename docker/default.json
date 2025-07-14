@@ -1,23 +1,23 @@
 {
-	"apps": {
-		"http": {
-			"servers": {
+  "apps": {
+    "http": {
+      "servers": {
         "health": {
-					"listen": ["127.0.0.1:3000"],
-					"routes": [
-						{
-							"handle": [{
-								"handler": "static_response",
-								"status_code": 200
-							}]
-						}
-					]
-				},
-				"shako": {
-					"listen": [":80", ":443"],
-					"routes": [
-						{
-							"handle": [
+          "listen": ["127.0.0.1:3000"],
+          "routes": [
+            {
+              "handle": [{
+                "handler": "static_response",
+                "status_code": 200
+              }]
+            }
+          ]
+        },
+        "shako": {
+          "listen": [":80", ":443"],
+          "routes": [
+            {
+              "handle": [
                 {
                   "encodings": {
                     "gzip": {}
@@ -32,13 +32,13 @@
                   "root": "/caddy/var"
                 }
               ]
-						}
-					]
-				}
-			}
-		}
-	},
-  "storage":{
+            }
+          ]
+        }
+      }
+    }
+  },
+  "storage": {
     "module": "file_system",
     "root": "/caddy/var"
   }
