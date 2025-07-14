@@ -24,35 +24,15 @@ COPY tsconfig.json ./
 RUN bun run build
 
 # Production stage
-FROM caddy:2.10.0-alpine
-
-# Create non-root user
-RUN addgroup -S shako && \
-    adduser -S -G shako -h /home/shako shako
-
-# Copy Caddy configuration
-COPY ./docker/Caddyfile /etc/caddy/Caddyfile
+FROM 11notes/caddy:2.10.0
 
 # Copy built assets from builder
-COPY --from=builder /app/dist /usr/share/caddy/html
-
-# Install required packages and set permissions for Caddy
-RUN apk add --no-cache libcap && \
-    chown -R shako:shako /usr/share/caddy && \
-    chown -R shako:shako /etc/caddy && \
-    chmod -R 755 /usr/share/caddy && \
-    chmod -R 755 /etc/caddy && \
-    setcap 'cap_net_bind_service=+ep' /usr/bin/caddy
-
-# Switch to non-root user
-USER shako
-
-# Configure healthcheck
-HEALTHCHECK --interval=30s --timeout=3s \
-  CMD wget --quiet --tries=1 --spider http://localhost:80/ || exit 1
+COPY --from=builder /app/dist /caddy/var/
+COPY ./docker/default.json /caddy/etc/default.json
 
 # Expose port
-EXPOSE 80
+EXPOSE 80 443
 
 # Start Caddy
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
+ENTRYPOINT ["/usr/local/bin/caddy"]
+CMD ["run", "--config", "/caddy/etc/default.json"]
