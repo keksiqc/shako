@@ -14,10 +14,13 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version: 1.2.18
 
       - name: Cache Bun dependencies
         uses: actions/cache@v4
@@ -29,6 +32,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-bun-
 
-      - run: bun install --frozen-lockfile
-      - run: bun run check
-      - run: bun run lint
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Astro check
+        run: bun run check
+
+      - name: Lint with ESLint
+        run: bun run lint
