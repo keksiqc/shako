@@ -1,5 +1,5 @@
 # Build stage
-FROM oven/bun:alpine AS builder
+FROM oven/bun:1.2-alpine AS builder
 
 # Add build arguments
 ARG NODE_ENV=production
