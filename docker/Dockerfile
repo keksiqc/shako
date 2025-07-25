@@ -1,7 +1,5 @@
 # Build stage
-FROM alpine:3.22 AS builder
-
-RUN apk --update --no-cache add bun;
+FROM oven/bun:1.2-alpine AS builder
 
 # Add build arguments
 ARG NODE_ENV=production
