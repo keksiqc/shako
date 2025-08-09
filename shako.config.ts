@@ -70,9 +70,9 @@ const config: Config = {
         url: 'https://anilist.co/user/keksi',
       },
       {
-        label: 'Trakt',
-        icon: 'trakt',
-        url: 'https://trakt.tv/users/keksiqc',
+        label: 'Simkl',
+        icon: 'simkl',
+        url: 'https://simkl.com/7534025',
       },
     ],
   },
