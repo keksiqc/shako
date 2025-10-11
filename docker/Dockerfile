@@ -1,5 +1,5 @@
 # Build stage
-FROM oven/bun:1.3-alpine AS builder
+FROM oven/bun:1.3-alpine@sha256:37e6b1cbe053939bccf6ae4507977ed957eaa6e7f275670b72ad6348e0d2c11f AS builder
 
 # Add build arguments
 ARG NODE_ENV=production
@@ -24,7 +24,7 @@ COPY tsconfig.json ./
 RUN bun run build
 
 # Production stage
-FROM 11notes/caddy:2.10.0
+FROM 11notes/caddy:2.10.0@sha256:d3739d44070d9eb0f0c09d8a207ba124553abc385f31c6278ba657d50f969113
 
 # Copy built assets from builder
 COPY --from=builder /app/dist /caddy/var/
