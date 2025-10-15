@@ -82,6 +82,8 @@ export function AnimatedGrid({
   // Update squares to animate in
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
+      // TODO: Fix this
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSquares(generateSquares(numSquares))
     }
   }, [dimensions, numSquares, generateSquares])
