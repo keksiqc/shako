@@ -1,5 +1,5 @@
 # Build stage
-FROM oven/bun:1.3-alpine@sha256:37e6b1cbe053939bccf6ae4507977ed957eaa6e7f275670b72ad6348e0d2c11f AS builder
+FROM oven/bun:1.3-alpine@sha256:514fe15804f8ad3772ba323c2298daf121bb4b42386e2522998de5e87f16a94c AS builder
 
 # Add build arguments
 ARG NODE_ENV=production
