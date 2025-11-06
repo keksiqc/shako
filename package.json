@@ -15,13 +15,13 @@
     "up": "taze major -I"
   },
   "dependencies": {
-    "@astrojs/react": "^4.4.0",
+    "@astrojs/react": "^4.4.1",
     "@fontsource/geist-mono": "^5.2.7",
     "@fontsource/geist-sans": "^5.2.5",
-    "@iconify-json/simple-icons": "^1.2.56",
+    "@iconify-json/simple-icons": "^1.2.57",
     "@iconify/react": "^6.0.2",
     "@tailwindcss/vite": "^4.1.16",
-    "astro": "^5.15.1",
+    "astro": "^5.15.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.552.0",
