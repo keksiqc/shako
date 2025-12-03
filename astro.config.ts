@@ -1,4 +1,3 @@
-import cloudflare from '@astrojs/cloudflare'
 import react from '@astrojs/react'
 import playformCompress from '@playform/compress'
 import tailwindcss from '@tailwindcss/vite'
@@ -11,10 +10,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  adapter: cloudflare({
-    imageService: 'compile',
-  }),
-  output: 'server',
   integrations: [react(), playformCompress()],
   redirects: config.page.redirects,
 })
