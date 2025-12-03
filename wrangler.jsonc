@@ -1,5 +1,7 @@
 {
   "name": "shako",
   "compatibility_date": "2025-12-03",
-  "pages_build_output_dir": "./dist"
+  "assets": {
+    "directory": "./dist"
+  }
 }
