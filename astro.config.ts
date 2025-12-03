@@ -11,7 +11,10 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    imageService: 'compile',
+  }),
+  output: 'server',
   integrations: [react(), playformCompress()],
   redirects: config.page.redirects,
 })
