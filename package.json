@@ -35,7 +35,7 @@
     "use-lanyard": "^1.7.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "6.6.1",
+    "@antfu/eslint-config": "6.7.1",
     "@astrojs/check": "0.9.6",
     "@astrojs/ts-plugin": "1.10.6",
     "@eslint-react/eslint-plugin": "2.3.13",
@@ -45,7 +45,7 @@
     "@types/react-dom": "19.2.3",
     "astro-eslint-parser": "1.2.2",
     "c12": "3.3.2",
-    "eslint": "9.39.1",
+    "eslint": "9.39.2",
     "eslint-plugin-astro": "1.5.0",
     "eslint-plugin-format": "1.1.0",
     "eslint-plugin-react-hooks": "7.0.1",
