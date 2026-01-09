@@ -47,7 +47,7 @@
     "c12": "3.3.3",
     "eslint": "9.39.2",
     "eslint-plugin-astro": "1.5.0",
-    "eslint-plugin-format": "1.1.0",
+    "eslint-plugin-format": "1.2.0",
     "eslint-plugin-react-hooks": "7.0.1",
     "eslint-plugin-react-refresh": "0.4.26",
     "eslint-plugin-tailwindcss": "4.0.0-beta.0",
