@@ -1,6 +1,7 @@
 'use client'
 
-import React, {
+import * as React from 'react'
+import {
   useCallback,
   useEffect,
   useMemo,
