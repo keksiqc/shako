@@ -140,7 +140,7 @@ primary?: [
 
 ### Supported Icons
 
-See [Simple Icons](https://simpleicons.org/) for a list of supported icons.
+See [Simple Icons](https://simpleicons.org) for a list of supported icons.
 
 ### Example Configuration
 
@@ -161,7 +161,7 @@ const config: Config = {
     // bio: 'Software Engineer',  // Optional
   },
   api: {
-    lanyardUrl: 'https://api.lanyard.rest/',
+    lanyardUrl: 'https://api.lanyard.rest',
   },
   links: {
     social: [
