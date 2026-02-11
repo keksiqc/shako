@@ -1,5 +1,5 @@
 import react from '@astrojs/react'
-import playformCompress from '@playform/compress'
+import compress from '@playform/compress'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
 
@@ -10,6 +10,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  integrations: [react(), playformCompress()],
+  integrations: [react(), compress()],
   redirects: config.page.redirects,
 })
