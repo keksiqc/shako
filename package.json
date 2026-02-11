@@ -46,7 +46,7 @@
     "astro-eslint-parser": "1.2.2",
     "c12": "4.0.0-beta.2",
     "eslint": "10.0.0",
-    "eslint-config-hyoban": "^6.0.0-beta.17",
+    "eslint-config-hyoban": "6.0.0-beta.17",
     "eslint-plugin-astro": "1.5.0",
     "eslint-plugin-format": "1.4.0",
     "eslint-plugin-react-hooks": "7.0.1",
