@@ -2,6 +2,7 @@
 import { defineConfig } from 'eslint-config-hyoban'
 
 export default defineConfig({
+  ignores: ['README.md'],
   stylistic: true,
   react: true,
   astro: true,

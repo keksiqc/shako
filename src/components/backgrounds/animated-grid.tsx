@@ -24,7 +24,7 @@ export type AnimatedGridPatternProps = {
   height?: number
   x?: number
   y?: number
-  strokeDasharray?: any
+  strokeDasharray?: string | number
   numSquares?: number
   maxOpacity?: number
   duration?: number
@@ -79,9 +79,8 @@ export function AnimatedGrid({
   // Update squares to animate in
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
-      // TODO: Fix this
-
-      setSquares(generateSquares(numSquares))
+      const next = generateSquares(numSquares)
+      requestAnimationFrame(() => setSquares(next))
     }
   }, [dimensions, numSquares, generateSquares])
 

@@ -200,7 +200,7 @@ bun run build
 
 2. Deploy the `dist` directory to your preferred hosting platform.
 
-Follow the official [Astro deployment guide](https://docs.astro.build/en/guides/deploy/) for platform-specific instructions.
+Follow the official [Astro deployment guide](https://docs.astro.build/en/guides/deploy) for platform-specific instructions.
 
 ## License
 
