@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 
-interface CustomBackgroundProps {
+type CustomBackgroundProps = {
   customCSS?: Record<string, string>
   preset?: {
     type: 'image' | 'color' | 'gradient'

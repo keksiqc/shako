@@ -24,7 +24,7 @@ Key features:
 
 ## Quick Start
 
-```bash
+```sh
 git clone https://github.com/keksiqc/shako
 cd shako
 bun install
@@ -37,7 +37,7 @@ All configuration is done through the `shako.config.ts` file. Here's a comprehen
 
 ### Page Configuration
 
-```typescript
+```ts
 page: {
   title: string,           // Page title shown in browser tab
   footer: boolean | string, // Show footer (true/false) or custom footer text
@@ -49,7 +49,7 @@ page: {
 
 #### Redirects
 You can redirect paths to other URLs.
-```typescript
+```ts
 redirects: {
   '/discord': 'https://discord.gg/keksi',
 }
@@ -68,7 +68,7 @@ You can use predefined backgrounds or create custom ones:
 - `'none'` - No background pattern
 
 **Custom backgrounds:**
-```typescript
+```ts
 background: {
   type: 'image' | 'color' | 'gradient' | 'custom',
   value: string | GradientConfig | Record<string, string>
@@ -76,7 +76,7 @@ background: {
 ```
 
 **Gradient example:**
-```typescript
+```ts
 background: {
   type: 'gradient',
   value: {
@@ -89,7 +89,7 @@ background: {
 
 ### User Configuration
 
-```typescript
+```ts
 user: {
   name?: string,        // Display name (overrides Discord username if set)
   avatar?: string,      // Avatar URL (overrides Discord avatar if set)
@@ -102,7 +102,7 @@ user: {
 
 ### API Configuration
 
-```typescript
+```ts
 api: {
   lanyardUrl: string // Lanyard API endpoint (default: 'https://api.lanyard.rest/')
 }
@@ -113,7 +113,7 @@ api: {
 #### Social Links
 Small icon buttons displayed at the top of the page:
 
-```typescript
+```ts
 social?: [
   {
     icon: string,                    // Icon name (see supported icons below)
@@ -126,7 +126,7 @@ social?: [
 #### Primary Links
 Large featured buttons for main links:
 
-```typescript
+```ts
 primary?: [
   {
     label: string,                   // Button text
@@ -144,7 +144,7 @@ See [Simple Icons](https://simpleicons.org/) for a list of supported icons.
 
 ### Example Configuration
 
-```typescript
+```ts
 import type { Config } from '@/types'
 
 const config: Config = {
@@ -194,7 +194,7 @@ export default config
 To deploy Shakō:
 
 1. Build the project:
-```bash
+```sh
 bun run build
 ```
 

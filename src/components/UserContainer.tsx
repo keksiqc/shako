@@ -1,9 +1,10 @@
 import type { Types } from '@prequist/lanyard'
-import type { ParsedConfig } from '@/types'
 import { memo } from 'react'
 import { useLanyard } from 'use-lanyard'
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Skeleton } from '@/components/ui/skeleton'
+import type { ParsedConfig } from '@/types'
 
 function UserContainerBase({ config }: { config: ParsedConfig | null }) {
   // Only call the hook when we have a valid discordId

@@ -1,6 +1,7 @@
-import type { ParsedConfig } from '@/types'
 import { loadConfig } from 'c12'
 import * as v from 'valibot'
+
+import type { ParsedConfig } from '@/types'
 import { configSchema } from '@/types'
 
 export async function getConfig(): Promise<ParsedConfig | null> {

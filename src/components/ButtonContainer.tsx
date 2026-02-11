@@ -1,6 +1,6 @@
-import type { ParsedConfig } from '@/types'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
+import type { ParsedConfig } from '@/types'
 
 export function ButtonContainer({ config }: { config: ParsedConfig }) {
   return (

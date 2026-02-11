@@ -1,14 +1,15 @@
 import { lazy, Suspense } from 'react'
+
 import { cn } from '@/lib/utils'
 
 // Lazy load the Icon component
 const IconComponent = lazy(() => import('@iconify/react').then(mod => ({ default: mod.Icon })))
 
-interface IconProps extends React.HTMLAttributes<HTMLDivElement> {
+type IconProps = {
   icon: string
   size?: 'sm' | 'md' | 'lg'
   fallbackClassName?: string
-}
+} & React.HTMLAttributes<HTMLDivElement>
 
 const sizeClasses = {
   sm: 'size-4',

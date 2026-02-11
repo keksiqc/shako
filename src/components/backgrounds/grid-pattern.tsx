@@ -2,7 +2,7 @@ import { useId } from 'react'
 
 import { cn } from '@/lib/utils'
 
-interface GridPatternProps extends React.SVGProps<SVGSVGElement> {
+type GridPatternProps = {
   width?: number
   height?: number
   x?: number
@@ -11,7 +11,7 @@ interface GridPatternProps extends React.SVGProps<SVGSVGElement> {
   strokeDasharray?: string
   className?: string
   [key: string]: unknown
-}
+} & React.SVGProps<SVGSVGElement>
 
 export function GridPattern({
   width = 40,

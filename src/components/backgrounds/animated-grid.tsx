@@ -1,10 +1,9 @@
 'use client'
 
+import { motion } from 'motion/react'
 import type {
   ComponentPropsWithoutRef,
 } from 'react'
-import { motion } from 'motion/react'
-
 import {
   useCallback,
   useEffect,
@@ -12,15 +11,15 @@ import {
   useRef,
   useState,
 } from 'react'
+
 import { cn } from '@/lib/utils'
 
-interface Square {
+type Square = {
   id: string
   pos: [number, number]
 }
 
-export interface AnimatedGridPatternProps
-  extends ComponentPropsWithoutRef<'svg'> {
+export type AnimatedGridPatternProps = {
   width?: number
   height?: number
   x?: number
@@ -30,7 +29,7 @@ export interface AnimatedGridPatternProps
   maxOpacity?: number
   duration?: number
   repeatDelay?: number
-}
+} & ComponentPropsWithoutRef<'svg'>
 
 export function AnimatedGrid({
   width = 40,
@@ -74,9 +73,7 @@ export function AnimatedGrid({
               ...sq,
               pos: getPos(),
             }
-          : sq,
-      ),
-    )
+          : sq))
   }, [getPos])
 
   // Update squares to animate in
