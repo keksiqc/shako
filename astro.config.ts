@@ -15,6 +15,7 @@ export default defineConfig({
   integrations: [react(), compress()],
   redirects: config.page.redirects,
 
+  output: 'server',
   adapter: node({
     mode: 'standalone',
   }),
