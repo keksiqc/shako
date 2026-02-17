@@ -1,20 +1,12 @@
-import { loadConfig } from 'c12'
 import * as v from 'valibot'
 
 import type { ParsedConfig } from '@/types'
 import { configSchema } from '@/types'
 
+import shakoConfig from '../../shako.config'
+
 export async function getConfig(): Promise<ParsedConfig | null> {
-  const config = await loadConfig({
-    name: 'shako',
-  })
-
-  if (!config) {
-    console.error('No configuration found')
-    return null
-  }
-
-  const result = v.safeParse(configSchema, config.config)
+  const result = v.safeParse(configSchema, shakoConfig)
 
   if (result.success) {
     return result.output
