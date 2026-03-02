@@ -1,5 +1,6 @@
 {
   // Disable the default formatter, use eslint instead
+  "oxc.enable": false,
   "biome.enabled": false,
   "prettier.enable": false,
   "editor.formatOnSave": false,
