@@ -1,6 +1,8 @@
 import type { Types } from '@prequist/lanyard'
 import * as v from 'valibot'
 
+const SNOWFLAKE_REGEX = /^\d{17,19}$/
+
 export const configSchema = v.object({
   page: v.object({
     title: v.optional(v.string(), 'Shako'),
@@ -24,8 +26,7 @@ export const configSchema = v.object({
     avatar: v.optional(v.pipe(v.string(), v.url())),
     bio: v.optional(v.string()),
     discordId: v.custom<Types.Snowflake>((value) => {
-      const snowflakeRegex = /^\d{17,19}$/
-      return typeof value === 'string' && snowflakeRegex.test(value)
+      return typeof value === 'string' && SNOWFLAKE_REGEX.test(value)
     }),
   }),
   api: v.optional(v.object({
