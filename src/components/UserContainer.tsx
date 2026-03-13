@@ -6,13 +6,18 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Skeleton } from '@/components/ui/skeleton'
 import type { ParsedConfig } from '@/types'
 
+const PROTOCOL_PREFIX_REGEX = /^https?:\/\//
+const TRAILING_SLASH_REGEX = /\/$/
+
 function UserContainerBase({ config }: { config: ParsedConfig | null }) {
   // Only call the hook when we have a valid discordId
   const { data, error, isLoading } = useLanyard(
     config?.user?.discordId as Types.Snowflake,
     {
       api: {
-        hostname: config?.api?.lanyardUrl?.replace(/^https?:\/\//, '').replace(/\/$/, '') || 'api.lanyard.rest',
+        hostname:
+          config?.api?.lanyardUrl?.replace(PROTOCOL_PREFIX_REGEX, '').replace(TRAILING_SLASH_REGEX, '')
+          || 'api.lanyard.rest',
         secure: true,
       },
     },
