@@ -50,7 +50,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
         return 'rgba(255, 0, 0,'
       ctx.fillStyle = color
       ctx.fillRect(0, 0, 1, 1)
-      const [r, g, b] = Array.from(ctx.getImageData(0, 0, 1, 1).data)
+      const [r, g, b] = [...ctx.getImageData(0, 0, 1, 1).data]
       return `rgba(${r}, ${g}, ${b},`
     }
     return toRGBA(color)
