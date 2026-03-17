@@ -24,7 +24,7 @@ COPY tsconfig.json ./
 RUN bun run build
 
 # Production stage
-FROM 11notes/caddy:2.10.0@sha256:d3739d44070d9eb0f0c09d8a207ba124553abc385f31c6278ba657d50f969113
+FROM 11notes/caddy:2.11.2@sha256:aef39d8634d6c3bb62c021e3ead0d6d753614296cb04f6b831291ca5c2449aa0
 
 # Copy built assets from builder
 COPY --from=builder /app/dist /caddy/var/
