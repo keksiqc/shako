@@ -2,3 +2,6 @@ site_name: Shakō Docs
 site_url: https://docs.shako.me
 theme:
   name: material
+
+repo_name: keksiqc/shako
+repo_url: https://github.com/keksiqc/shako
