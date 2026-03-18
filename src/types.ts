@@ -1,52 +1,6 @@
-import type { Types } from 'use-lanyard'
-import * as v from 'valibot'
+import type { z } from 'astro/zod'
 
-const SNOWFLAKE_REGEX = /^\d{17,19}$/
+import type { configSchema } from '@/lib/schemas/config.schema'
 
-export const configSchema = v.object({
-  page: v.object({
-    title: v.optional(v.string(), 'Shako'),
-    footer: v.optional(v.union([v.boolean(), v.string()]), true),
-    borderRadius: v.optional(v.number(), 0.625),
-    background: v.optional(v.union([
-      v.picklist(['dot', 'grid', 'dashed-grid', 'flickering-grid', 'animated-grid', 'none']),
-      v.object({
-        type: v.picklist(['image', 'color', 'gradient', 'custom']),
-        value: v.union([v.string(), v.object({
-          type: v.picklist(['linear', 'radial']),
-          colors: v.array(v.string()),
-          direction: v.number(),
-        }), v.record(v.string(), v.string())]),
-      }),
-    ]), 'none'),
-    redirects: v.optional(v.record(v.string(), v.string()), {}),
-  }),
-  user: v.object({
-    name: v.optional(v.string()),
-    avatar: v.optional(v.pipe(v.string(), v.url())),
-    bio: v.optional(v.string()),
-    discordId: v.custom<Types.Snowflake>((value) => {
-      return typeof value === 'string' && SNOWFLAKE_REGEX.test(value)
-    }),
-  }),
-  api: v.optional(v.object({
-    lanyardUrl: v.optional(v.pipe(v.string(), v.url()), 'https://api.lanyard.rest/'),
-  }), {}),
-  links: v.object({
-    social: v.optional(v.array(v.object({
-      icon: v.string(),
-      url: v.pipe(v.string(), v.url()),
-      style: v.optional(v.picklist(['default', 'destructive', 'outline', 'secondary', 'ghost', 'link']), 'secondary'),
-    })), []),
-    primary: v.optional(v.array(v.object({
-      label: v.string(),
-      icon: v.string(),
-      url: v.pipe(v.string(), v.url()),
-      style: v.optional(v.picklist(['default', 'destructive', 'outline', 'secondary', 'ghost', 'link']), 'outline'),
-      size: v.optional(v.picklist(['default', 'sm', 'lg', 'xl']), 'xl'),
-    })), []),
-  }),
-})
-
-export type Config = v.InferInput<typeof configSchema>
-export type ParsedConfig = v.InferOutput<typeof configSchema>
+export type Config = z.infer<typeof configSchema>
+export type ParsedConfig = z.output<typeof configSchema>

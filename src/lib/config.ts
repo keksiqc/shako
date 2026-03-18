@@ -1,8 +1,8 @@
+import { z } from 'astro/zod'
 import { loadConfig } from 'c12'
-import * as v from 'valibot'
 
+import { configSchema } from '@/lib/schemas/config.schema'
 import type { ParsedConfig } from '@/types'
-import { configSchema } from '@/types'
 
 export async function getConfig(): Promise<ParsedConfig | null> {
   const config = await loadConfig({
@@ -14,13 +14,13 @@ export async function getConfig(): Promise<ParsedConfig | null> {
     return null
   }
 
-  const result = v.safeParse(configSchema, config.config)
+  const result = configSchema.safeParse(config.config)
 
   if (result.success) {
-    return result.output
+    return result.data
   }
   else {
-    console.error(v.summarize(result.issues))
+    console.error(z.treeifyError(result.error))
     return null
   }
 }
