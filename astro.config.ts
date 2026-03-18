@@ -11,5 +11,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   integrations: [react(), compress()],
-  redirects: config.page.redirects,
+  redirects: config.page?.redirects ?? {},
 })
