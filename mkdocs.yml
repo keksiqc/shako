@@ -1,0 +1,4 @@
+site_name: Shakō Docs
+site_url: https://docs.shako.me
+theme:
+  name: material
