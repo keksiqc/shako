@@ -1,4 +1,4 @@
-name: ci
+name: docs
 
 on:
   push:
@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - 'docs/**'
+      - 'mkdocs.yml'
+  workflow_dispatch:
 
 permissions:
   contents: write
