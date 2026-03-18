@@ -42,7 +42,7 @@ export const configSchema = z.object({
     borderRadius: z.number().default(0.625).optional(),
     background: backgroundSchema.default('none').optional(),
     redirects: z.record(z.string(), z.string()).default({}).optional(),
-  }).optional(),
+  }),
   user: z.object({
     name: z.string().optional(),
     avatar: z.url().optional(),
