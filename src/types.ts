@@ -1,4 +1,4 @@
-import type { Types } from '@prequist/lanyard'
+import type { Types } from 'use-lanyard'
 import * as v from 'valibot'
 
 const SNOWFLAKE_REGEX = /^\d{17,19}$/

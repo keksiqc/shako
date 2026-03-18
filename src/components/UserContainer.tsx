@@ -1,5 +1,5 @@
-import type { Types } from '@prequist/lanyard'
 import { memo } from 'react'
+import type { Types } from 'use-lanyard'
 import { useLanyard } from 'use-lanyard'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
