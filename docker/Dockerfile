@@ -1,17 +1,18 @@
 # Build stage
-FROM oven/bun:1.3-alpine@sha256:7ed9f74c326d1c260abe247ac423ccbf5ac92af62bb442d515d1f92f21e8ea9b AS builder
+FROM oven/bun:1.3-alpine@sha256:7ed9f74c326d1c260abe247ac423ccbf5ac92af62bb442d515d1f92f21e8ea9b AS base
 
+FROM base AS builder
 # Add build arguments
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 
-WORKDIR /app
+WORKDIR /tmp/build
 
 # Copy package files first
 COPY package.json bun.lock ./
 
 # Install dependencies with specific flags for production
-RUN bun install --frozen-lockfile --filter .
+RUN bun install --frozen-lockfile
 
 # Copy only necessary source files
 COPY src/ ./src/
@@ -20,19 +21,25 @@ COPY shako.config.ts ./
 COPY astro.config.ts ./
 COPY tsconfig.json ./
 
+# Set node adapter
+RUN bun run astro add node -y
+
 # Build the application
 RUN bun run build
 
 # Production stage
-FROM 11notes/caddy:2.11.2@sha256:aef39d8634d6c3bb62c021e3ead0d6d753614296cb04f6b831291ca5c2449aa0
+FROM base AS runner
 
-# Copy built assets from builder
-COPY --from=builder /app/dist /caddy/var/
-COPY ./docker/default.json /caddy/etc/default.json
+WORKDIR /app
+COPY --from=builder /tmp/build/dist ./dist
 
-# Expose port
-EXPOSE 80 443
+ENV NODE_ENV=production
+ENV HOST=0.0.0.0
+ENV PORT=3000
 
-# Start Caddy
-ENTRYPOINT ["/usr/local/bin/caddy"]
-CMD ["run", "--config", "/caddy/etc/default.json"]
+EXPOSE 3000
+
+USER bun
+
+ENTRYPOINT ["bun"]
+CMD ["run", "./dist/server/entry.mjs"]
