@@ -5,11 +5,21 @@ on:
     branches:
       - main
     tags:
-      - 'v*'
+      - 'v*.*.*'
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.json'
   pull_request:
     branches:
       - main
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.json'
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -42,7 +52,7 @@ jobs:
             type=raw,value={{sha}},enable=${{ github.ref_type != 'tag' }}
 
       # https://github.com/docker/login-action
-      - name: Login to Docker Hub
+      - name: Login to GHCR
         if: github.event_name != 'pull_request'
         uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2 # v4
         with:
