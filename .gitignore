@@ -1,3 +1,6 @@
+# mkdocs
+site/
+
 # build output
 dist/
 
