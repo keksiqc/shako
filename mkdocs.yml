@@ -1,7 +1,28 @@
 site_name: Shakō Docs
 site_url: https://docs.shako.me
-theme:
-  name: material
 
 repo_name: keksiqc/shako
 repo_url: https://github.com/keksiqc/shako
+
+theme:
+  name: material
+  features:
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+  palette:
+    - media: (prefers-color-scheme)
+      toggle:
+        icon: lucide/sun-moon
+        name: Switch to light mode
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      toggle:
+        icon: lucide/sun
+        name: Switch to dark mode
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      toggle:
+        icon: lucide/moon-star
+        name: Switch to system preference
