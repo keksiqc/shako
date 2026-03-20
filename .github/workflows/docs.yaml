@@ -28,7 +28,7 @@ jobs:
           python-version: '3.14'
 
       - name: Build documentation
-        run: uvx run zensical build --clean
+        run: uvx zensical build --clean
 
       - name: Upload documentation artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
