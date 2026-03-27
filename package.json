@@ -17,13 +17,13 @@
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
-    "@astrojs/react": "5.0.1",
+    "@astrojs/react": "5.0.2",
     "@fontsource/geist-mono": "^5.2.7",
     "@fontsource/geist-sans": "^5.2.5",
     "@iconify-json/simple-icons": "^1.2.75",
     "@iconify/react": "^6.0.2",
     "@tailwindcss/vite": "^4.2.2",
-    "astro": "6.0.8",
+    "astro": "6.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.7.0",
