@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "@astrojs/react": "5.0.2",
-    "@fontsource/geist-mono": "^5.2.7",
-    "@fontsource/geist-sans": "^5.2.5",
+    "@fontsource-variable/geist": "^5.2.8",
+    "@fontsource-variable/geist-mono": "^5.2.7",
     "@iconify-json/simple-icons": "^1.2.75",
     "@iconify/react": "^6.0.2",
     "@tailwindcss/vite": "^4.2.2",

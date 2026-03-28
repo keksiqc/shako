@@ -6,8 +6,8 @@
       "name": "shako",
       "dependencies": {
         "@astrojs/react": "5.0.2",
-        "@fontsource/geist-mono": "^5.2.7",
-        "@fontsource/geist-sans": "^5.2.5",
+        "@fontsource-variable/geist": "^5.2.8",
+        "@fontsource-variable/geist-mono": "^5.2.7",
         "@iconify-json/simple-icons": "^1.2.75",
         "@iconify/react": "^6.0.2",
         "@tailwindcss/vite": "^4.2.2",
@@ -256,9 +256,9 @@
 
     "@floating-ui/utils": ["@floating-ui/utils@0.2.11", "", {}, "sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg=="],
 
-    "@fontsource/geist-mono": ["@fontsource/geist-mono@5.2.7", "", {}, "sha512-xVPVFISJg/K0VVd+aQN0Y7X/sw9hUcJPyDWFJ5GpyU3bHELhoRsJkPSRSHXW32mOi0xZCUQDOaPj1sqIFJ1FGg=="],
+    "@fontsource-variable/geist": ["@fontsource-variable/geist@5.2.8", "", {}, "sha512-cJ6m9e+8MQ5dCYJsLylfZrgBh6KkG4bOLckB35Tr9J/EqdkEM6QllH5PxqP1dhTvFup+HtMRPuz9xOjxXJggxw=="],
 
-    "@fontsource/geist-sans": ["@fontsource/geist-sans@5.2.5", "", {}, "sha512-anllOHyJbElRs9fV15TeDRqAeb1IKm4bSknPl6ZMoyPTx1BBy7logudcUwpNjmQLkzn4Q0JGQLRCUKJYoyST6A=="],
+    "@fontsource-variable/geist-mono": ["@fontsource-variable/geist-mono@5.2.7", "", {}, "sha512-ZKlZ5sjtalb2TwXKs400mAGDlt/+2ENLNySPx0wTz3bP3mWARCsUW+rpxzZc7e05d2qGch70pItt3K4qttbIYA=="],
 
     "@henrygd/queue": ["@henrygd/queue@1.2.0", "", {}, "sha512-jW/BLSTpcvExDhqJGxtIPgGr2O0IFF8XUNDwEbfCfhrXT8a4xztQ9Lv6U/vbYzYC0xVWn+3zv6YnLUh3bEFUKA=="],
 

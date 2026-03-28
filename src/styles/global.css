@@ -120,9 +120,9 @@
 
 @layer utilities {
   html {
-    font-family: 'Geist Sans', system-ui, sans-serif;
+    font-family: 'Geist Variable', system-ui, sans-serif;
   }
   a {
-    font-family: 'Geist Mono', monospace;
+    font-family: 'Geist Mono Variable', monospace;
   }
 }
