@@ -23,7 +23,7 @@
     "@iconify-json/simple-icons": "^1.2.75",
     "@iconify/react": "^6.0.2",
     "@tailwindcss/vite": "^4.2.2",
-    "astro": "6.1.1",
+    "astro": "6.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.7.0",
