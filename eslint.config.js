@@ -1,13 +1,17 @@
 // eslint.config.js
-import { defineConfig } from 'eslint-config-hyoban'
+import { antfu } from '@antfu/eslint-config'
+import tailwindcss from 'eslint-plugin-better-tailwindcss'
 
-export default defineConfig({
-  ignores: ['README.md', '.agents/**', 'docs/**/*.md'],
+export default antfu({
   stylistic: true,
   react: true,
   astro: true,
-  tailwindcss: {
-    settings: {
+}, {
+  extends: [
+    tailwindcss.configs.recommended,
+  ],
+  settings: {
+    'better-tailwindcss': {
       entryPoint: 'src/styles/global.css',
     },
   },

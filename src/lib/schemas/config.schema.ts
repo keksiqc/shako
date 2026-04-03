@@ -1,5 +1,5 @@
 import type { Types } from 'use-lanyard'
-import { z } from 'zod/v4'
+import { z } from 'astro/zod'
 
 const SNOWFLAKE_REGEX = /^\d{17,19}$/
 
