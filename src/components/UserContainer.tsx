@@ -1,10 +1,10 @@
-import { memo } from 'react'
 import type { Types } from 'use-lanyard'
-import { useLanyard } from 'use-lanyard'
+import type { ParsedConfig } from '@/types'
+import { memo } from 'react'
 
+import { useLanyard } from 'use-lanyard'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Skeleton } from '@/components/ui/skeleton'
-import type { ParsedConfig } from '@/types'
 
 const PROTOCOL_PREFIX_REGEX = /^https?:\/\//
 const TRAILING_SLASH_REGEX = /\/$/

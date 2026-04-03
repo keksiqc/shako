@@ -3,6 +3,7 @@ import { antfu } from '@antfu/eslint-config'
 import tailwindcss from 'eslint-plugin-better-tailwindcss'
 
 export default antfu({
+  ignores: ['README.md'],
   stylistic: true,
   react: true,
   astro: true,

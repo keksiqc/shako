@@ -1,15 +1,15 @@
 ---
-import '../styles/global.css'
-
 import Background from '@/components/Background.astro'
+
 import { ButtonContainer } from '@/components/ButtonContainer'
 import ErrorPage from '@/components/ErrorPage.astro'
 import Footer from '@/components/Footer.astro'
 import { ModeToggle } from '@/components/ModeToggle'
 import { UserContainer } from '@/components/UserContainer'
 import { getConfig } from '@/lib/config'
-
 import Layout from '../layouts/Layout.astro'
+
+import '../styles/global.css'
 
 // Load configuration
 const config = await getConfig()

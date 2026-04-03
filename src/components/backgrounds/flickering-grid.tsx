@@ -189,7 +189,10 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   return (
     <div
       ref={containerRef}
-      className={cn(`fixed inset-0 z-[-1] size-full h-full w-full border border-background ${className}`)}
+      className={cn(`
+        fixed inset-0 z-[-1] size-full h-full w-full border border-background
+        ${className}
+      `)}
       {...props}
     >
       <canvas

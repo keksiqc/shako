@@ -1,13 +1,16 @@
+import type { ParsedConfig } from '@/types'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/components/ui/icon'
-import type { ParsedConfig } from '@/types'
 
 export function ButtonContainer({ config }: { config: ParsedConfig }) {
   return (
     <nav className="flex flex-col gap-3" aria-label="Social Links">
       {/* icon buttons */}
       {config.links.social && config.links.social.length > 0 && (
-        <div className="m-auto flex items-center justify-center gap-3 bg-background">
+        <div className="
+          m-auto flex items-center justify-center gap-3 bg-background
+        "
+        >
           {config.links.social.map(button => (
             <Button
               variant={button.style ?? 'secondary'}

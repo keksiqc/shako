@@ -15,7 +15,11 @@ if (footerConfig === false) {
 const isCustomContent = typeof footerConfig === 'string'
 ---
 
-<footer class="bottom-0 my-12 flex w-full flex-col items-center justify-center gap-2 text-sm text-muted-foreground">
+<footer class="
+  bottom-0 my-12 flex w-full flex-col items-center justify-center gap-2 text-sm
+  text-muted-foreground
+"
+>
   <div class="flex items-center justify-center gap-1">
     {isCustomContent
   ? (
@@ -28,7 +32,10 @@ const isCustomContent = typeof footerConfig === 'string'
         <Heart size={20} />
         by
         <a
-          class="ml-1 rounded bg-muted px-[0.3rem] py-[0.2rem] hover:underline"
+          class="
+            ml-1 rounded-sm bg-muted px-[0.3rem] py-[0.2rem]
+            hover:underline
+          "
           href="https://github.com/keksiqc"
         >
           @keksiqc
@@ -37,7 +44,10 @@ const isCustomContent = typeof footerConfig === 'string'
     )}
   </div>
   <a
-    class="rounded bg-muted px-[0.3rem] py-[0.2rem] hover:underline"
+    class="
+      rounded-sm bg-muted px-[0.3rem] py-[0.2rem]
+      hover:underline
+    "
     href="https://github.com/keksiqc/shako"
   >
     GitHub
