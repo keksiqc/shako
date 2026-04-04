@@ -44,7 +44,7 @@
         "prettier": "3.8.1",
         "prettier-plugin-astro": "0.14.1",
         "simple-git-hooks": "2.13.1",
-        "taze": "19.10.0",
+        "taze": "19.11.0",
         "tw-animate-css": "1.4.0",
         "typescript": "6.0.2",
       },
@@ -55,7 +55,7 @@
 
     "@antfu/install-pkg": ["@antfu/install-pkg@1.1.0", "", { "dependencies": { "package-manager-detector": "^1.3.0", "tinyexec": "^1.0.1" } }, "sha512-MGQsmw10ZyI+EJo45CdSER4zEb+p31LpDAFp2Z3gkSd1yqVZGi0Ebx++YTEMonJy4oChEMLsxZ64j8FH6sSqtQ=="],
 
-    "@antfu/ni": ["@antfu/ni@28.3.0", "", { "dependencies": { "ansis": "^4.2.0", "fzf": "^0.5.2", "package-manager-detector": "^1.6.0", "tinyexec": "^1.0.2", "tinyglobby": "^0.2.15" }, "bin": { "na": "bin/na.mjs", "nd": "bin/nd.mjs", "ni": "bin/ni.mjs", "nr": "bin/nr.mjs", "nci": "bin/nci.mjs", "nlx": "bin/nlx.mjs", "nun": "bin/nun.mjs", "nup": "bin/nup.mjs" } }, "sha512-JbRijiCNAGcQcyPfV0EXOJYwV27e/srXfTvETqzbbh4jzHBV2pDYiBz8rj5SyzX27aTbCK+qXR3x6g2WKokcrA=="],
+    "@antfu/ni": ["@antfu/ni@30.0.0", "", { "dependencies": { "fzf": "^0.5.2", "package-manager-detector": "^1.6.0", "tinyexec": "^1.0.4", "tinyglobby": "^0.2.15" }, "bin": { "ni": "bin/ni.mjs", "nci": "bin/nci.mjs", "nr": "bin/nr.mjs", "nup": "bin/nup.mjs", "nd": "bin/nd.mjs", "nlx": "bin/nlx.mjs", "na": "bin/na.mjs", "nun": "bin/nun.mjs" } }, "sha512-DqBVB3XqXH4VsDpER7iLlEtayMC98iXrY7kwBzp1v6LGc/6U6+qnN3+X0bcPK63LMXJCRG2D/XDq7dvtKDGogg=="],
 
     "@astrojs/check": ["@astrojs/check@0.9.8", "", { "dependencies": { "@astrojs/language-server": "^2.16.5", "chokidar": "^4.0.3", "kleur": "^4.1.5", "yargs": "^17.7.2" }, "peerDependencies": { "typescript": "^5.0.0" }, "bin": { "astro-check": "bin/astro-check.js" } }, "sha512-LDng8446QLS5ToKjRHd3bgUdirvemVVExV7nRyJfW2wV36xuv7vDxwy5NWN9zqeSEDgg0Tv84sP+T3yEq+Zlkw=="],
 
@@ -1589,7 +1589,7 @@
 
     "tapable": ["tapable@2.3.2", "", {}, "sha512-1MOpMXuhGzGL5TTCZFItxCc0AARf1EZFQkGqMm7ERKj8+Hgr5oLvJOVFcC+lRmR8hCe2S3jC4T5D7Vg/d7/fhA=="],
 
-    "taze": ["taze@19.10.0", "", { "dependencies": { "@antfu/ni": "^28.2.0", "@henrygd/queue": "^1.2.0", "cac": "^7.0.0", "find-up-simple": "^1.0.1", "ofetch": "^1.5.1", "package-manager-detector": "^1.6.0", "pathe": "^2.0.3", "pnpm-workspace-yaml": "^1.6.0", "restore-cursor": "^5.1.0", "tinyexec": "^1.0.2", "tinyglobby": "^0.2.15", "unconfig": "^7.5.0", "yaml": "^2.8.2" }, "bin": { "taze": "bin/taze.mjs" } }, "sha512-pylMr+Yl8m4ZXu5LwWdtfCOJhLW69NuoeZTLtRzTekfheQ1ix5wOWjQlTb8S3SSxLlDcYFuajQOWllO5iyE0jg=="],
+    "taze": ["taze@19.11.0", "", { "dependencies": { "@antfu/ni": "^30.0.0", "@henrygd/queue": "^1.2.0", "cac": "^7.0.0", "find-up-simple": "^1.0.1", "ofetch": "^1.5.1", "package-manager-detector": "^1.6.0", "pathe": "^2.0.3", "pnpm-workspace-yaml": "^1.6.0", "restore-cursor": "^5.1.0", "tinyexec": "^1.0.4", "tinyglobby": "^0.2.15", "unconfig": "^7.5.0", "yaml": "^2.8.3" }, "bin": { "taze": "bin/taze.mjs" } }, "sha512-BlfH8Z6JdoIsrUptnz4P4YuEqdYsa/bSNNDOMhTlsHZ7Bbg1/0NyYh6uPkoRREjrt/kVovV+HYdi1ilHxvChfw=="],
 
     "terser": ["terser@5.46.0", "", { "dependencies": { "@jridgewell/source-map": "^0.3.3", "acorn": "^8.15.0", "commander": "^2.20.0", "source-map-support": "~0.5.20" }, "bin": { "terser": "bin/terser" } }, "sha512-jTwoImyr/QbOWFFso3YoU3ik0jBBDJ6JTOQiy/J2YxVJdZCc+5u7skhNwiOR3FQIygFqVUPHl7qbbxtjW2K3Qg=="],
 
