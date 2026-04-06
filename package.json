@@ -47,7 +47,7 @@
     "@types/react-dom": "19.2.3",
     "astro-eslint-parser": "1.4.0",
     "c12": "4.0.0-beta.4",
-    "eslint": "10.1.0",
+    "eslint": "10.2.0",
     "eslint-plugin-astro": "1.6.0",
     "eslint-plugin-better-tailwindcss": "4.3.2",
     "eslint-plugin-format": "2.0.1",
