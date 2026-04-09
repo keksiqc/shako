@@ -9,16 +9,15 @@
     "check": "astro check",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
-    "up": "taze major -Il",
-    "bump": "bumpp",
-    "prepare": "simple-git-hooks",
+    "docs:dev": "zensical serve",
+    "docs:build": "zensical build",
     "docker:build": "docker buildx build -f docker/Dockerfile -t ghcr.io/keksiqc/shako:latest .",
     "docker:start": "docker run -p 3000:3000 ghcr.io/keksiqc/shako:latest",
-    "docs:dev": "zensical serve",
-    "docs:build": "zensical build"
+    "up": "taze major -I -l",
+    "bump": "bumpp",
+    "prepare": "simple-git-hooks"
   },
   "dependencies": {
     "@astrojs/react": "5.0.3",
