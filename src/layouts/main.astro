@@ -1,0 +1,46 @@
+---
+import '@fontsource-variable/geist/wght.css'
+import '@fontsource-variable/geist-mono/wght.css'
+import '@/styles/globals.css'
+
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<!-- <script
+  defer
+  src="https://analytics.umicloud.de/script.js"
+  data-website-id="f6ddfbd2-7438-46ac-84ce-bf30184eb681"></script> -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <script is:inline>
+(function () {
+  const storageKey = 'theme'
+  let stored = ''
+  try {
+    if (typeof localStorage !== 'undefined') {
+      stored = localStorage.getItem(storageKey) ?? ''
+    }
+  }
+  catch {}
+  const prefersDark = window.matchMedia(
+    '(prefers-color-scheme: dark)',
+  ).matches
+  const dark
+    = stored === 'dark' || (stored !== 'light' && prefersDark)
+  document.documentElement.classList.toggle('dark', dark)
+})()
+</script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

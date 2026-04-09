@@ -18,8 +18,10 @@
   },
   "dependencies": {
     "@astrojs/react": "5.0.3",
+    "@data-slot/tabs": "^0.2.166",
     "@fontsource-variable/geist": "^5.2.8",
     "@fontsource-variable/geist-mono": "^5.2.7",
+    "@iconify-json/lucide": "^1.2.101",
     "@iconify-json/simple-icons": "^1.2.77",
     "@iconify/react": "^6.0.2",
     "@tailwindcss/vite": "^4.2.2",
@@ -31,9 +33,9 @@
     "radix-ui": "^1.4.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
+    "shadcn": "^4.2.0",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.2",
-    "tailwindcss-animate": "^1.0.7",
     "use-lanyard": "^1.7.0"
   },
   "devDependencies": {
@@ -46,6 +48,7 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "astro-eslint-parser": "1.4.0",
+    "astro-icon": "1.1.5",
     "c12": "4.0.0-beta.4",
     "eslint": "10.2.0",
     "eslint-plugin-astro": "1.7.0",
