@@ -5,12 +5,12 @@ on:
     tags:
       - 'v*.*.*'
 
-permissions:
-  contents: write
-
 jobs:
   release:
     runs-on: ubuntu-slim
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -32,7 +32,12 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Release
-        run: gh release create ${GITHUB_REF_NAME} --generate-notes
+      - name: Create GitHub release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
+            echo "Release ${GITHUB_REF_NAME} already exists; skipping"
+          else
+            gh release create "${GITHUB_REF_NAME}" --generate-notes
+          fi
