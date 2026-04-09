@@ -1,0 +1,122 @@
+---
+import { Icon } from 'astro-icon/components'
+
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+---
+
+<div class="flex items-center" data-theme-switcher-root>
+    <Tabs
+      id="theme-tabs"
+      defaultValue="auto"
+      class="theme-tabs"
+      data-theme-choice-tabs
+    >
+      <TabsList>
+        <TabsTrigger
+          value="light"
+          class="theme-tab aspect-square p-0"
+          title="Light theme"
+        >
+          <Icon name="lucide:sun" class="block size-4" />
+        </TabsTrigger>
+        <TabsTrigger
+          value="dark"
+          class="theme-tab aspect-square p-0"
+          title="Dark theme"
+        >
+          <Icon name="lucide:moon" class="size-4" />
+        </TabsTrigger>
+        <TabsTrigger
+          value="auto"
+          class="theme-tab aspect-square p-0"
+          title="Auto (system)"
+        >
+          <Icon name="lucide:laptop" class="size-4" />
+        </TabsTrigger>
+      </TabsList>
+    </Tabs>
+</div>
+
+<script is:inline>
+const storageKey = 'theme'
+
+function parseTheme(theme) {
+  return theme === 'auto' || theme === 'dark' || theme === 'light' ? theme : 'auto'
+}
+
+function loadTheme() {
+  try {
+    if (typeof localStorage !== 'undefined') {
+      const raw = localStorage.getItem(storageKey)
+      if (raw === '' || raw === null)
+        return 'auto'
+      return parseTheme(raw)
+    }
+  }
+  catch {}
+  return 'auto'
+}
+
+function storeTheme(theme) {
+  try {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(
+        storageKey,
+        theme === 'light' || theme === 'dark' ? theme : '',
+      )
+    }
+  }
+  catch {}
+}
+
+function getPreferredColorScheme() {
+  return matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+}
+
+function applyTheme(theme) {
+  const effective = theme === 'auto' ? getPreferredColorScheme() : theme
+  document.documentElement.dataset.theme = effective
+  document.documentElement.classList.remove('light', 'dark')
+  document.documentElement.classList.add(effective)
+  storeTheme(theme)
+}
+
+window.toggleTheme = theme => applyTheme(parseTheme(theme))
+
+function syncTabsUi(theme) {
+  const tabs = document.getElementById('theme-tabs')
+  if (!tabs)
+    return
+  tabs.dispatchEvent(
+    new CustomEvent('tabs:set', { detail: { value: theme }, bubbles: true }),
+  )
+}
+
+function bindThemeTabs() {
+  const tabs = document.getElementById('theme-tabs')
+  if (!tabs)
+    return
+  const current = loadTheme()
+  applyTheme(current)
+  syncTabsUi(current)
+  tabs.addEventListener('tabs:change', (e) => {
+    const value = e.detail?.value
+    if (typeof value === 'string')
+      applyTheme(parseTheme(value))
+  })
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bindThemeTabs)
+}
+else {
+  bindThemeTabs()
+}
+
+// React to system scheme changes while in 'auto'
+matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+  if (loadTheme() === 'auto')
+    applyTheme('auto')
+})
+</script>
+

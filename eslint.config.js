@@ -11,9 +11,12 @@ export default antfu({
   extends: [
     tailwindcss.configs.recommended,
   ],
+  rules: {
+    'better-tailwindcss/no-unknown-classes': 'off',
+  },
   settings: {
     'better-tailwindcss': {
-      entryPoint: 'src/styles/global.css',
+      entryPoint: 'src/styles/globals.css',
     },
   },
 })

@@ -1,15 +1,11 @@
 ---
-import Background from '@/components/Background.astro'
 
-import { ButtonContainer } from '@/components/ButtonContainer'
 import ErrorPage from '@/components/ErrorPage.astro'
 import Footer from '@/components/Footer.astro'
-import { ModeToggle } from '@/components/ModeToggle'
+import ThemeSwitcher from '@/components/theme-switcher.astro'
 import { UserContainer } from '@/components/UserContainer'
+import Layout from '@/layouts/main.astro'
 import { getConfig } from '@/lib/config'
-import Layout from '../layouts/Layout.astro'
-
-import '../styles/global.css'
 
 // Load configuration
 const config = await getConfig()
@@ -26,12 +22,9 @@ const config = await getConfig()
     ? <ErrorPage error="Failed to load configuration" />
     : (
       <main class="items-center justify-center p-4">
-        <Background
-          background={config?.page.background}
-        />
 
         <div class="absolute top-0 right-0 m-4 bg-background">
-          <ModeToggle client:only="react" />
+          <ThemeSwitcher />
         </div>
 
         <div class="m-auto max-w-md">
@@ -40,7 +33,6 @@ const config = await getConfig()
           </div>
 
           <div class="mb-6">
-            <ButtonContainer client:load config={config} />
           </div>
         </div>
 

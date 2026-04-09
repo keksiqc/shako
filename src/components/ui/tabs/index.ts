@@ -1,0 +1,6 @@
+export { default as Tabs } from './Tabs.astro'
+export { default as TabsContent } from './TabsContent.astro'
+export { tabsContentVariants } from './TabsContent.astro'
+export { default as TabsList } from './TabsList.astro'
+export { tabsListVariants } from './TabsList.astro'
+export { default as TabsTrigger } from './TabsTrigger.astro'
