@@ -1,15 +1,22 @@
-name: release
+name: Create GitHub release
 
 on:
   push:
     tags:
       - 'v*.*.*'
 
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   release:
+    name: Create GitHub release
     runs-on: ubuntu-slim
     permissions:
-      contents: write
+      contents: write # for gh release creation
 
     steps:
       - name: Checkout
