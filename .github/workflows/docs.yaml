@@ -1,4 +1,4 @@
-name: docs
+name: Build and deploy documentation
 
 on:
   push:
@@ -8,7 +8,8 @@ on:
       - 'docs/**'
       - mkdocs.yml
       - .github/workflows/docs.yaml
-  workflow_dispatch:
+
+permissions: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -16,6 +17,7 @@ concurrency:
 
 jobs:
   build-docs:
+    name: Build documentation
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -45,6 +47,7 @@ jobs:
           path: site
 
   deploy-docs:
+    name: Deploy documentation
     runs-on: ubuntu-latest
     needs: build-docs
     environment:
@@ -53,8 +56,8 @@ jobs:
 
     permissions:
       contents: read
-      pages: write
-      id-token: write
+      pages: write # for deploy-pages action
+      id-token: write # for deploy-pages action
 
     steps:
       - name: Deploy documentation
