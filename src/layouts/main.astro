@@ -1,21 +1,20 @@
 ---
-
-import { Font } from 'astro:assets';
-import '@/styles/global.css';
+import { Font } from 'astro:assets'
+import '@/styles/global.css'
 ---
 
 <Font cssVariable="--font-sans" preload />
 <Font cssVariable="--font-mono" preload />
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<title>Shako</title>
-	</head>
-	<body class="@container">
-		<slot />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>Shako</title>
+  </head>
+  <body class="@container">
+    <slot />
+  </body>
 </html>
