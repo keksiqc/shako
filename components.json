@@ -1,11 +1,11 @@
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "radix-nova",
+  "style": "base-nova",
   "rsc": false,
   "tsx": true,
   "tailwind": {
     "config": "",
-    "css": "src/styles/globals.css",
+    "css": "src/styles/global.css",
     "baseColor": "neutral",
     "cssVariables": true,
     "prefix": ""
@@ -22,6 +22,6 @@
   "menuColor": "default",
   "menuAccent": "subtle",
   "registries": {
-    "@bejamas": "https://ui.bejamas.com/r/{name}.json"
+    "@fulldev": "https://ui.full.dev/r/{name}.json"
   }
 }
