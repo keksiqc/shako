@@ -1,4 +1,12 @@
 {
+  // Associate .css files with Tailwind CSS for better IntelliSense
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+
+  // Disable suggestions for non-canonical class names
+  "tailwindCSS.lint.suggestCanonicalClasses": "ignore",
+
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,
   "editor.formatOnSave": false,
