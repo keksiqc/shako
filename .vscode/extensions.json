@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "astro-build.astro-vscode",
+    "oven.bun-vscode",
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss"
+  ]
+}
