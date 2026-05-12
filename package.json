@@ -11,7 +11,7 @@
     "typecheck": "astro check",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
-    "prepare": "simple-git-hooks"
+    "prepare": "lefthook install"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
@@ -33,14 +33,7 @@
     "eslint-plugin-astro": "^1.7.0",
     "eslint-plugin-better-tailwindcss": "^4.5.0",
     "eslint-plugin-format": "^2.0.1",
-    "lint-staged": "^17.0.4",
-    "prettier-plugin-astro": "^0.14.1",
-    "simple-git-hooks": "^2.13.1"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "bun run lint-staged"
-  },
-  "lint-staged": {
-    "*": "bun run lint:fix"
+    "lefthook": "^2.1.6",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }

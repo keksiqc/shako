@@ -1,0 +1,5 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - run: bun lint:fix {staged_files}
+      stage_fixed: true
