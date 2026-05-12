@@ -3,9 +3,6 @@ import { Font } from 'astro:assets'
 import '@/styles/global.css'
 ---
 
-<Font cssVariable="--font-sans" preload />
-<Font cssVariable="--font-mono" preload />
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,6 +10,9 @@ import '@/styles/global.css'
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <title>Shako</title>
+
+    <Font cssVariable="--font-sans" />
+    <Font cssVariable="--font-mono" />
   </head>
   <body class="@container">
     <slot />
