@@ -3,3 +3,7 @@ pre-commit:
   jobs:
     - run: bun lint:fix {staged_files}
       stage_fixed: true
+
+commit-msg:
+  jobs:
+    - run: bun commitlint --edit \$1
