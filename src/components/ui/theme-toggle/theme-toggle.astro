@@ -1,0 +1,86 @@
+---
+import type { ComponentProps } from 'astro/types'
+
+import { cn } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
+import { Icon } from '@/components/ui/icon'
+
+type Props = ComponentProps<typeof Button>
+
+const { class: className, variant = 'ghost', size = 'icon-sm', ...props } = Astro.props
+---
+
+<Button
+  data-theme-toggle
+  aria-label="Toggle theme"
+  variant={variant}
+  size={size}
+  class={cn('relative', className)}
+  {...props}
+>
+  <Icon name="sun" class="dark:hidden" />
+  <Icon name="moon" class="hidden dark:block" />
+  <span class="sr-only">Toggle theme</span>
+</Button>
+
+<script is:inline>
+  if (!window.__themeToggleHandlersInitialized) {
+    window.__themeToggleHandlersInitialized = true
+
+    const syncThemeToggles = () => {
+      const isDark = document.documentElement.classList.contains('dark')
+
+      document.querySelectorAll('[data-theme-toggle]').forEach((toggle) => {
+        if (!(toggle instanceof HTMLButtonElement)) {
+          return
+        }
+
+        toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false')
+        toggle.setAttribute('data-state', isDark ? 'on' : 'off')
+
+        if (isDark) {
+          toggle.setAttribute('data-pressed', '')
+          // eslint-disable-next-line style/brace-style
+        } else {
+          toggle.removeAttribute('data-pressed')
+        }
+      })
+    }
+
+    syncThemeToggles()
+
+    const observer = new MutationObserver(syncThemeToggles)
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
+
+    document.addEventListener('click', (event) => {
+      const target = event.target
+
+      if (!(target instanceof Element)) {
+        return
+      }
+
+      const toggle = target.closest('[data-theme-toggle]')
+
+      if (!(toggle instanceof HTMLButtonElement)) {
+        return
+      }
+      if (toggle.disabled) {
+        return
+      }
+
+      const isDark = document.documentElement.classList.contains('dark')
+      const nextTheme = isDark ? 'light' : 'dark'
+
+      if (typeof window.__setTheme === 'function') {
+        window.__setTheme(nextTheme)
+        return
+      }
+
+      document.documentElement.classList[nextTheme === 'dark' ? 'add' : 'remove']('dark')
+    })
+  }
+</script>

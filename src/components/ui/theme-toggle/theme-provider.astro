@@ -1,0 +1,51 @@
+<script is:inline>
+  function getThemePreference() {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme')
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  }
+
+  function disableTransitionsTemporarily() {
+    const style = document.createElement('style')
+
+    style.appendChild(document.createTextNode('*, *::before, *::after { transition: none !important; }'))
+
+    document.head.appendChild(style)
+
+    return () => {
+      void document.documentElement.offsetHeight
+
+      requestAnimationFrame(() => {
+        style.remove()
+      })
+    }
+  }
+
+  function applyTheme(theme, disableTransitions = false) {
+    const restoreTransitions = disableTransitions ? disableTransitionsTemporarily() : null
+
+    document.documentElement.classList[theme === 'dark' ? 'add' : 'remove']('dark')
+
+    restoreTransitions?.()
+  }
+
+  window.__setTheme = (theme) => {
+    applyTheme(theme, true)
+  }
+
+  applyTheme(getThemePreference())
+
+  if (typeof localStorage !== 'undefined') {
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains('dark')
+      localStorage.setItem('theme', isDark ? 'dark' : 'light')
+    })
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
+  }
+</script>
