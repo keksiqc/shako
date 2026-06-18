@@ -39,10 +39,11 @@ const hrefMap = {
 
 const icons = import.meta.glob(['/node_modules/lucide-static/icons/*.svg', '/node_modules/simple-icons/icons/*.svg'], {
   eager: true,
+// biome-ignore lint/suspicious/noExplicitAny: any
 }) as Record<string, { default: any }>
 
 const foundPath = () => {
-  let foundPath: string | undefined = undefined
+  let foundPath: string | undefined 
 
   // For x.com, use the Simple Icons X instead of Lucide's X icon.
   if (name === 'x.com') {
