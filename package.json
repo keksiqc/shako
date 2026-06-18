@@ -10,7 +10,7 @@
     "astro": "astro",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
-    "prepare": "lefthook install"
+    "postinstall": "lefthook install"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
