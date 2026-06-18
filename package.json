@@ -1,16 +1,20 @@
 {
   "name": "shako",
-  "type": "module",
   "version": "1.0.0-alpha.0",
-  "packageManager": "bun@1.3.14",
+  "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix",
-    "postinstall": "lefthook install"
+    "build": "astro check && astro build",
+    "dev": "astro dev",
+    "postinstall": "lefthook install",
+    "lint": "biome check",
+    "lint:fix": "biome check --write",
+    "preview": "astro preview"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
@@ -24,24 +28,13 @@
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^9.0.0",
     "@astrojs/check": "^0.9.9",
     "@biomejs/biome": "^2.5.0",
     "@commitlint/cli": "^21.0.1",
     "@commitlint/config-conventional": "^21.0.1",
     "@types/bun": "^1.3.14",
-    "astro-eslint-parser": "^1.4.0",
-    "eslint": "^10.4.0",
-    "eslint-plugin-astro": "^1.7.0",
-    "eslint-plugin-better-tailwindcss": "^4.5.0",
-    "eslint-plugin-format": "^2.0.1",
     "lefthook": "^2.1.8",
-    "prettier-plugin-astro": "^0.14.1",
     "typescript": "^6.0.3"
   },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  }
+  "packageManager": "bun@1.3.14"
 }
