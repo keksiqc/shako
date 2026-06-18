@@ -5,10 +5,9 @@
   "packageManager": "bun@1.3.14",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "typecheck": "astro check",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "prepare": "lefthook install"
