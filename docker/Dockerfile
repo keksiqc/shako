@@ -1,5 +1,5 @@
 # Build stage
-FROM oven/bun:1.3-alpine@sha256:26d8996560ca94eab9ce48afc0c7443825553c9a851f40ae574d47d20906826d AS base
+FROM oven/bun:1.4-alpine@sha256:629e17411f1f129dbec3af78d5af9c9f2a937435c80349437206c6b0b7422373 AS base
 
 FROM base AS builder
 # Add build arguments
