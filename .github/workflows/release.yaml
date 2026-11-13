@@ -2,8 +2,7 @@ name: Release
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    tags: ['v*.*.*']
 
 permissions: {}
 
@@ -71,13 +70,3 @@ jobs:
         run: bunx --bun changelogithub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  docker:
-    needs: release
-    permissions:
-      contents: read
-      packages: write
-      id-token: write
-    uses: ./.github/workflows/docker.yaml
-    with:
-      tag: ${{ github.ref_name }}
