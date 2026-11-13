@@ -1,4 +1,4 @@
-name: docs
+name: Docs
 
 on:
   push:
@@ -10,18 +10,21 @@ on:
       - .github/workflows/docs.yaml
   workflow_dispatch:
 
+permissions: {}
+
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: github-pages
+  cancel-in-progress: false
 
 jobs:
   build-docs:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: read
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
@@ -46,6 +49,7 @@ jobs:
 
   deploy-docs:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     needs: build-docs
     environment:
       name: github-pages

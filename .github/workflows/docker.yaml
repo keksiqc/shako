@@ -1,4 +1,4 @@
-name: docker
+name: Docker
 
 on:
   push:
@@ -8,22 +8,23 @@ on:
       - 'v*.*.*'
     paths-ignore:
       - '**/*.md'
-      - '**/*.json'
   pull_request:
     branches:
       - main
     paths-ignore:
       - '**/*.md'
-      - '**/*.json'
   workflow_dispatch:
+
+permissions: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     permissions:
       contents: read
       packages: write
@@ -73,5 +74,3 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
