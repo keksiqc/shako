@@ -28,9 +28,7 @@ jobs:
       cache: true
       cache-scope: docker
       cache-mode: max
-      sbom: true
       set-meta-labels: true
-      set-meta-annotations: true
       meta-images: ghcr.io/${{ github.repository }}
       meta-flavor: latest=auto
       meta-tags: |
