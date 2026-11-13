@@ -1,13 +1,11 @@
 name: CI
 
 on:
-  workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    paths-ignore:
-      - '**/*.md'
+    branches: [main]
+  workflow_dispatch:
 
 permissions: {}
 
