@@ -121,9 +121,9 @@
 
 @layer utilities {
   html {
-    font-family: 'Geist Variable', system-ui, sans-serif;
+    font-family: var(--font-geist);
   }
   a {
-    font-family: 'Geist Mono Variable', monospace;
+    font-family: var(--font-geist-mono);
   }
 }

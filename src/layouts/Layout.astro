@@ -1,12 +1,14 @@
 ---
-import '@fontsource-variable/geist/wght.css'
-import '@fontsource-variable/geist-mono/wght.css'
+import { Font } from 'astro:assets'
 
 interface Props {
   title: string
 }
 
 const { title } = Astro.props
+const fontPreload = [
+  { subset: 'latin' },
+]
 ---
 
 <script is:inline>
@@ -43,6 +45,8 @@ if (typeof localStorage !== 'undefined') {
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <Font cssVariable="--font-geist" preload={fontPreload} />
+    <Font cssVariable="--font-geist-mono" preload={fontPreload} />
     <title>{title}</title>
   </head>
   <body>
