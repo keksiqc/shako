@@ -19,11 +19,15 @@ if (!background || background === 'none') {
 
 // Helper functions for custom backgrounds
 function getImageProps(value: string) {
-  return { preset: { type: 'image' as const, image: value } }
+  return {
+preset: { type: 'image' as const, image: value },
+}
 }
 
 function getColorProps(value: string) {
-  return { preset: { type: 'color' as const, color: value } }
+  return {
+preset: { type: 'color' as const, color: value },
+}
 }
 
 function getGradientProps(value: { type: 'linear' | 'radial', colors: string[], direction: number }) {

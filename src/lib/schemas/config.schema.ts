@@ -38,7 +38,10 @@ const buttonStyleSchema = z.enum([
 export const configSchema = z.object({
   page: z.object({
     title: z.string().default('Shako').optional(),
-    footer: z.union([z.boolean(), z.string()]).default(true).optional(),
+    footer: z.union([
+      z.boolean(),
+      z.string(),
+    ]).default(true).optional(),
     borderRadius: z.number().default(0.625).optional(),
     background: backgroundSchema.default('none').optional(),
     redirects: z.record(z.string(), z.string()).default({}).optional(),

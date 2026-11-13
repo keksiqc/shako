@@ -50,7 +50,9 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
         return 'rgba(255, 0, 0,'
       ctx.fillStyle = color
       ctx.fillRect(0, 0, 1, 1)
-      const [r, g, b] = [...ctx.getImageData(0, 0, 1, 1).data]
+      const [r, g, b] = [
+        ...ctx.getImageData(0, 0, 1, 1).data,
+      ]
       return `rgba(${r}, ${g}, ${b},`
     }
     return toRGBA(color)
@@ -184,7 +186,14 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
       resizeObserver.disconnect()
       intersectionObserver.disconnect()
     }
-  }, [setupCanvas, updateSquares, drawGrid, width, height, isInView])
+  }, [
+    setupCanvas,
+    updateSquares,
+    drawGrid,
+    width,
+    height,
+    isInView,
+  ])
 
   return (
     <div

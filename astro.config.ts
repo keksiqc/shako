@@ -8,8 +8,13 @@ import config from './shako.config'
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+    ],
   },
-  integrations: [react(), compress()],
+  integrations: [
+    react(),
+    compress(),
+  ],
   redirects: config.page?.redirects ?? {},
 })

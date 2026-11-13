@@ -52,7 +52,12 @@ export function AnimatedGrid({
       Math.floor((Math.random() * dimensions.width) / width),
       Math.floor((Math.random() * dimensions.height) / height),
     ]
-  }, [dimensions.width, dimensions.height, width, height])
+  }, [
+    dimensions.width,
+    dimensions.height,
+    width,
+    height,
+  ])
 
   // Adjust the generateSquares function to return objects with an id, x, and y
   const generateSquares = useCallback((count: number): Square[] => {

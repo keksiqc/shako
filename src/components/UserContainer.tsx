@@ -29,7 +29,9 @@ function UserContainerBase({ config }: { config: ParsedConfig | null }) {
   // Construct avatar URL properly
   let avatarUrl = config?.user?.avatar
   if (!avatarUrl && data?.discord_user?.avatar) {
-    avatarUrl = `https://cdn.discordapp.com/avatars/${data.discord_user.id}/${data.discord_user.avatar}.${data.discord_user.avatar.startsWith('a_') ? 'gif' : 'png'}?size=256`
+    avatarUrl = `https://cdn.discordapp.com/avatars/${data.discord_user.id}/${data.discord_user.avatar}.${data.discord_user.avatar.startsWith('a_')
+      ? 'gif'
+      : 'png'}?size=256`
   }
 
   const description = config?.user?.bio

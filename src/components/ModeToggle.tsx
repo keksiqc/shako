@@ -25,7 +25,9 @@ export function ModeToggle() {
     <Button
       variant="outline"
       size="icon"
-      onClick={() => setTheme(theme === 'theme-light' ? 'dark' : 'theme-light')}
+      onClick={() => setTheme(theme === 'theme-light'
+        ? 'dark'
+        : 'theme-light')}
     >
       <Sun className="
         size-[1.2rem] scale-100 rotate-0 transition-all
