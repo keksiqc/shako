@@ -1,25 +1,21 @@
 name: Docker
 
 on:
-  push:
-    branches:
-      - main
-    tags:
-      - 'v*.*.*'
-    paths-ignore:
-      - '**/*.md'
-  pull_request:
-    branches:
-      - main
-    paths-ignore:
-      - '**/*.md'
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      tag:
+        description: Published release tag
+        required: true
+        type: string
 
 permissions: {}
 
+env:
+  IMAGE: ghcr.io/${{ github.repository }}
+
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  group: docker-${{ inputs.tag }}
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -33,6 +29,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          # Reusable workflows inherit the caller's tag-push commit.
+          ref: ${{ github.sha }}
           persist-credentials: false
 
       - name: Set up QEMU
@@ -45,32 +43,29 @@ jobs:
         id: metadata
         uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
         with:
-          images: ghcr.io/${{ github.repository }}
+          images: ${{ env.IMAGE }}
+          flavor: latest=auto
           tags: |
-            type=raw,value=latest,enable={{is_default_branch}}
-            type=ref,event=branch
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-            type=raw,value={{sha}},enable=${{ github.ref_type != 'tag' }}
+            type=semver,pattern={{version}},value=${{ inputs.tag }}
+            type=semver,pattern={{major}}.{{minor}},value=${{ inputs.tag }}
+            type=semver,pattern={{major}},value=${{ inputs.tag }}
+            type=sha
 
-      # https://github.com/docker/login-action
       - name: Login to GHCR
-        if: github.event_name != 'pull_request'
         uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4.8.0
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
 
-      # Build and push Docker image with Buildx (don't push on PR)
-      # https://github.com/docker/build-push-action
       - name: Build and push Docker image
         uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: .
           file: ./docker/Dockerfile
           platforms: linux/amd64,linux/arm64
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

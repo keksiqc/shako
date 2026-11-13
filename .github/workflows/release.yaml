@@ -12,11 +12,11 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  release:
+  validate:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
-      contents: write
+      contents: read
 
     steps:
       - name: Checkout
@@ -30,6 +30,14 @@ jobs:
           bun-version-file: package.json
           no-cache: true
 
+      - name: Validate release version
+        run: |
+          release_version="$(bun -p 'require("./package.json").version')"
+          if [ "$GITHUB_REF_NAME" != "v$release_version" ]; then
+            echo "::error::Release tag must match package.json: expected v$release_version"
+            exit 1
+          fi
+
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
@@ -39,12 +47,36 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Create GitHub release
+  release:
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: package.json
+          no-cache: true
+
+      - name: Publish GitHub release with changelogithub
+        run: bunx --bun changelogithub
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
-            echo "Release ${GITHUB_REF_NAME} already exists; skipping"
-          else
-            gh release create "${GITHUB_REF_NAME}" --generate-notes
-          fi
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  docker:
+    needs: release
+    permissions:
+      contents: read
+      packages: write
+    uses: ./.github/workflows/docker.yaml
+    with:
+      tag: ${{ github.ref_name }}
