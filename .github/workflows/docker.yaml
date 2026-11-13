@@ -1,18 +1,17 @@
 name: Docker
 
 on:
-  workflow_call:
-    inputs:
-      tag:
-        description: Published release tag
-        required: true
-        type: string
+  push:
+    branches: [main]
+    tags: ['v*.*.*']
+  pull_request:
+    branches: [main]
 
 permissions: {}
 
 concurrency:
-  group: docker-${{ inputs.tag }}
-  cancel-in-progress: false
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -23,21 +22,24 @@ jobs:
       id-token: write
     with:
       output: image
-      push: true
+      push: ${{ github.event_name != 'pull_request' }}
       context: .
       file: ./docker/Dockerfile
       platforms: linux/amd64,linux/arm64
-      distribute: true
       cache: true
       cache-scope: docker
       cache-mode: max
+      sbom: true
       set-meta-labels: true
+      set-meta-annotations: true
       meta-images: ghcr.io/${{ github.repository }}
       meta-flavor: latest=auto
       meta-tags: |
-        type=semver,pattern={{version}},value=${{ inputs.tag }}
-        type=semver,pattern={{major}}.{{minor}},value=${{ inputs.tag }}
-        type=semver,pattern={{major}},value=${{ inputs.tag }}
+        type=semver,pattern={{version}}
+        type=semver,pattern={{major}}.{{minor}}
+        type=semver,pattern={{major}}
+        type=ref,event=branch
+        type=ref,event=pr
         type=sha
     secrets:
       registry-auths: |
