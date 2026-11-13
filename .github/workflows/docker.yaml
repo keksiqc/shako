@@ -10,62 +10,37 @@ on:
 
 permissions: {}
 
-env:
-  IMAGE: ghcr.io/${{ github.repository }}
-
 concurrency:
   group: docker-${{ inputs.tag }}
   cancel-in-progress: false
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
+    uses: docker/github-builder/.github/workflows/build.yml@a31d2311da4d55e21b978c1c52bab82ba97d51ee # v1
     permissions:
       contents: read
       packages: write
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          # Reusable workflows inherit the caller's tag-push commit.
-          ref: ${{ github.sha }}
-          persist-credentials: false
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4.4.0
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
-
-      - name: Docker metadata
-        id: metadata
-        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
-        with:
-          images: ${{ env.IMAGE }}
-          flavor: latest=auto
-          tags: |
-            type=semver,pattern={{version}},value=${{ inputs.tag }}
-            type=semver,pattern={{major}}.{{minor}},value=${{ inputs.tag }}
-            type=semver,pattern={{major}},value=${{ inputs.tag }}
-            type=sha
-
-      - name: Login to GHCR
-        uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4.8.0
-        with:
+      id-token: write
+    with:
+      output: image
+      push: true
+      context: .
+      file: ./docker/Dockerfile
+      platforms: linux/amd64,linux/arm64
+      distribute: true
+      cache: true
+      cache-scope: docker
+      cache-mode: max
+      set-meta-labels: true
+      meta-images: ghcr.io/${{ github.repository }}
+      meta-flavor: latest=auto
+      meta-tags: |
+        type=semver,pattern={{version}},value=${{ inputs.tag }}
+        type=semver,pattern={{major}}.{{minor}},value=${{ inputs.tag }}
+        type=semver,pattern={{major}},value=${{ inputs.tag }}
+        type=sha
+    secrets:
+      registry-auths: |
+        - registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          registry: ghcr.io
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
-        with:
-          context: .
-          file: ./docker/Dockerfile
-          platforms: linux/amd64,linux/arm64
-          push: true
-          tags: ${{ steps.metadata.outputs.tags }}
-          labels: ${{ steps.metadata.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
